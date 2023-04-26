@@ -1,0 +1,18 @@
+check to see if selected square has already been selected
+if selected square has already been selected
+    display alert
+if selected square is a hit
+    remove square from play
+    determine which ship was hit
+    alert for hit
+    if ship is sunk, 
+        remove ship from play
+        alert user
+        if player has won
+            alert user
+            prompt for new game
+    if ship has not sunk
+        mark square as being played and hit
+    
+
+if selected
