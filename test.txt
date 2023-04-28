@@ -1,3 +1,4 @@
+--player logic--
 check to see if selected square has already been selected
 if selected square has already been selected
     display alert
@@ -15,4 +16,18 @@ if selected square is a hit
         mark square as being played and hit
     
 
-if selected
+
+    --opponent logic--
+    when player's first turn ends, select a random square
+    if selected square is a hit, turn ends
+        on next turn, always select an adjacent square to the most recent hit, that has not already been selected
+        COMMENT: adjacent square can be directly above, below, to the left, or to the right of the hit, but cannot be diagonally adjacent
+    if selected square is not a hit, turn ends
+        on next turn, always select a random square
+    if a second hit is registered, check if ship is sunk.
+        if ship is sunk, turn ends
+        if ship is not sunk, turn ends,
+            on next turn, must select an adjacent square that shares an x-axis or y-axis with two most recent hits
+         if ship is sunk, Turn ends
+            on next
+

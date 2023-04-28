@@ -7,12 +7,15 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     color:darkred;
     font-weight: bold;
     text-transform: uppercase;
-    
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
     }
 
 
 .container  {
-    max-width: 1200px;
+    max-width: 1000px;
+    
     margin: 0 auto;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -20,7 +23,9 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
 
 .row    {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
     gap: 1rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     
@@ -55,25 +60,29 @@ div {
 
     }
 
-#container  {width: 95%;}
+#mainContainer  {width: 85%;
+            text-align: center;
+            margin: auto;
 
-#title  {background-color: darkslategray;
-         width: 25%;
+
+        }
+
+#title  {background-color: dimgray;
          text-align: center;
          margin: auto;
-         
-
+         display: block;
+         max-width: 48%;
         }
 
 
 
-#instructions   {background-color: darkslategray;
-                width: 90%; 
+#instructions   {background-color: dimgray;
+                width: 70%; 
                 text-align: center;
                 margin: auto;
                 }
 
-#credit {background-color:darkslategray;
+#credit {background-color:dimgray;
         width: 40%;
         text-align: center; 
         margin: auto;

@@ -77,32 +77,50 @@ const h6 = document.getElementById("h6")
 const i6 = document.getElementById("i6")
 const j6 = document.getElementById("j6")
 
+const a7 = document.getElementById("a7")
+const b7 = document.getElementById("b7")
+const c7 = document.getElementById("c7")
+const d7 = document.getElementById("d7")
+const e7 = document.getElementById("e7")
+const f7 = document.getElementById("f7")
+const g7 = document.getElementById("g7")
+const h7 = document.getElementById("h7")
+const i7 = document.getElementById("i7")
+const j7 = document.getElementById("j7")
 
+const a8 = document.getElementById("a8")
+const b8 = document.getElementById("b8")
+const c8 = document.getElementById("c8")
+const d8 = document.getElementById("d8")
+const e8 = document.getElementById("e8")
+const f8 = document.getElementById("f8")
+const g8 = document.getElementById("g8")
+const h8 = document.getElementById("h8")
+const i8 = document.getElementById("i8")
+const j8 = document.getElementById("j8")
 
+const a9 = document.getElementById("a9")
+const b9 = document.getElementById("b9")
+const c9 = document.getElementById("c9")
+const d9 = document.getElementById("d9")
+const e9 = document.getElementById("e9")
+const f9 = document.getElementById("f9")
+const g9 = document.getElementById("g9")
+const h9 = document.getElementById("h9")
+const i9 = document.getElementById("i9")
+const j9 = document.getElementById("j9")
 
+const a10 = document.getElementById("a10")
+const b10 = document.getElementById("b10")
+const c10 = document.getElementById("c10")
+const d10 = document.getElementById("d10")
+const e10 = document.getElementById("e10")
+const f10 = document.getElementById("f10")
+const g10 = document.getElementById("g10")
+const h10 = document.getElementById("h10")
+const i10 = document.getElementById("i10")
+const j10 = document.getElementById("j10")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const a1 = document.getElementById("a1")
 //same thing below, both grab an id'd item from html
 const cell1 = document.querySelector("#a1")
 
