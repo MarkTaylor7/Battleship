@@ -1,4 +1,14 @@
---player logic--
+Definitions:
+target grid: The upper grid where the user selects squares which are marked as hits or misses
+ocean grid: The lower grid where the user places their fleet of five ships. The COM selects squares which are marked as hits and misses.
+COM: the user's opponent, programmed to follow human-like strategies that increase it's probability of recording hits and ultimately winning the game 
+live hits: hits that are recorded on the ocean grid, but have not prompted the destruction of the user's ship.
+    when multiple live hits are adjacent, the COM will note the orientation of the hits and select adjacent squares that share the same axis (x or y) until the ship is destroyed. Once the ship is destroyed, these live hits become dead hits
+dead hits: hits that recorded on the ocean grid, and apply to a user's destroyed ship.
+    the COM will treat dead hits the same as any square that has already been recorded as a miss.
+
+
+--user logic--
 check to see if selected square has already been selected
 if selected square has already been selected
     display alert
@@ -9,25 +19,47 @@ if selected square is a hit
     if ship is sunk, 
         remove ship from play
         alert user
-        if player has won
-            alert user
+        if player records 17 hits
+            alert user that they have won
+            prompt for user to share their score via social media (provide multiple platforms for selection)
+                score will include number of shots fired (lower the better) and number of ships remaining in user fleet (higher the better)
             prompt for new game
     if ship has not sunk
         mark square as being played and hit
     
 
 
-    --opponent logic--
-    when player's first turn ends, select a random square
-    if selected square is a hit, turn ends
-        on next turn, always select an adjacent square to the most recent hit, that has not already been selected
-        COMMENT: adjacent square can be directly above, below, to the left, or to the right of the hit, but cannot be diagonally adjacent
-    if selected square is not a hit, turn ends
-        on next turn, always select a random square
-    if a second hit is registered, check if ship is sunk.
-        if ship is sunk, turn ends
-        if ship is not sunk, turn ends,
-            on next turn, must select an adjacent square that shares an x-axis or y-axis with two most recent hits
-         if ship is sunk, Turn ends
-            on next
+--COM logic--
+    when player's first turn ends, select a random ocean square
+        if miss, mark that square as a miss on ocean grid and end turn
+            this square cannot be selected again
+            on next turn, select a random ocean square
+        if hit, mark that square as a live hit on the ocean grid and end turn
+            this square cannot be selected again
+                on next turn, COM must select a square vertically or horizontally adjacent to the hit on the ocean grid
+            if miss, mark as a miss on the ocean grid and end turn
+                on next turn, COM must select a square vertically or horizontally adjacent to the hit on the ocean grid
+            if hit, mark as a live hit on the ocean grid and end turn
+                if user's ship is destroyed, turn the destoyed ship's live hits into dead hits
+                    resume random selection of squares on next turn
+                if user's ship is not destroyed, then check for orientation of live hits
+                    if live hits are in horizonal orientation, then on next turn select square to the left or the right of the live hits
+                        if miss, mark square as miss and on next turn select square to the left or the right of the live hits
+                        if hit, mark as hit on the ocean grid and end turn
+                            if user's ship is destroyed, turn the destoyed ship's live hits into dead hits
+                                resume random selection of squares on next turn
+                            if user's ship is not destroyed, then on next turn select square to the left or the right of the live hits
+                    if live hits are in vertical orientation, then on next turn select square above or below the live hits
+                        if miss, mark square as miss and on next turn select square above or below the live hits
+                        if hit, mark as hit on the ocean grid and end turn
+                            if user's ship is destroyed, turn the destoyed ship's live hits into dead hits
+                                resume random selection of squares on next turn
+                            if user's ship is not destroyed, then on next turn select square above or below the live hits
+        If COM records 17 hits on ocean grid, the game ends
+                        alert user that game is over and they have lost
+                        ask if they would like to play again (present play again button)
+                            on click of button, start new game and prompt user to place their ships on ocean grid.
+
+                            
+            
 
