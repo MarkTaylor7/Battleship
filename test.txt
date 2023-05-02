@@ -60,6 +60,12 @@ if selected square is a hit
                         ask if they would like to play again (present play again button)
                             on click of button, start new game and prompt user to place their ships on ocean grid.
 
-                            
+NOTES: Random selection of squares by COM may result in selection of a square that cannot logically be hit, due to not enough spaces 
+    to fit one of the remaining user ships. WOuld be nice to program COM to ignore such spaces.
+
+   Example: A1 B1 M    If user's destroyer is sunk, the COM should not be able to select A1 or B1, as the smallest remaining ship is
+            M  M  M    too large to fit in this space. A logical player would correctly assume that A1 and B1 are misses, and would not
+                       select them. 
+    
             
 
