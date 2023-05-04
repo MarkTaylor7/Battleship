@@ -1,5 +1,6 @@
 const destroyer = [a1, a2];
 const submarine = [b1, b2, b3];
+const battleship = [c1, c2, c3];
 
 const selection = Math.floor(Math.random() * 99) + 1
 
@@ -11,7 +12,11 @@ if(selection >= 1 && selection <= 100) {
 }
 
 
-const a1 = document.getElementById("a1")
+
+const a1 = {document.getElementById("a1"),
+        
+
+}
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
