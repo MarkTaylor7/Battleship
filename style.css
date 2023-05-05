@@ -1,10 +1,10 @@
-body {background-color:rgb(6, 0, 43);
+body {background-color:tan;
 
      }
 
 h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 300%;
-    color:darkred;
+    color:darkgoldenrod;
     font-weight: bold;
     text-transform: uppercase;
     padding-left: 5%;
@@ -12,8 +12,17 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     text-align: center;
     }
 
+h2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 150%;
+    color:darkgoldenrod;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+}
 
-.targetGrid  {
+.grid  {
     max-width: 2000px;
     margin: 0 auto;
     text-align: center;
@@ -22,12 +31,6 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     
 }
 
-.oceanGrid  {
-    max-width: 2000px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
 
 .row    {
     display: flex;
@@ -40,7 +43,7 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
 }
 
 .column {
-    background-color: steelblue;
+    background-color:peru;
     padding: 1rem 0;
     flex: 1;
     gap: 2px;
@@ -48,7 +51,7 @@ h1  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
 }
 
 .column:hover {
-    background-color: rgb(140, 193, 236);
+    background-color:sandybrown;
 }
 
 @media only screen and (max-width: 768px) 
@@ -76,7 +79,7 @@ div {
 
         }
 
-#title  {background-color: dimgray;
+#title  {background-color:bisque;
          text-align: center;
          margin: auto;
          max-width: 48%;
@@ -84,13 +87,13 @@ div {
 
 
 
-#instructions   {background-color: dimgray;
+#instructions   {background-color: bisque;
                 width: 70%; 
                 text-align: center;
                 margin: auto;
                 }
 
-#credit {background-color:dimgray;
+#credit {background-color:bisque;
         width: 40%;
         text-align: center; 
         margin: auto;
