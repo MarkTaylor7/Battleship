@@ -1,22 +1,27 @@
-const item1 = [a1, a2];
-const item2 = [b1, b2, b3];
-const item3 = [c1, c2, c3];
+
 
 const selection = Math.floor(Math.random() * 99) + 1
 
 let isValidChoice; 
-if(selection >= 1 && selection <= 100) {
+if(selection >= 1 && selection <= 64) {
     isValidChoice = true;
 } else {
     isValidChoice = false;
 }
 
-
+let isHit = true;
+if(clickon = "a1") {
+    console.log("Hello");
+}
 
 const a1 = {document.getElementById("a1"),
+            isValidChoice = true,
         
-
 }
+
+
+
+
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
@@ -61,7 +66,7 @@ const f5 = document.getElementById("f5")
 const g5 = document.getElementById("g5")
 const h5 = document.getElementById("h5")
 
-const a6 = doucment.getElementById("a6")
+const a6 = document.getElementById("a6")
 const b6 = document.getElementById("b6")
 const c6 = document.getElementById("c6")
 const d6 = document.getElementById("d6")
@@ -90,3 +95,10 @@ const h8 = document.getElementById("h8")
 
 //same thing below, both grab an id'd item from html
 const cell1 = document.querySelector("#a1")
+
+
+const item1 = [a1, a2];
+const item2 = [b1, b2, b3];
+const item3 = [c1, c2, c3];
+
+
