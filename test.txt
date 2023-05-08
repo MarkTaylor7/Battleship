@@ -1,3 +1,26 @@
+--game logic--
+check to see if selected square has already been selected
+if selected square has already been selected
+    display alert
+if selected square is a hit
+    remove square from play
+    determine which ship was hit
+    alert for hit
+    if item is dug up, 
+        remove itrm from play
+        indicate which of the listed items is dug up in buried items list
+        if player records 9 hits
+            alert user that they have won
+            prompt for user to share their score via social media (provide multiple platforms for selection)
+                score will include number of shots fired (lower the better) 
+            prompt for new game
+    if ship has not sunk
+        mark square as being played and hit
+    
+
+
+!!! Ignore everything below. May be used in future build of this project.
+
 Definitions:
 target grid: The upper grid where the user selects squares which are marked as hits or misses
 ocean grid: The lower grid where the user places their fleet of five ships. The COM selects squares which are marked as hits and misses.
@@ -6,29 +29,6 @@ live hits: hits that are recorded on the ocean grid, but have not prompted the d
     when multiple live hits are adjacent, the COM will note the orientation of the hits and select adjacent squares that share the same axis (x or y) until the ship is destroyed. Once the ship is destroyed, these live hits become dead hits
 dead hits: hits that recorded on the ocean grid, and apply to a user's destroyed ship.
     the COM will treat dead hits the same as any square that has already been recorded as a miss.
-
-
---user logic--
-check to see if selected square has already been selected
-if selected square has already been selected
-    display alert
-if selected square is a hit
-    remove square from play
-    determine which ship was hit
-    alert for hit
-    if ship is sunk, 
-        remove ship from play
-        alert user
-        if player records 17 hits
-            alert user that they have won
-            prompt for user to share their score via social media (provide multiple platforms for selection)
-                score will include number of shots fired (lower the better) and number of ships remaining in user fleet (higher the better)
-            prompt for new game
-    if ship has not sunk
-        mark square as being played and hit
-    
-
-
 --COM logic--
     when player's first turn ends, select a random ocean square
         if miss, mark that square as a miss on ocean grid and end turn

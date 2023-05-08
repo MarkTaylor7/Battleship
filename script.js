@@ -1,6 +1,6 @@
 
 
-const selection = Math.floor(Math.random() * 99) + 1
+const selection = Math.floor(Math.random() * 63) + 1
 
 let isValidChoice; 
 if(selection >= 1 && selection <= 64) {
@@ -9,19 +9,11 @@ if(selection >= 1 && selection <= 64) {
     isValidChoice = false;
 }
 
-let isHit = true;
-if(clickon = "a1") {
-    console.log("Hello");
-}
+if (isValidChoice)
 
 const a1 = {document.getElementById("a1"),
-            isValidChoice = true,
-        
+        selection = 1,
 }
-
-
-
-
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
