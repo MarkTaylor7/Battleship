@@ -9,11 +9,20 @@ if(selection >= 1 && selection <= 64) {
     isValidChoice = false;
 }
 
-if (isValidChoice)
-
 const a1 = {document.getElementById("a1"),
-        selection = 1,
+       a1.addEventListener("click", updateBtn);
 }
+
+function updateBtn() {
+    if (a1.textContent === "A1") {
+        a1.textContent = "XX";
+    } else {
+        a1.textContent = "YY"
+    }
+
+
+}
+
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")

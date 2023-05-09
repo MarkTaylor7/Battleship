@@ -55,6 +55,14 @@ h2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     background-color:sandybrown;
 }
 
+button {background-color: peru;
+}
+
+.button {
+    background-color:sandybrown;
+    
+}
+
 @media only screen and (max-width: 768px) 
 
     .row  {
