@@ -1,31 +1,5 @@
-let smallTreasure = {
-    location: [id=a1, id=a2]
-}
-let mediumTreasure = {
-    location: [id=b1, id=b2, id=b3]
-}
-let largeTreasure = {
-    location: [id=c1, id=c2, id=c3, id=c4]
-}
-
-
-const selection = Math.floor(Math.random() * 63) + 1
-
-let isValidChoice; 
-if(selection >= 1 && selection <= 64) {
-    isValidChoice = true;
-} else {
-    isValidChoice = false;
-}
-
-const a1 = {document.getElementById("a1"),
-       a1.addEventListener("onclick", updateBtn);
-}
-
-function updateBtn()
-
-}
-
+//Squares
+const a1 = document.getElementById("a1");
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
@@ -97,12 +71,18 @@ const f8 = document.getElementById("f8")
 const g8 = document.getElementById("g8")
 const h8 = document.getElementById("h8")
 
-//same thing below, both grab an id'd item from html
-const cell1 = document.querySelector("#a1")
 
 
-const item1 = [a1, a2];
-const item2 = [b1, b2, b3];
-const item3 = [c1, c2, c3];
+const smallTreasure = [a1, a2];
 
+const mediumTreasure = [b1, b2, b3];
+
+const largeTreasure = [c1, c2, c3, c4];
+
+function onClick(thisSquare) {    
+    alert("Found");
+    console.log(thisSquare);
+}
+
+a1.addEventListener("click", onClick(a1));
 
