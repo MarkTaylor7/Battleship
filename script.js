@@ -1,3 +1,12 @@
+let smallTreasure = {
+    location: [id=a1, id=a2]
+}
+let mediumTreasure = {
+    location: [id=b1, id=b2, id=b3]
+}
+let largeTreasure = {
+    location: [id=c1, id=c2, id=c3, id=c4]
+}
 
 
 const selection = Math.floor(Math.random() * 63) + 1
@@ -10,16 +19,10 @@ if(selection >= 1 && selection <= 64) {
 }
 
 const a1 = {document.getElementById("a1"),
-       a1.addEventListener("click", updateBtn);
+       a1.addEventListener("onclick", updateBtn);
 }
 
-function updateBtn() {
-    if (a1.textContent === "A1") {
-        a1.textContent = "XX";
-    } else {
-        a1.textContent = "YY"
-    }
-
+function updateBtn()
 
 }
 
