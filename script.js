@@ -1,3 +1,22 @@
+//Modal
+const welcomeModal = document.getElementById("welcomeModal");
+const welcomeModalBtn = document.getElementById("modalBtn");
+const welcomeModalSpan = document.getElementsByClassName("close")[0];
+
+welcomeModalBtn.onclick = function() {
+    welcomeModal.style.display = "block";
+}
+
+welcomeModalSpan.onclick = function() {
+    welcomeModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == welcomeModal) {
+        welcomeModal.style.display = "none";
+    }
+}
+
 //Squares
 const a1 = document.getElementById("a1");
 const b1 = document.getElementById("b1")
@@ -74,6 +93,13 @@ const h8 = document.getElementById("h8")
 
 
 const smallTreasure = [a1, a2];
+smallTreasure.includes(a1);
+if (smallTreasure.includes(a1)) {
+    alert("Hello");
+}   else {
+    alert("Goodbye");
+}
+
 
 const mediumTreasure = [b1, b2, b3];
 
@@ -81,8 +107,8 @@ const largeTreasure = [c1, c2, c3, c4];
 
 function onClick(thisSquare) {    
     alert("Found");
-    console.log(thisSquare);
+    
 }
 
-a1.addEventListener("click", onClick(a1));
+a1.addEventListener("click", onClick("a1"));
 
