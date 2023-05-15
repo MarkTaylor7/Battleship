@@ -1,11 +1,8 @@
-//Modal
-const welcomeModal = document.getElementById("welcomeModal");
-const welcomeModalBtn = document.getElementById("modalBtn");
-const welcomeModalSpan = document.getElementsByClassName("close")[0];
+//welcomeModal
+const welcomeModal = document.getElementById("welcomeModal"); 
+const welcomeModalSpan = document.getElementsByClassName("welcomeClose")[0];
 
-welcomeModalBtn.onclick = function() {
-    welcomeModal.style.display = "block";
-}
+//Need to find a way to get welcome modal to appear on page load
 
 welcomeModalSpan.onclick = function() {
     welcomeModal.style.display = "none";
@@ -14,6 +11,25 @@ welcomeModalSpan.onclick = function() {
 window.onclick = function(event) {
     if (event.target == welcomeModal) {
         welcomeModal.style.display = "none";
+    }
+}
+
+//howToPlayModal
+const howToPlayModal = document.getElementById("howToPlayModal");
+const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
+const howToPlayModalSpan = document.getElementsByClassName("howToPlayClose")[0];
+
+howToPlayModalBtn.onclick = function() {
+    howToPlayModal.style.display = "block";
+}
+
+howToPlayModalSpan.onclick = function() {
+    howToPlayModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == howToPlayModal) {
+        howToPlayModal.style.display = "none";
     }
 }
 
@@ -110,5 +126,5 @@ function onClick(thisSquare) {
     
 }
 
-a1.addEventListener("click", onClick("a1"));
+a1.addEventListener("click", () => onClick("a1"));
 

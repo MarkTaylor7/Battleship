@@ -1,8 +1,8 @@
 body {background-color:tan;
      }
 
-/*The Modal Background*/
-.modal {
+/*The Welcome Modal Background*/
+.welcomeModal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -15,26 +15,50 @@ body {background-color:tan;
     background-color: rgba(0,0,0,0.4);
 }
 
-/*Modal Content Box*/
-.modal-content {
-    background-color: #fefefe;
+/*Welcome Modal Content Box*/
+.welcomeModalContent {
+    background-color: tan;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
-    
+
 }
 
-/*The Close Button*/
-.close {
+/*The HowToPlay Modal Background*/
+.howToPlayModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/*HowToPlay Modal Content Box*/
+.howToPlayModalContent {
+    background-color: tan;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+
+}
+
+/*The HTP Modal Close Button*/
+.howToPlayClose {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close.hover,
-.close.focus {
+.howToPlayClose.hover,
+.howToPlayClose.focus {
     color: black;
     text-decoration: none;
     cursor:pointer;
@@ -99,18 +123,17 @@ button {background-color: peru;
 
 .button {
     background-color:sandybrown;
-    
-}
+        }
 
 @media only screen and (max-width: 768px) 
 
-    .row  {
+.row  {
         flex-wrap: nowrap;
-    }
+}
 
 p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
      font-size: 120%;
-     color: black;
+     color: darkgoldenrod;
 
     }
 
