@@ -2,17 +2,14 @@
 const welcomeModal = document.getElementById("welcomeModal"); 
 const welcomeModalSpan = document.getElementsByClassName("welcomeClose")[0];
 
-//Need to find a way to get welcome modal to appear on page load
+function showWelcomeModal() {
+    welcomeModal.style.display = "block";
+}
 
 welcomeModalSpan.onclick = function() {
     welcomeModal.style.display = "none";
 }
 
-window.onclick = function(event) {
-    if (event.target == welcomeModal) {
-        welcomeModal.style.display = "none";
-    }
-}
 
 //howToPlayModal
 const howToPlayModal = document.getElementById("howToPlayModal");
@@ -29,6 +26,7 @@ howToPlayModalSpan.onclick = function() {
 
 window.onclick = function(event) {
     if (event.target == howToPlayModal) {
+        welcomeModal.style.display = "none",
         howToPlayModal.style.display = "none";
     }
 }
@@ -111,11 +109,20 @@ const smallTreasure = [a1, a2];
 const mediumTreasure = [b1, b2, b3];
 const largeTreasure = [c1, c2, c3, c4];
 
-function buttonColor()  {
-    if(smallTreasure.includes(a1, a2))  {
-    document.getElementById("button").style.backgroundColor= "#911";
+//Functions for Hits and Misses - must find way to apply one function that can work on each button, instead of 64 unique functions for each button
+function buttonColora1()  {
+    if(smallTreasure.includes(a1))  {
+    document.getElementById("buttona1").style.backgroundColor= "#911";
     }   else    {
-        document.getElementById("button").style.backgroundColor= "#0000FF";
+        document.getElementById("buttona1").style.backgroundColor= "#0000FF";
+    }
+}
+
+function buttonColora2()  {
+    if(smallTreasure.includes(a2))  {
+    document.getElementById("buttona2").style.backgroundColor= "#911";
+    }   else    {
+        document.getElementById("buttona2").style.backgroundColor= "#0000FF";
     }
 }
 
