@@ -106,25 +106,23 @@ const f8 = document.getElementById("f8")
 const g8 = document.getElementById("g8")
 const h8 = document.getElementById("h8")
 
-
-
+//Treasures
 const smallTreasure = [a1, a2];
-smallTreasure.includes(a1);
-if (smallTreasure.includes(a1)) {
-    alert("Hello");
-}   else {
-    alert("Goodbye");
-}
-
-
 const mediumTreasure = [b1, b2, b3];
-
 const largeTreasure = [c1, c2, c3, c4];
+
+function buttonColor()  {
+    if(smallTreasure.includes(a1, a2))  {
+    document.getElementById("button").style.backgroundColor= "#911";
+    }   else    {
+        document.getElementById("button").style.backgroundColor= "#0000FF";
+    }
+}
 
 function onClick(thisSquare) {    
     alert("Found");
-    
 }
 
 a1.addEventListener("click", () => onClick("a1"));
+
 
