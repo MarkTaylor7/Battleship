@@ -109,12 +109,20 @@ const smallTreasure = [a1, a2];
 const mediumTreasure = [b1, b2, b3];
 const largeTreasure = [c1, c2, c3, c4];
 
-//Functions for Hits and Misses - must find way to apply one function that can work on each button, instead of 64 unique functions for each button
+//Functions for Hits and Misses - must find way to apply one function that can work on each button and any treasure, instead of 64 unique functions for each button
 function buttonColora1()  {
     if(smallTreasure.includes(a1))  {
     document.getElementById("buttona1").style.backgroundColor= "#911";
     }   else    {
         document.getElementById("buttona1").style.backgroundColor= "#0000FF";
+    }
+}
+
+function buttonColorb1()  {
+    if(smallTreasure.includes(b1))  {
+    document.getElementById("buttonb1").style.backgroundColor= "#911";
+    }   else    {
+        document.getElementById("buttonb1").style.backgroundColor= "#0000FF";
     }
 }
 
@@ -125,6 +133,7 @@ function buttonColora2()  {
         document.getElementById("buttona2").style.backgroundColor= "#0000FF";
     }
 }
+
 
 function onClick(thisSquare) {    
     alert("Found");
