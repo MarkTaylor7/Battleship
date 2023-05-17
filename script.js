@@ -135,10 +135,15 @@ function buttonColora2()  {
 }
 
 
-function onClick(thisSquare) {    
-    alert("Found");
+function onClick(thisSquare) {   
+    console.log("hello");
+    if(smallTreasure.includes(thisSquare))  {
+       console.log("this is true");
+    }   else    {
+        console.log("this is false");
+    } 
 }
 
-a1.addEventListener("click", () => onClick("a1"));
-
+a1.addEventListener("click", () => onClick(a1));
+f1.addEventListener("click", () => onClick(f1));
 

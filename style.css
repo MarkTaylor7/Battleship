@@ -129,9 +129,6 @@ h2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
 button {background-color: peru;
 }
 
-
-@media only screen and (max-width: 768px) 
-
 .row  {
         flex-wrap: nowrap;
 }
