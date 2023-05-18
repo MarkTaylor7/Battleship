@@ -108,42 +108,86 @@ const h8 = document.getElementById("h8")
 const smallTreasure = [a1, a2];
 const mediumTreasure = [b1, b2, b3];
 const largeTreasure = [c1, c2, c3, c4];
+const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
 
-//Functions for Hits and Misses - must find way to apply one function that can work on each button and any treasure, instead of 64 unique functions for each button
-function buttonColora1()  {
-    if(smallTreasure.includes(a1))  {
-    document.getElementById("buttona1").style.backgroundColor= "#911";
-    }   else    {
-        document.getElementById("buttona1").style.backgroundColor= "#0000FF";
-    }
-}
-
-function buttonColorb1()  {
-    if(smallTreasure.includes(b1))  {
-    document.getElementById("buttonb1").style.backgroundColor= "#911";
-    }   else    {
-        document.getElementById("buttonb1").style.backgroundColor= "#0000FF";
-    }
-}
-
-function buttonColora2()  {
-    if(smallTreasure.includes(a2))  {
-    document.getElementById("buttona2").style.backgroundColor= "#911";
-    }   else    {
-        document.getElementById("buttona2").style.backgroundColor= "#0000FF";
-    }
-}
-
+//Functions for Hits and Misses
 
 function onClick(thisSquare) {   
-    console.log("hello");
-    if(smallTreasure.includes(thisSquare))  {
-       console.log("this is true");
+    if(allTreasures.includes(thisSquare))  {
+       thisSquare.style.backgroundColor= "#911";
     }   else    {
-        console.log("this is false");
+        thisSquare.style.backgroundColor= "#0000FF";
     } 
 }
 
 a1.addEventListener("click", () => onClick(a1));
+b1.addEventListener("click", () => onClick(b1));
+c1.addEventListener("click", () => onClick(c1));
+d1.addEventListener("click", () => onClick(d1));
+e1.addEventListener("click", () => onClick(e1));
 f1.addEventListener("click", () => onClick(f1));
+g1.addEventListener("click", () => onClick(g1));
+h1.addEventListener("click", () => onClick(h1));
 
+a2.addEventListener("click", () => onClick(a2));
+b2.addEventListener("click", () => onClick(b2));
+c2.addEventListener("click", () => onClick(c2));
+d2.addEventListener("click", () => onClick(d2));
+e2.addEventListener("click", () => onClick(e2));
+f2.addEventListener("click", () => onClick(f2));
+g2.addEventListener("click", () => onClick(g2));
+h2.addEventListener("click", () => onClick(h2));
+
+a3.addEventListener("click", () => onClick(a3));
+b3.addEventListener("click", () => onClick(b3));
+c3.addEventListener("click", () => onClick(c3));
+d3.addEventListener("click", () => onClick(d3));
+e3.addEventListener("click", () => onClick(e3));
+f3.addEventListener("click", () => onClick(f3));
+g3.addEventListener("click", () => onClick(g3));
+h3.addEventListener("click", () => onClick(h3));
+
+a4.addEventListener("click", () => onClick(a4));
+b4.addEventListener("click", () => onClick(b4));
+c4.addEventListener("click", () => onClick(c4));
+d4.addEventListener("click", () => onClick(d4));
+e4.addEventListener("click", () => onClick(e4));
+f4.addEventListener("click", () => onClick(f4));
+g4.addEventListener("click", () => onClick(g4));
+h4.addEventListener("click", () => onClick(h4));
+
+a5.addEventListener("click", () => onClick(a5));
+b5.addEventListener("click", () => onClick(b5));
+c5.addEventListener("click", () => onClick(c5));
+d5.addEventListener("click", () => onClick(d5));
+e5.addEventListener("click", () => onClick(e5));
+f5.addEventListener("click", () => onClick(f5));
+g5.addEventListener("click", () => onClick(g5));
+h5.addEventListener("click", () => onClick(h5));
+
+a6.addEventListener("click", () => onClick(a6));
+b6.addEventListener("click", () => onClick(b6));
+c6.addEventListener("click", () => onClick(c6));
+d6.addEventListener("click", () => onClick(d6));
+e6.addEventListener("click", () => onClick(e6));
+f6.addEventListener("click", () => onClick(f6));
+g6.addEventListener("click", () => onClick(g6));
+h6.addEventListener("click", () => onClick(h6));
+
+a7.addEventListener("click", () => onClick(a7));
+b7.addEventListener("click", () => onClick(b7));
+c7.addEventListener("click", () => onClick(c7));
+d7.addEventListener("click", () => onClick(d7));
+e7.addEventListener("click", () => onClick(e7));
+f7.addEventListener("click", () => onClick(f7));
+g7.addEventListener("click", () => onClick(g7));
+h7.addEventListener("click", () => onClick(h7));
+
+a8.addEventListener("click", () => onClick(a8));
+b8.addEventListener("click", () => onClick(b8));
+c8.addEventListener("click", () => onClick(c8));
+d8.addEventListener("click", () => onClick(d8));
+e8.addEventListener("click", () => onClick(e8));
+f8.addEventListener("click", () => onClick(f8));
+g8.addEventListener("click", () => onClick(g8));
+h8.addEventListener("click", () => onClick(h8));
