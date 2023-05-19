@@ -109,16 +109,23 @@ const smallTreasure = [a1, a2];
 const mediumTreasure = [b1, b2, b3];
 const largeTreasure = [c1, c2, c3, c4];
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
+let win = false;
 
-//Functions for Hits and Misses
 
-function onClick(thisSquare) {   
+let turnCount = 0
+let hitCount = 0
+
+function onClick(thisSquare) {
     if(allTreasures.includes(thisSquare))  {
        thisSquare.style.backgroundColor= "#911";
+       turnCount++;
+       hitCount++;
     }   else    {
         thisSquare.style.backgroundColor= "#0000FF";
-    } 
+        turnCount++;
+    }
 }
+
 
 a1.addEventListener("click", () => onClick(a1));
 b1.addEventListener("click", () => onClick(b1));
@@ -192,5 +199,9 @@ f8.addEventListener("click", () => onClick(f8));
 g8.addEventListener("click", () => onClick(g8));
 h8.addEventListener("click", () => onClick(h8));
 
- 
-
+function winCondition() {
+    if(hitCount == 9)    {
+    console.log("Congrats");
+    win = true;
+    }
+}
