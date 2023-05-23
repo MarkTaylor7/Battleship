@@ -109,6 +109,7 @@ const smallTreasure = [a1, a2];
 const mediumTreasure = [b1, b2, b3];
 const largeTreasure = [c1, c2, c3, c4];
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
+
 let win = false;
 
 
@@ -118,11 +119,29 @@ let smallTreasureHits = 0;
 let mediumTreasureHits = 0;
 let largeTreasureHits = 0;
 
+let smallTreasurePic = document.getElementById("picitem1")
+let mediumTreasurePic = document.getElementById("picitem2")
+let largeTreasurePic = document.getElementById("picitem3")
+
+function foundSmallTreasure()   {
+    smallTreasurePic.src = "images/greenSquares2.png";
+};
+
+function foundMediumTreasure()   {
+    mediumTreasurePic.src = "images/greenSquares3.png";
+};
+
+function foundLargeTreasure()   {
+    largeTreasurePic.src = "images/greenSquares4.png";
+};
+
+function revealLocations()  {
+    allTreasures.style.backgroundColor ="#911";
+}
 
 
 function onClick(thisSquare) {
     if(allTreasures.includes(thisSquare))  {
-        
        thisSquare.style.backgroundColor= "#911";
        turnCount = turnCount+1;
        if(turnCount == 24)  {
@@ -143,18 +162,21 @@ function onClick(thisSquare) {
         smallTreasureHits = smallTreasureHits+1;
         if(smallTreasureHits == 2)  {
             alert("You found the small treasure!");
+            foundSmallTreasure();
         }
     }
     if(mediumTreasure.includes(thisSquare))  {
         mediumTreasureHits = mediumTreasureHits+1;
         if(mediumTreasureHits == 3)  {
             alert("You found the medium treasure!");
+            foundMediumTreasure();
         }
     }
     if(largeTreasure.includes(thisSquare))  {
         largeTreasureHits = largeTreasureHits+1;
         if(largeTreasureHits == 4)  {
             alert("You found the large treasure!");
+            foundLargeTreasure();
         }
     }
 }
