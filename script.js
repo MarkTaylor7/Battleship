@@ -112,96 +112,121 @@ const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
 let win = false;
 
 
-let turnCount = 0
-let hitCount = 0
+let turnCount = 0;
+let hitCount = 0;
+let smallTreasureHits = 0;
+let mediumTreasureHits = 0;
+let largeTreasureHits = 0;
+
+
 
 function onClick(thisSquare) {
     if(allTreasures.includes(thisSquare))  {
+        
        thisSquare.style.backgroundColor= "#911";
-       turnCount++;
-       hitCount++;
+       turnCount = turnCount+1;
+       if(turnCount == 24)  {
+        alert("Game Over");
+       }
+       hitCount = hitCount+1;
+       if(hitCount == 9)    {
+        alert("Congrats, you won!");
+       }
     }   else    {
         thisSquare.style.backgroundColor= "#0000FF";
-        turnCount++;
+        turnCount = turnCount+1;
+        if(turnCount == 24)  {
+            alert("Game Over");
+        }
+    }
+    if(smallTreasure.includes(thisSquare))  {
+        smallTreasureHits = smallTreasureHits+1;
+        if(smallTreasureHits == 2)  {
+            alert("You found the small treasure!");
+        }
+    }
+    if(mediumTreasure.includes(thisSquare))  {
+        mediumTreasureHits = mediumTreasureHits+1;
+        if(mediumTreasureHits == 3)  {
+            alert("You found the medium treasure!");
+        }
+    }
+    if(largeTreasure.includes(thisSquare))  {
+        largeTreasureHits = largeTreasureHits+1;
+        if(largeTreasureHits == 4)  {
+            alert("You found the large treasure!");
+        }
     }
 }
 
+a1.addEventListener("click", () => onClick(a1), {once : true});
+b1.addEventListener("click", () => onClick(b1), {once : true});
+c1.addEventListener("click", () => onClick(c1), {once : true});
+d1.addEventListener("click", () => onClick(d1), {once : true});
+e1.addEventListener("click", () => onClick(e1), {once : true});
+f1.addEventListener("click", () => onClick(f1), {once : true});
+g1.addEventListener("click", () => onClick(g1), {once : true});
+h1.addEventListener("click", () => onClick(h1), {once : true});
 
-a1.addEventListener("click", () => onClick(a1));
-b1.addEventListener("click", () => onClick(b1));
-c1.addEventListener("click", () => onClick(c1));
-d1.addEventListener("click", () => onClick(d1));
-e1.addEventListener("click", () => onClick(e1));
-f1.addEventListener("click", () => onClick(f1));
-g1.addEventListener("click", () => onClick(g1));
-h1.addEventListener("click", () => onClick(h1));
+a2.addEventListener("click", () => onClick(a2), {once : true});
+b2.addEventListener("click", () => onClick(b2), {once : true});
+c2.addEventListener("click", () => onClick(c2), {once : true});
+d2.addEventListener("click", () => onClick(d2), {once : true});
+e2.addEventListener("click", () => onClick(e2), {once : true});
+f2.addEventListener("click", () => onClick(f2), {once : true});
+g2.addEventListener("click", () => onClick(g2), {once : true});
+h2.addEventListener("click", () => onClick(h2), {once : true});
 
-a2.addEventListener("click", () => onClick(a2));
-b2.addEventListener("click", () => onClick(b2));
-c2.addEventListener("click", () => onClick(c2));
-d2.addEventListener("click", () => onClick(d2));
-e2.addEventListener("click", () => onClick(e2));
-f2.addEventListener("click", () => onClick(f2));
-g2.addEventListener("click", () => onClick(g2));
-h2.addEventListener("click", () => onClick(h2));
+a3.addEventListener("click", () => onClick(a3), {once : true});
+b3.addEventListener("click", () => onClick(b3), {once : true});
+c3.addEventListener("click", () => onClick(c3), {once : true});
+d3.addEventListener("click", () => onClick(d3), {once : true});
+e3.addEventListener("click", () => onClick(e3), {once : true});
+f3.addEventListener("click", () => onClick(f3), {once : true});
+g3.addEventListener("click", () => onClick(g3), {once : true});
+h3.addEventListener("click", () => onClick(h3), {once : true});
 
-a3.addEventListener("click", () => onClick(a3));
-b3.addEventListener("click", () => onClick(b3));
-c3.addEventListener("click", () => onClick(c3));
-d3.addEventListener("click", () => onClick(d3));
-e3.addEventListener("click", () => onClick(e3));
-f3.addEventListener("click", () => onClick(f3));
-g3.addEventListener("click", () => onClick(g3));
-h3.addEventListener("click", () => onClick(h3));
+a4.addEventListener("click", () => onClick(a4), {once : true});
+b4.addEventListener("click", () => onClick(b4), {once : true});
+c4.addEventListener("click", () => onClick(c4), {once : true});
+d4.addEventListener("click", () => onClick(d4), {once : true});
+e4.addEventListener("click", () => onClick(e4), {once : true});
+f4.addEventListener("click", () => onClick(f4), {once : true});
+g4.addEventListener("click", () => onClick(g4), {once : true});
+h4.addEventListener("click", () => onClick(h4), {once : true});
 
-a4.addEventListener("click", () => onClick(a4));
-b4.addEventListener("click", () => onClick(b4));
-c4.addEventListener("click", () => onClick(c4));
-d4.addEventListener("click", () => onClick(d4));
-e4.addEventListener("click", () => onClick(e4));
-f4.addEventListener("click", () => onClick(f4));
-g4.addEventListener("click", () => onClick(g4));
-h4.addEventListener("click", () => onClick(h4));
+a5.addEventListener("click", () => onClick(a5), {once : true});
+b5.addEventListener("click", () => onClick(b5), {once : true});
+c5.addEventListener("click", () => onClick(c5), {once : true});
+d5.addEventListener("click", () => onClick(d5), {once : true});
+e5.addEventListener("click", () => onClick(e5), {once : true});
+f5.addEventListener("click", () => onClick(f5), {once : true});
+g5.addEventListener("click", () => onClick(g5), {once : true});
+h5.addEventListener("click", () => onClick(h5), {once : true});
 
-a5.addEventListener("click", () => onClick(a5));
-b5.addEventListener("click", () => onClick(b5));
-c5.addEventListener("click", () => onClick(c5));
-d5.addEventListener("click", () => onClick(d5));
-e5.addEventListener("click", () => onClick(e5));
-f5.addEventListener("click", () => onClick(f5));
-g5.addEventListener("click", () => onClick(g5));
-h5.addEventListener("click", () => onClick(h5));
+a6.addEventListener("click", () => onClick(a6), {once : true});
+b6.addEventListener("click", () => onClick(b6), {once : true});
+c6.addEventListener("click", () => onClick(c6), {once : true});
+d6.addEventListener("click", () => onClick(d6), {once : true});
+e6.addEventListener("click", () => onClick(e6), {once : true});
+f6.addEventListener("click", () => onClick(f6), {once : true});
+g6.addEventListener("click", () => onClick(g6), {once : true});
+h6.addEventListener("click", () => onClick(h6), {once : true});
 
-a6.addEventListener("click", () => onClick(a6));
-b6.addEventListener("click", () => onClick(b6));
-c6.addEventListener("click", () => onClick(c6));
-d6.addEventListener("click", () => onClick(d6));
-e6.addEventListener("click", () => onClick(e6));
-f6.addEventListener("click", () => onClick(f6));
-g6.addEventListener("click", () => onClick(g6));
-h6.addEventListener("click", () => onClick(h6));
+a7.addEventListener("click", () => onClick(a7), {once : true});
+b7.addEventListener("click", () => onClick(b7), {once : true});
+c7.addEventListener("click", () => onClick(c7), {once : true});
+d7.addEventListener("click", () => onClick(d7), {once : true});
+e7.addEventListener("click", () => onClick(e7), {once : true});
+f7.addEventListener("click", () => onClick(f7), {once : true});
+g7.addEventListener("click", () => onClick(g7), {once : true});
+h7.addEventListener("click", () => onClick(h7), {once : true});
 
-a7.addEventListener("click", () => onClick(a7));
-b7.addEventListener("click", () => onClick(b7));
-c7.addEventListener("click", () => onClick(c7));
-d7.addEventListener("click", () => onClick(d7));
-e7.addEventListener("click", () => onClick(e7));
-f7.addEventListener("click", () => onClick(f7));
-g7.addEventListener("click", () => onClick(g7));
-h7.addEventListener("click", () => onClick(h7));
-
-a8.addEventListener("click", () => onClick(a8));
-b8.addEventListener("click", () => onClick(b8));
-c8.addEventListener("click", () => onClick(c8));
-d8.addEventListener("click", () => onClick(d8));
-e8.addEventListener("click", () => onClick(e8));
-f8.addEventListener("click", () => onClick(f8));
-g8.addEventListener("click", () => onClick(g8));
-h8.addEventListener("click", () => onClick(h8));
-
-function winCondition() {
-    if(hitCount == 9)    {
-    console.log("Congrats");
-    win = true;
-    }
-}
+a8.addEventListener("click", () => onClick(a8), {once : true});
+b8.addEventListener("click", () => onClick(b8), {once : true});
+c8.addEventListener("click", () => onClick(c8), {once : true});
+d8.addEventListener("click", () => onClick(d8), {once : true});
+e8.addEventListener("click", () => onClick(e8), {once : true});
+f8.addEventListener("click", () => onClick(f8), {once : true});
+g8.addEventListener("click", () => onClick(g8), {once : true});
+h8.addEventListener("click", () => onClick(h8), {once : true});
