@@ -1,7 +1,7 @@
 //welcomeModal
 const welcomeModal = document.getElementById("welcomeModal");
 const startGameBtn = document.getElementById("startGameBtn"); 
-const welcomeModalSpan = document.getElementsByClassName("welcomeClose")[0];
+const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn")
 
 function showWelcomeModal() {
     welcomeModal.style.display = "block";
@@ -11,6 +11,10 @@ function showWelcomeModal() {
 const howToPlayModal = document.getElementById("howToPlayModal");
 const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
 const howToPlayModalSpan = document.getElementsByClassName("howToPlayClose")[0];
+
+howToPlayBtn.onclick = function() {
+    howToPlayModal.style.display = "block";
+}
 
 howToPlayModalBtn.onclick = function() {
     howToPlayModal.style.display = "block";
@@ -22,12 +26,11 @@ howToPlayModalSpan.onclick = function() {
 
 window.onclick = function(event) {
     if (event.target == howToPlayModal) {
-        welcomeModal.style.display = "none",
         howToPlayModal.style.display = "none";
     }
 }
 
-//Squares
+//Grid Squares
 const a1 = document.getElementById("a1")
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
@@ -106,6 +109,7 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
+//This function shuffles the order of the allSquares array when the user clicks "Start Game"
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
     while (currentIndex != 0) {
@@ -123,28 +127,30 @@ startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
 
-//Treasures
-
+//Treasure Locations on Grid
 const smallTreasure = allSquares.slice(0, 2);
 const mediumTreasure = allSquares.slice(2, 5);
 const largeTreasure = allSquares.slice(5, 9);
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
 
-let win = false;
-
+//Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
 let hitCount = 0;
 let smallTreasureHits = 0;
 let mediumTreasureHits = 0;
 let largeTreasureHits = 0;
 
+//Counter for remaining turns
 let remainingTurns = document.getElementById("turnCounter")
 let remainingTurnsCount = 24;
 
+//Images of hidden treasures, indicating size and shape of object
 let smallTreasurePic = document.getElementById("picitem1")
 let mediumTreasurePic = document.getElementById("picitem2")
 let largeTreasurePic = document.getElementById("picitem3")
 
+//Functions which change hidden treasure images to images of actual treasure 
+//(currently using green squares as placeholder)
 function foundSmallTreasure()   {
     smallTreasurePic.src = "images/greenSquares2.png";
 };
@@ -157,11 +163,14 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
+//Under construction....trying to make a function which reveals locations of buried 
+//treasures if user runs out of turns and loses game
 function revealLocations()  {
     allTreasures.style.backgroundColor ="#911";
 }
 
-
+//Main function for confirming if a clicked square contains treasure, 
+//and sub-functions for confirming the same criteria with a specific treasure.
 function onClick(thisSquare) {
     if(allTreasures.includes(thisSquare))  {
        thisSquare.style.backgroundColor= "#DF2C14";
@@ -203,6 +212,9 @@ function onClick(thisSquare) {
     }
 }
 
+//First EL activates main function for confirming if treasure is present
+//Second EL reduces the remaining turns counter by increment of 1
+//Each EL can only fire one time
 a1.addEventListener("click", () => onClick(a1), {once : true});
 a1.addEventListener("click", () => {
     remainingTurnsCount --;
