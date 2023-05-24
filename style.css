@@ -26,6 +26,13 @@ body {background-color:tan;
 
 }
 
+.welcomeClose {
+    color: #ff0000;
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+}
+
 /*The HowToPlay Modal Background*/
 .howToPlayModal {
     display: none;
@@ -52,9 +59,9 @@ body {background-color:tan;
 
 /*The HTP Modal Close Button*/
 .howToPlayClose {
-    color: #aaa;
+    color: #ff0000;
     float: right;
-    font-size: 28px;
+    font-size: 60px;
     font-weight: bold;
 }
 

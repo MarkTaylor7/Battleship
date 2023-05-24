@@ -7,22 +7,26 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
-<body onload="showWelcomeModal()"></body>
+<body onload="showWelcomeModal()">
    <!--The WelcomeModal-->
     <div id="welcomeModal" class="welcomeModal">
 
         <!--WelcomeModal Content-->
         <div class="welcomeModalContent">
-            <span class="welcomeClose">&times;</span>
+          <button id = "startGameBtn">Start Game</button>
+          <button id="howToPlayModalBtn">How to Play</button>
             <p>Welcome!</p>
         </div>
     </div> 
 
     <div id="mainContainer">
+     
+     <!--Title at top of page-->
         <div id="title">
             <h1>Buried Treasure</h1>
         </div>
 
+        <!--The 8x8 grid that acts as the playing area-->
         <div class="grid">
 
             <div class="row">
@@ -236,8 +240,10 @@
             </div>
         </div>
 
+     <!--Section showing remaining turns for user to find treasures-->
      <h2 id="turnCounter">24</h2>
-          
+
+        <!--Section Showing Remaining Items for User to Find-->
         <div id="itemList">
             <h3>Buried Items</h3>
             <img id="picitem1" src="images/redSquares2.png" alt="2 red squares">
@@ -259,16 +265,18 @@
         </div>
 
         <div id="credit">
-
         <p>Webpage Design by Mark Taylor &#169 2023</p>
-        <!--include socials here, and e-mail hyperlink with hover function on 'Mark Taylor'-->
+        <!--include links to socials here, and e-mail hyperlink with hover function on 'Mark Taylor'-->
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 
-<img id="foundpicitem1" src="images/greenSquares2.png" alt="2 green squares">
-<img id="foundpicitem2" src="images/greenSquares3.png" alt="3 green squares">
-<img id="foundpicitem3" src="images/greenSquares4.png" alt="4 green squares">
-
 </html>
+<!--Must find way to hide pictures below from webpage-->
+<!--When a buried item is found, these images will replace the ones existing in the Buried Items div
+     Will eventually replace squares with pics of themed items: treasure chest, beach umbrella, surfboard-->
+     <img id="foundpicitem1" src="images/greenSquares2.png" alt="2 green squares">
+     <img id="foundpicitem2" src="images/greenSquares3.png" alt="3 green squares">
+     <img id="foundpicitem3" src="images/greenSquares4.png" alt="4 green squares">
+     

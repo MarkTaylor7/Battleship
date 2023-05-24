@@ -1,15 +1,11 @@
 //welcomeModal
-const welcomeModal = document.getElementById("welcomeModal"); 
+const welcomeModal = document.getElementById("welcomeModal");
+const startGameBtn = document.getElementById("startGameBtn"); 
 const welcomeModalSpan = document.getElementsByClassName("welcomeClose")[0];
 
 function showWelcomeModal() {
     welcomeModal.style.display = "block";
 }
-
-welcomeModalSpan.onclick = function() {
-    welcomeModal.style.display = "none";
-}
-
 
 //howToPlayModal
 const howToPlayModal = document.getElementById("howToPlayModal");
@@ -32,7 +28,7 @@ window.onclick = function(event) {
 }
 
 //Squares
-const a1 = document.getElementById("a1");
+const a1 = document.getElementById("a1")
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
@@ -104,14 +100,37 @@ const f8 = document.getElementById("f8")
 const g8 = document.getElementById("g8")
 const h8 = document.getElementById("h8")
 
+const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, h2,
+    a3, b3, c3, d3, e3, f3, g3, h3, a4, b4, c4, d4, e4, f4, g4, h4,
+    a5, b5, c5, d5, e5, f5, g5, h5, a6, b6, c6, d6, e6, f6, g6, h6,
+    a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
+];
+
+function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+    }
+    return array;
+}
+
+startGameBtn.onclick = shuffle(allSquares), 
+startGameBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+}
+
 //Treasures
-const smallTreasure = [a1, a2];
-const mediumTreasure = [b1, b2, b3];
-const largeTreasure = [c1, c2, c3, c4];
+
+const smallTreasure = allSquares.slice(0, 2);
+const mediumTreasure = allSquares.slice(2, 5);
+const largeTreasure = allSquares.slice(5, 9);
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
 
 let win = false;
-
 
 let turnCount = 0;
 let hitCount = 0;
@@ -145,7 +164,7 @@ function revealLocations()  {
 
 function onClick(thisSquare) {
     if(allTreasures.includes(thisSquare))  {
-       thisSquare.style.backgroundColor= "#911";
+       thisSquare.style.backgroundColor= "#DF2C14";
        turnCount = turnCount+1;
        if(turnCount == 24)  {
         alert("Game Over");
@@ -155,7 +174,7 @@ function onClick(thisSquare) {
         alert("Congrats, you won!");
        }
     }   else    {
-        thisSquare.style.backgroundColor= "#0000FF";
+        thisSquare.style.backgroundColor= "#3CDFFF";
         turnCount = turnCount+1;
         if(turnCount == 24)  {
             alert("Game Over");
