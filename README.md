@@ -1,2 +1,2 @@
-# Battleship
+# BuriedTreasure
  HTML/CSS/JS Project
