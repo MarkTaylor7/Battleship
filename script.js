@@ -122,13 +122,17 @@ function shuffle(array) {
     return array;
 }
 
-startGameBtn.onclick = shuffle(allSquares), 
+startGameBtn.onclick = shuffle(allSquares); 
 startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
 
 //Treasure Locations on Grid
+const smallTreasure1 = allSquares.slice(0);
+const smallTreasure2 = allSquares.slice(1);
 const smallTreasure = allSquares.slice(0, 2);
+
+
 const mediumTreasure = allSquares.slice(2, 5);
 const largeTreasure = allSquares.slice(5, 9);
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
@@ -163,11 +167,6 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
-//Under construction....trying to make a function which reveals locations of buried 
-//treasures if user runs out of turns and loses game
-function revealLocations()  {
-    allTreasures.style.backgroundColor ="#911";
-}
 
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure.
@@ -183,10 +182,20 @@ function onClick(thisSquare) {
         alert("Congrats, you won!");
        }
     }   else    {
+
         thisSquare.style.backgroundColor= "#3CDFFF";
         turnCount = turnCount+1;
         if(turnCount == 24)  {
             alert("Game Over");
+            smallTreasure[0].style.backgroundColor="#FFFF00";
+            smallTreasure[1].style.backgroundColor="#FFFF00";
+            mediumTreasure[0].style.backgroundColor="#FC6600";
+            mediumTreasure[1].style.backgroundColor="#FC6600";
+            mediumTreasure[2].style.backgroundColor="#FC6600";
+            largeTreasure[0].style.backgroundColor="#03AC13";
+            largeTreasure[1].style.backgroundColor="#03AC13";
+            largeTreasure[2].style.backgroundColor="#03AC13";
+            largeTreasure[3].style.backgroundColor="#03AC13";
         }
     }
     if(smallTreasure.includes(thisSquare))  {
