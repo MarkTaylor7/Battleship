@@ -109,6 +109,31 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
+const width = 8;
+
+const directions = ["horizonal", "vertical"];
+
+const treasuresArray = [
+    {name: "smallTreasure",
+        directions: {
+            horizontal: [0, 1],
+            vertical: [0. width]
+        }  
+    },
+    {name: "mediumTreasure",
+        directions: {
+            horizontal: [0, 1, 2],
+            vertical: [0. width, width*2]
+        }
+    },
+    {name: "largeTreasure",
+        directions: {
+            horizontal: [0, 1, 2, 3],
+            vertical: [0, width, width*2, width*3]
+        }
+    }   
+]
+
 //This function shuffles the order of the allSquares array when the user clicks "Start Game"
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -122,7 +147,23 @@ function shuffle(array) {
     return array;
 }
 
-startGameBtn.onclick = shuffle(allSquares); 
+function generate(directions, treasure, squares){
+    let randomDirection = dir[Math.floor(Math.random() * dir.length)];
+    let current = treasure.directions[randomDirection];
+
+    let direction = randomDirection==="horizontal" ? 1 : 8;
+    let randomStart = Math.abs(Math.floor(Math.random() * squares.length - (treasure.directions["horizontal"].length * direction)));
+
+    const isTaken = current.some(index => squares[randomStart + index].classList.contains("taken"));
+    const isAtRightEdge = current.some(index => (randomStart + index) % 8 === 7)
+    const isAtLeftEdge = current.some(index => (randomStart + index) % 8 === 0)
+
+    if(!isTaken && !isAtRightEdge && !isAtLeftEdge) current.forEach(index => squares[randomStart = index].classList.add("taken", treasure.name, "treasure"))
+    else generate(directions, treasure, squares)
+}
+
+
+startGameBtn.onclick = treasuresArray.forEach(treasure => generate(directions, treasure, squares));
 startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
