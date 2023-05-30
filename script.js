@@ -30,8 +30,10 @@ window.onclick = function(event) {
     }
 }
 
+
 //Grid Squares
 const a1 = document.getElementById("a1")
+
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
@@ -109,6 +111,7 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
+
 //This function shuffles the order of the allSquares array when the user clicks "Start Game"
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -122,19 +125,23 @@ function shuffle(array) {
     return array;
 }
 
-startGameBtn.onclick = shuffle(allSquares); 
+
 startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
 
 //Treasure Locations on Grid
+
 const smallTreasure1 = allSquares.slice(0);
 const smallTreasure2 = allSquares.slice(1);
-const smallTreasure = allSquares.slice(0, 2);
+smallTreasure = allSquares.slice(0, 2).map(function () {
+    return this.splice(Math.floor(Math.random() * this.length), 1)[0];
+}, allSquares.slice());
 
 
 const mediumTreasure = allSquares.slice(2, 5);
 const largeTreasure = allSquares.slice(5, 9);
+
 const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
 
 //Counters for turns, total hits, and specific treasure hits
