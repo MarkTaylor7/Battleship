@@ -33,7 +33,6 @@ window.onclick = function(event) {
 
 //Grid Squares
 const a1 = document.getElementById("a1")
-
 const b1 = document.getElementById("b1")
 const c1 = document.getElementById("c1")
 const d1 = document.getElementById("d1")
@@ -130,15 +129,73 @@ startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
 
+//Creating Treasures
+width = 8;
+class treasure {
+    constructor(name, length) {
+        this.name = name
+        this.length = length
+    }
+}
+
+const chest = new treasure("chest", 2)
+const umbrella = new treasure("umbrella", 3)
+const surfboard = new treasure("surfboard", 4)
+
+const treasures = [chest, umbrella, surfboard]
+
+function addTreasurePiece(treasure) {
+    allSquares
+    let randomBoolean = Math.random() < 0.5
+    let isHorizontal = randomBoolean
+    let randomStartIndex = Math.floor(Math.random() * width * width)
+    console.log(isHorizontal)
+
+    let validStart = isHorizontal ? randomStartIndex <= width * width - treasure.length ? randomStartIndex : 
+        width * width - treasure.length :
+        randomStartIndex <= width * width - width * treasure.length ? randomStartIndex : 
+            randomStartIndex - treasure.length * width + width
+
+    let treasureSquares = []
+
+    for (let i = 0; i < treasure.length; i++) {
+        if (isHorizontal) {
+            treasureSquares.push(allSquares[Number(validStart) + i])
+        } else {
+            treasureSquares.push(allSquares[Number(validStart) + i * width])
+        }
+    }
+
+    let valid
+
+    if (isHorizontal) {
+        treasureSquares.every((_treasureSquare, index) => 
+            valid = treasureSquares[0].id % width !== width - (treasureSquares.length - (index + 1)))
+    } else {
+        treasureSquares.every((_treasureSquare, index) =>
+            valid = treasureSquares[0].id < 56 + (width * index + 1)
+        )
+    }
+
+    const notTaken = treasureSquares.every(treasureSquare => !treasureSquare.classList.contains("taken"))
+
+    if (valid && notTaken) {
+        treasureSquares.forEach(treasureSquare => {
+            treasureSquare.classList.add(treasure.name)
+            treasureSquare.classList.add("taken")
+        })
+    } else {
+        addTreasurePiece(treasure)
+    }  
+}
+
+treasures.forEach(treasure => addTreasurePiece(treasure))
+
 //Treasure Locations on Grid
 
 const smallTreasure1 = allSquares.slice(0);
 const smallTreasure2 = allSquares.slice(1);
-smallTreasure = allSquares.slice(0, 2).map(function () {
-    return this.splice(Math.floor(Math.random() * this.length), 1)[0];
-}, allSquares.slice());
-
-
+const smallTreasure = allSquares.slice(0, 2);
 const mediumTreasure = allSquares.slice(2, 5);
 const largeTreasure = allSquares.slice(5, 9);
 

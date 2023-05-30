@@ -200,4 +200,19 @@ div {
         width: 40%;
         text-align: center; 
         margin: auto;
-        }   
+        }  
+        
+.chest {
+    background-color: brown;
+}
+
+.umbrella {
+    background-color: purple
+}
+
+.surfboard {
+    background-color: pink;
+}
+
+
+
