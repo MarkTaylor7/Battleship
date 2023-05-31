@@ -32,77 +32,77 @@ window.onclick = function(event) {
 
 
 //Grid Squares
-const a1 = document.getElementById("a1")
-const b1 = document.getElementById("b1")
-const c1 = document.getElementById("c1")
-const d1 = document.getElementById("d1")
-const e1 = document.getElementById("e1")
-const f1 = document.getElementById("f1")
-const g1 = document.getElementById("g1")
-const h1 = document.getElementById("h1")
+const a1 = document.getElementById(1)
+const b1 = document.getElementById(2)
+const c1 = document.getElementById(3)
+const d1 = document.getElementById(4)
+const e1 = document.getElementById(5)
+const f1 = document.getElementById(6)
+const g1 = document.getElementById(7)
+const h1 = document.getElementById(8)
 
-const a2 = document.getElementById("a2")
-const b2 = document.getElementById("b2")
-const c2 = document.getElementById("c2")
-const d2 = document.getElementById("d2")
-const e2 = document.getElementById("e2")
-const f2 = document.getElementById("f2")
-const g2 = document.getElementById("g2")
-const h2 = document.getElementById("h2")
+const a2 = document.getElementById(9)
+const b2 = document.getElementById(10)
+const c2 = document.getElementById(11)
+const d2 = document.getElementById(12)
+const e2 = document.getElementById(13)
+const f2 = document.getElementById(14)
+const g2 = document.getElementById(15)
+const h2 = document.getElementById(16)
 
-const a3 = document.getElementById("a3")
-const b3 = document.getElementById("b3")
-const c3 = document.getElementById("c3")
-const d3 = document.getElementById("d3")
-const e3 = document.getElementById("e3")
-const f3 = document.getElementById("f3")
-const g3 = document.getElementById("g3")
-const h3 = document.getElementById("h3")
+const a3 = document.getElementById(17)
+const b3 = document.getElementById(18)
+const c3 = document.getElementById(19)
+const d3 = document.getElementById(20)
+const e3 = document.getElementById(21)
+const f3 = document.getElementById(22)
+const g3 = document.getElementById(23)
+const h3 = document.getElementById(24)
 
-const a4 = document.getElementById("a4")
-const b4 = document.getElementById("b4")
-const c4 = document.getElementById("c4")
-const d4 = document.getElementById("d4")
-const e4 = document.getElementById("e4")
-const f4 = document.getElementById("f4")
-const g4 = document.getElementById("g4")
-const h4 = document.getElementById("h4")
+const a4 = document.getElementById(25)
+const b4 = document.getElementById(26)
+const c4 = document.getElementById(27)
+const d4 = document.getElementById(28)
+const e4 = document.getElementById(29)
+const f4 = document.getElementById(30)
+const g4 = document.getElementById(31)
+const h4 = document.getElementById(32)
 
-const a5 = document.getElementById("a5")
-const b5 = document.getElementById("b5")
-const c5 = document.getElementById("c5")
-const d5 = document.getElementById("d5")
-const e5 = document.getElementById("e5")
-const f5 = document.getElementById("f5")
-const g5 = document.getElementById("g5")
-const h5 = document.getElementById("h5")
+const a5 = document.getElementById(33)
+const b5 = document.getElementById(34)
+const c5 = document.getElementById(35)
+const d5 = document.getElementById(36)
+const e5 = document.getElementById(37)
+const f5 = document.getElementById(38)
+const g5 = document.getElementById(39)
+const h5 = document.getElementById(40)
 
-const a6 = document.getElementById("a6")
-const b6 = document.getElementById("b6")
-const c6 = document.getElementById("c6")
-const d6 = document.getElementById("d6")
-const e6 = document.getElementById("e6")
-const f6 = document.getElementById("f6")
-const g6 = document.getElementById("g6")
-const h6 = document.getElementById("h6")
+const a6 = document.getElementById(41)
+const b6 = document.getElementById(42)
+const c6 = document.getElementById(43)
+const d6 = document.getElementById(44)
+const e6 = document.getElementById(45)
+const f6 = document.getElementById(46)
+const g6 = document.getElementById(47)
+const h6 = document.getElementById(48)
 
-const a7 = document.getElementById("a7")
-const b7 = document.getElementById("b7")
-const c7 = document.getElementById("c7")
-const d7 = document.getElementById("d7")
-const e7 = document.getElementById("e7")
-const f7 = document.getElementById("f7")
-const g7 = document.getElementById("g7")
-const h7 = document.getElementById("h7")
+const a7 = document.getElementById(49)
+const b7 = document.getElementById(50)
+const c7 = document.getElementById(51)
+const d7 = document.getElementById(52)
+const e7 = document.getElementById(53)
+const f7 = document.getElementById(54)
+const g7 = document.getElementById(55)
+const h7 = document.getElementById(56)
 
-const a8 = document.getElementById("a8")
-const b8 = document.getElementById("b8")
-const c8 = document.getElementById("c8")
-const d8 = document.getElementById("d8")
-const e8 = document.getElementById("e8")
-const f8 = document.getElementById("f8")
-const g8 = document.getElementById("g8")
-const h8 = document.getElementById("h8")
+const a8 = document.getElementById(57)
+const b8 = document.getElementById(58)
+const c8 = document.getElementById(59)
+const d8 = document.getElementById(60)
+const e8 = document.getElementById(61)
+const f8 = document.getElementById(62)
+const g8 = document.getElementById(63)
+const h8 = document.getElementById(64)
 
 const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, h2,
     a3, b3, c3, d3, e3, f3, g3, h3, a4, b4, c4, d4, e4, f4, g4, h4,
@@ -125,14 +125,13 @@ function shuffle(array) {
 }
 
 
-startGameBtn.onclick = function() {
-    welcomeModal.style.display = "none";
-}
 
-//Creating Treasures
+//Width of grid
 width = 8;
+
+//Treasures, including their properties of name and length
 class treasure {
-    constructor(name, length) {
+    constructor(name, length) { 
         this.name = name
         this.length = length
     }
@@ -140,39 +139,41 @@ class treasure {
 
 const chest = new treasure("chest", 2)
 const umbrella = new treasure("umbrella", 3)
-const surfboard = new treasure("surfboard", 4)
+const surfboard = new treasure ("surfboard", 4)
 
-const treasures = [chest, umbrella, surfboard]
+const allTreasures = [chest, umbrella, surfboard]
 
 function addTreasurePiece(treasure) {
     allSquares
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = randomBoolean
     let randomStartIndex = Math.floor(Math.random() * width * width)
-    console.log(isHorizontal)
 
-    let validStart = isHorizontal ? randomStartIndex <= width * width - treasure.length ? randomStartIndex : 
-        width * width - treasure.length :
-        randomStartIndex <= width * width - width * treasure.length ? randomStartIndex : 
+    let validStart = isHorizontal ? randomStartIndex <= width * width - treasure.length ? randomStartIndex :
+        width * width - treasure.length : 
+        randomStartIndex <= width * width - width * treasure.length ? randomStartIndex :
             randomStartIndex - treasure.length * width + width
+
+
 
     let treasureSquares = []
 
     for (let i = 0; i < treasure.length; i++) {
         if (isHorizontal) {
-            treasureSquares.push(allSquares[Number(validStart) + i])
+           treasureSquares.push(allSquares[Number(validStart) + i])
         } else {
             treasureSquares.push(allSquares[Number(validStart) + i * width])
         }
     }
 
     let valid
-
+    //Prevents first treasure piece from being placed without enough room on grid for whole treasure (i.e surfboard on G9)
     if (isHorizontal) {
         treasureSquares.every((_treasureSquare, index) => 
             valid = treasureSquares[0].id % width !== width - (treasureSquares.length - (index + 1)))
     } else {
-        treasureSquares.every((_treasureSquare, index) =>
+        treasureSquares.every((_treasureSquare, index) => 
+            
             valid = treasureSquares[0].id < 56 + (width * index + 1)
         )
     }
@@ -186,20 +187,16 @@ function addTreasurePiece(treasure) {
         })
     } else {
         addTreasurePiece(treasure)
-    }  
+    }
+
+console.log(treasureSquares)
+
 }
 
-treasures.forEach(treasure => addTreasurePiece(treasure))
-
-//Treasure Locations on Grid
-
-const smallTreasure1 = allSquares.slice(0);
-const smallTreasure2 = allSquares.slice(1);
-const smallTreasure = allSquares.slice(0, 2);
-const mediumTreasure = allSquares.slice(2, 5);
-const largeTreasure = allSquares.slice(5, 9);
-
-const allTreasures = [...smallTreasure, ...mediumTreasure, ...largeTreasure]
+startGameBtn.onclick = function() {
+    allTreasures.forEach(treasure => addTreasurePiece(treasure));
+    welcomeModal.style.display = "none";
+}
 
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
@@ -235,7 +232,7 @@ function foundLargeTreasure()   {
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure.
 function onClick(thisSquare) {
-    if(allTreasures.includes(thisSquare))  {
+    if(allTreasures.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
        turnCount = turnCount+1;
        if(turnCount == 24)  {
@@ -246,7 +243,6 @@ function onClick(thisSquare) {
         alert("Congrats, you won!");
        }
     }   else    {
-
         thisSquare.style.backgroundColor= "#3CDFFF";
         turnCount = turnCount+1;
         if(turnCount == 24)  {
@@ -262,21 +258,21 @@ function onClick(thisSquare) {
             largeTreasure[3].style.backgroundColor="#03AC13";
         }
     }
-    if(smallTreasure.includes(thisSquare))  {
+    if(treasure.chest = thisSquare)  {
         smallTreasureHits = smallTreasureHits+1;
         if(smallTreasureHits == 2)  {
             alert("You found the small treasure!");
             foundSmallTreasure();
         }
     }
-    if(mediumTreasure.includes(thisSquare))  {
+    if(treasure.umbrella = thisSquare)  {
         mediumTreasureHits = mediumTreasureHits+1;
         if(mediumTreasureHits == 3)  {
             alert("You found the medium treasure!");
             foundMediumTreasure();
         }
     }
-    if(largeTreasure.includes(thisSquare))  {
+    if(treasure.surfboard = thisSquare)  {
         largeTreasureHits = largeTreasureHits+1;
         if(largeTreasureHits == 4)  {
             alert("You found the large treasure!");
