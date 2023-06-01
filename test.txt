@@ -1,3 +1,16 @@
+---Algorithm for Random Placement of Ships----
+
+
+
+
+
+
+
+
+
+
+
+
 --game logic--
 check to see if selected square has already been selected
 if selected square has already been selected
