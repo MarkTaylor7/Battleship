@@ -115,72 +115,93 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
 const gridWidth = 8;
 
 //Treasures
-const chest = {
-    name : "chest",
-    length : 2,
-    backgroundColor : "#00FF00", //green
-    location : []
+class Treasure {
+    constructor (name, length, backgroundColor, location) {
+        this.name = name
+        this.length = length
+        this.backgroundColor = backgroundColor
+        this.location = location
+    }
 }
 
-const umbrella = {
-    name : "umbrella",
-    length : 3,
-    backgroundColor : "#FF0000", //red
-    location : []
-}
+const chest = new Treasure("chest", 2, "#00FF00", [])
+const umbrella = new Treasure("umbrella", 3, "FF0000", [])
+const surfboard = new Treasure("surfboard", 4, "#0000FF", [])
 
-const surfboard = {
-    name : "surfboard",
-    length : 4,
-    backgroundColor : "#0000FF", //blue
-    location : []
-}
-
-
-let randomBoolean = Math.random() < 0.5
-let isHorizontal = true
-
-//let randomStartIndex = Math.floor(Math.random() * gridWidth * gridWidth)
-//console.log(randomStartIndex)
-
-
-
-function getRandomArray(allSquares) {
-    const randomIndex = Math.floor(Math.random() * allSquares.length);
-    const arrayId = allSquares[randomIndex];
-    return arrayId
-}
-
-const randomSquare = getRandomArray(allSquares)
-
-console.log(randomSquare)
-
-function addTreasurePiece(chest) {
-    let validStart = isHorizontal ? randomSquare <= width * width - treasure.length ? 
-        width * width - treasure.length :
-        randomSquare <= width * width - width * treasure.length ? randomSquare : 
-        randomSquare - treasure.length * width + width
+const treasures = [chest, umbrella, surfboard]
     
-        chest.location.push(randomSquare);
+//Gets a random item from the allSquares array 
+function getRandomSquare(allSquares) {
+    //get random index value from allSquares
+    const randomIndex = Math.floor(Math.random() * allSquares.length);
+    //get random item, based on the random index value
+    const randomSquare = allSquares[randomIndex];
+    return randomSquare
+}
 
-        console.log(validStart)
+
+function addTreasurePiece(Treasure) {
+    allSquares
+    //Sets a equal chance of the treasure being horizontally arranged
+    let randomBoolean = Math.random() < 0.5
+    let isHorizontal = randomBoolean
+    //The randomly selected staring square
+    let randomStart = getRandomSquare(allSquares)
+    //The index value of the randomly selected starting square
+    let randomStartIndex = allSquares.indexOf(randomStart)
+    
+    //Determines if the starting square is valid, based on the amount of available room for the length of the treasure, and orientation.
+    let validStart = isHorizontal ? randomStartIndex <= gridWidth * gridWidth - Treasure.length ? randomStartIndex :
+        gridWidth * gridWidth - Treasure.length :
+        randomStartIndex <= gridWidth * gridWidth - gridWidth * Treasure.length ? randomStartIndex :
+            randomStartIndex - Treasure.length * gridWidth + gridWidth
+
+    console.log(validStart)
+
+    let treasureSquares = []
+
+    for (let i = 0; i < Treasure.length; i++) {
+        if (isHorizontal) {
+            treasureSquares.push(allSquares[Number(validStart) + i])
+        } else {
+            treasureSquares.push(allSquares[Number(validStart) + i * gridWidth])
+        }
     }
 
+    let valid
+
+    if (isHorizontal) {
+        treasureSquares.every((_treasureSquare, index) => 
+            valid = treasureSquares[0].id % gridWidth !== gridWidth - (treasureSquares.length - (index + 1)))
+    } else {
+        treasureSquares.every((_treasureSquare, index) =>
+            valid = treasureSquares[0].id < 56 + (gridWidth * index + 1)
+        )
+    }
+
+    const notTaken = treasureSquares.every(treasureSquare => !treasureSquare.classList.contains("taken"))
+
+    if (valid && notTaken) {
+        treasureSquares.forEach(treasureSquare => {
+            treasureSquare.classList.add(Treasure.name)
+            treasureSquare.classList.add("taken")
+        })
+    } else {
+        addTreasurePiece(Treasure)
+    }  
+
+}
+
+treasures.forEach(Treasure => addTreasurePiece(Treasure));
+
+ 
+console.log(chest.location)
 
 
 startGameBtn.onclick = function() {
-    addTreasurePiece(chest);
     welcomeModal.style.display = "none";
 }
-
-console.log(chest.location)
-const smallTreasure = chest.location
-const mediumTreasure = umbrella.location
-const largeTreasure = surfboard.location
-
-let allTreasures = [smallTreasure, mediumTreasure, largeTreasure]
-
-console.log(allTreasures)
+ 
 
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
