@@ -116,19 +116,20 @@ const gridWidth = 8;
 
 //Treasures
 class Treasure {
-    constructor (name, length, backgroundColor, location) {
+    constructor (name, length, location) {
         this.name = name
         this.length = length
-        this.backgroundColor = backgroundColor
         this.location = location
     }
 }
 
-const chest = new Treasure("chest", 2, "#00FF00", [])
-const umbrella = new Treasure("umbrella", 3, "FF0000", [])
-const surfboard = new Treasure("surfboard", 4, "#0000FF", [])
+const chest = new Treasure("chest", 2, [])
+const umbrella = new Treasure("umbrella", 3, [])
+const surfboard = new Treasure("surfboard", 4, [])
 
 const treasures = [chest, umbrella, surfboard]
+
+let takenSquares = []
     
 //Gets a random item from the allSquares array 
 function getRandomSquare(allSquares) {
@@ -144,8 +145,8 @@ function addTreasurePiece(Treasure) {
     allSquares
     //Sets a equal chance of the treasure being horizontally arranged
     let randomBoolean = Math.random() < 0.5
-    let isHorizontal = randomBoolean
-    //The randomly selected staring square
+    let isHorizontal = true
+    //The randomly selected starting square
     let randomStart = getRandomSquare(allSquares)
     //The index value of the randomly selected starting square
     let randomStartIndex = allSquares.indexOf(randomStart)
@@ -172,19 +173,22 @@ function addTreasurePiece(Treasure) {
 
     if (isHorizontal) {
         treasureSquares.every((_treasureSquare, index) => 
+            //valid means that the selected square is valid if the remainder of the square id (8) divided by the gridWidth (8) does not equal
+            //the gridWidth (8) minus the number of squares already selected minus the sum of the index (7) + 1
             valid = treasureSquares[0].id % gridWidth !== gridWidth - (treasureSquares.length - (index + 1)))
     } else {
         treasureSquares.every((_treasureSquare, index) =>
+            //valid if the square (48) is less than 56 + ((8 times 5) + 1)...41 ....97
             valid = treasureSquares[0].id < 56 + (gridWidth * index + 1)
         )
     }
 
-    const notTaken = treasureSquares.every(treasureSquare => !treasureSquare.classList.contains("taken"))
+    const notTaken = treasureSquares.every(treasureSquare => !takenSquares.includes(treasureSquare))
 
     if (valid && notTaken) {
         treasureSquares.forEach(treasureSquare => {
-            treasureSquare.classList.add(Treasure.name)
-            treasureSquare.classList.add("taken")
+            Treasure.location.push(treasureSquare)
+            takenSquares.push(treasureSquare)
         })
     } else {
         addTreasurePiece(Treasure)
@@ -195,8 +199,10 @@ function addTreasurePiece(Treasure) {
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
 
  
+console.log(takenSquares)
 console.log(chest.location)
-
+console.log(umbrella.location)
+console.log(surfboard.location)
 
 startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
@@ -237,7 +243,7 @@ function foundLargeTreasure()   {
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure.
 function onClick(thisSquare) {
-    if(smallTreasure.includes(thisSquare))   {
+    if(takenSquares.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
        turnCount = turnCount+1;
        if(turnCount == 24)  {
@@ -252,34 +258,43 @@ function onClick(thisSquare) {
         turnCount = turnCount+1;
         if(turnCount == 24)  {
             alert("Game Over");
-            smallTreasure[0].style.backgroundColor="#FFFF00";
-            smallTreasure[1].style.backgroundColor="#FFFF00";
-            mediumTreasure[0].style.backgroundColor="#FC6600";
-            mediumTreasure[1].style.backgroundColor="#FC6600";
-            mediumTreasure[2].style.backgroundColor="#FC6600";
-            largeTreasure[0].style.backgroundColor="#03AC13";
-            largeTreasure[1].style.backgroundColor="#03AC13";
-            largeTreasure[2].style.backgroundColor="#03AC13";
-            largeTreasure[3].style.backgroundColor="#03AC13";
+            chest.location[0].style.backgroundColor="#FFFF00";
+            chest.location[1].style.backgroundColor="#FFFF00";
+            umbrella.location[0].style.backgroundColor="#FC6600";
+            umbrella.location[1].style.backgroundColor="#FC6600";
+            umbrella.location[2].style.backgroundColor="#FC6600";
+            surfboard.location[0].style.backgroundColor="#03AC13";
+            surfboard.location[1].style.backgroundColor="#03AC13";
+            surfboard.location[2].style.backgroundColor="#03AC13";
+            surfboard.location[3].style.backgroundColor="#03AC13";
         }
     }
-    if(smallTreasure.includes(thisSquare))  {
+    if(chest.location.includes(thisSquare))  {
         smallTreasureHits = smallTreasureHits+1;
         if(smallTreasureHits == 2)  {
+            chest.location[0].style.backgroundColor="#FFFF00";
+            chest.location[1].style.backgroundColor="#FFFF00";
             alert("You found the small treasure!");
             foundSmallTreasure();
         }
     }
-    if(mediumTreasure.includes(thisSquare))  {
+    if(umbrella.location.includes(thisSquare))  {
         mediumTreasureHits = mediumTreasureHits+1;
         if(mediumTreasureHits == 3)  {
+            umbrella.location[0].style.backgroundColor="#FC6600";
+            umbrella.location[1].style.backgroundColor="#FC6600";
+            umbrella.location[2].style.backgroundColor="#FC6600";
             alert("You found the medium treasure!");
             foundMediumTreasure();
         }
     }
-    if(largeTreasure.includes(thisSquare))  {
+    if(surfboard.location.includes(thisSquare))  {
         largeTreasureHits = largeTreasureHits+1;
         if(largeTreasureHits == 4)  {
+            surfboard.location[0].style.backgroundColor="#03AC13";
+            surfboard.location[1].style.backgroundColor="#03AC13";
+            surfboard.location[2].style.backgroundColor="#03AC13";
+            surfboard.location[3].style.backgroundColor="#03AC13";
             alert("You found the large treasure!");
             foundLargeTreasure();
         }
