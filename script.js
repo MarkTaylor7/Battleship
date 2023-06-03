@@ -7,6 +7,10 @@ function showWelcomeModal() {
     welcomeModal.style.display = "block";
 }
 
+startGameBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+}
+
 //howToPlayModal
 const howToPlayModal = document.getElementById("howToPlayModal");
 const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
@@ -129,6 +133,7 @@ const surfboard = new Treasure("surfboard", 4, [])
 
 const treasures = [chest, umbrella, surfboard]
 
+//Squares that are randomly selected and considered valid are added to this array so they are no longer in play
 let takenSquares = []
     
 //Gets a random item from the allSquares array 
@@ -145,7 +150,7 @@ function addTreasurePiece(Treasure) {
     allSquares
     //Sets a equal chance of the treasure being horizontally arranged
     let randomBoolean = Math.random() < 0.5
-    let isHorizontal = true
+    let isHorizontal = randomBoolean
     //The randomly selected starting square
     let randomStart = getRandomSquare(allSquares)
     //The index value of the randomly selected starting square
@@ -173,12 +178,16 @@ function addTreasurePiece(Treasure) {
 
     if (isHorizontal) {
         treasureSquares.every((_treasureSquare, index) => 
-            //valid means that the selected square is valid if the remainder of the square id (8) divided by the gridWidth (8) does not equal
-            //the gridWidth (8) minus the number of squares already selected minus the sum of the index (7) + 1
-            valid = treasureSquares[0].id % gridWidth !== gridWidth - (treasureSquares.length - (index + 1)))
+            //valid means that the selected starting square of a horizontally-oriented treasure fulfills the following requirements:
+            //the modulus of the square ID and the grid width cannot be 0 (an object cannot start at the end of a row),
+            //AND the modulus of the square ID and the grid width must be less than OR equal to the grid width minus (the length of the treasure minus (the square's index + 1))
+            valid = treasureSquares[0].id % gridWidth !== 0 && treasureSquares[0].id % gridWidth <= gridWidth - (treasureSquares.length - (index + 1)))
+            console.log(treasureSquares[0].id)
+            console.log(treasureSquares[0].id % gridWidth)
+            console.log(treasureSquares.length)
+           
     } else {
         treasureSquares.every((_treasureSquare, index) =>
-            //valid if the square (48) is less than 56 + ((8 times 5) + 1)...41 ....97
             valid = treasureSquares[0].id < 56 + (gridWidth * index + 1)
         )
     }
@@ -197,17 +206,6 @@ function addTreasurePiece(Treasure) {
 }
 
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
-
- 
-console.log(takenSquares)
-console.log(chest.location)
-console.log(umbrella.location)
-console.log(surfboard.location)
-
-startGameBtn.onclick = function() {
-    welcomeModal.style.display = "none";
-}
- 
 
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
