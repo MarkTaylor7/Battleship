@@ -7,6 +7,10 @@ function showWelcomeModal() {
     welcomeModal.style.display = "block";
 }
 
+function hideWelcomeModal() {
+    welcomeModal.style.display = "none";
+}
+
 startGameBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
@@ -32,13 +36,6 @@ window.onclick = function(event) {
     if (event.target == howToPlayModal) {
         howToPlayModal.style.display = "none";
     }
-}
-
-//winGame Modal
-const winGameModal = document.getElementById("winGameModal");
-
-function showWinGameModal() {
-    winGameModal.style.display = "block";
 }
 
 //Width of grid
@@ -234,12 +231,6 @@ let largeTreasureHits = 0;
 let remainingTurns = document.getElementById("turnCounter")
 let remainingTurnsCount = 24;
 
-(function() {
-    
-}
-
-)
-
 //Images of hidden treasures, indicating size and shape of object
 let smallTreasurePic = document.getElementById("picitem1")
 let mediumTreasurePic = document.getElementById("picitem2")
@@ -321,6 +312,42 @@ function onClick(thisSquare) {
     }
     
 }
+
+//winGame Modal
+const winGameModal = document.getElementById("winGameModal");
+
+function showWinGameModal() {
+    winGameModal.style.display = "block";
+}
+
+const playAgainBtn = document.getElementById("playAgainBtn");
+
+//playAgainBtn.onClick = function() {
+
+
+//}
+
+//playAgainBtn.onclick = function() {
+    //winGameModal.style.display = "none";
+    //turnCount = 0;
+    //hitCount = 0;
+    //smallTreasureHits = 0;
+    //mediumTreasureHits = 0;
+    //largeTreasureHits = 0;
+   // remainingTurnsCount = 24;
+    //smallTreasurePic.src = "images/redSquares2.png";
+    //mediumTreasurePic.src = "images/redSquares3.png";
+   // largeTreasurePic.src = "images/redSquares4.png";
+    //takenSquares = [];
+    //treasureSquares = [];
+    //chest.location = [];
+   // umbrella.location = [];
+   // surfboard.location = [];
+    //forEach
+
+   // getRandomSquare(allSquares);
+    //addTreasurePiece(Treasure);
+//}
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
