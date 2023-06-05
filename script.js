@@ -34,6 +34,15 @@ window.onclick = function(event) {
     }
 }
 
+//winGame Modal
+const winGameModal = document.getElementById("winGameModal");
+
+function showWinGameModal() {
+    winGameModal.style.display = "block";
+}
+
+//Width of grid
+const gridWidth = 8;
 
 //Grid Squares
 const a1 = document.getElementById(1)
@@ -114,10 +123,6 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
-
-//Width of grid
-const gridWidth = 8;
-
 //Treasures
 class Treasure {
     constructor (name, length, location) {
@@ -136,19 +141,19 @@ const treasures = [chest, umbrella, surfboard]
 //Squares that are randomly selected and considered valid are added to this array so they are no longer in play
 let takenSquares = []
     
-//Gets a random item from the allSquares array 
+//Gets a random square from the allSquares array 
 function getRandomSquare(allSquares) {
     //get random index value from allSquares
     const randomIndex = Math.floor(Math.random() * allSquares.length);
-    //get random item, based on the random index value
+    //get random square, based on the random index value
     const randomSquare = allSquares[randomIndex];
     return randomSquare
 }
 
-
+//Selects the starting square, and subsequent square(s) of each treasure
 function addTreasurePiece(Treasure) {
     allSquares
-    //Sets a equal chance of the treasure being horizontally arranged
+    //Sets a 50% chance of the treasure being horizontally arranged
     let randomBoolean = Math.random() < 0.5
     let isHorizontal = randomBoolean
     //The randomly selected starting square
@@ -156,16 +161,21 @@ function addTreasurePiece(Treasure) {
     //The index value of the randomly selected starting square
     let randomStartIndex = allSquares.indexOf(randomStart)
     
-    //Determines if the starting square is valid, based on the amount of available room for the length of the treasure, and orientation.
-    let validStart = isHorizontal ? randomStartIndex <= gridWidth * gridWidth - Treasure.length ? randomStartIndex :
-        gridWidth * gridWidth - Treasure.length :
+    //Determines if the starting square is valid, based on the amount of available room on the grid for the length of the treasure, and orientation.
+        //If the treasure is horizontal, and the starting square is less than/equal to the number of squares in the grid minus the length of the treasure, return the starting square
+        //otherwise, make the starting square the number of squares in the grid minus the ship length. (I.E. If the random starting square is 99 and the treasure is the surfboard, make the starting square 97.) 
+            //If the treasure is vertical, and the starting square is less than/equal to the number of squares on the grid, minus the grid width multiplied by the length of the treasure, return the starting square,
+            //otherwise, make the starting square the random start index minus the treasure length, multiplied by the width of the grid plus the width of the grid (last available square)
+    let validStart = isHorizontal ? (randomStartIndex <= gridWidth * gridWidth - Treasure.length ? randomStartIndex :
+        gridWidth * gridWidth - Treasure.length) :
         randomStartIndex <= gridWidth * gridWidth - gridWidth * Treasure.length ? randomStartIndex :
             randomStartIndex - Treasure.length * gridWidth + gridWidth
-
-    console.log(validStart)
-
+    
+    
     let treasureSquares = []
 
+    //If the treasure is horizontal, push it to the treasureSquares array, and repeat this function for the next square on the grid, until the length of the treasure is complete.
+    //If the treasure is vertical, push it to the treasureSquares array, and repeat this function for the next square on the grid, plus one row, until the length of the treasure is complete.
     for (let i = 0; i < Treasure.length; i++) {
         if (isHorizontal) {
             treasureSquares.push(allSquares[Number(validStart) + i])
@@ -174,26 +184,27 @@ function addTreasurePiece(Treasure) {
         }
     }
 
+    
+    //Valid means that the selected starting square of a horizontally-oriented treasure fulfills the following requirements:
+        //the modulus of the square ID and the grid width cannot be 0 (an object cannot start at the end of a row),
+        //AND the modulus of the square ID and the grid width must be less than OR equal to the grid width minus (the length of the treasure minus (the square's index + 1))
+        //(there must be enough room in a row for the treasure to fit)
     let valid
-
     if (isHorizontal) {
         treasureSquares.every((_treasureSquare, index) => 
-            //valid means that the selected starting square of a horizontally-oriented treasure fulfills the following requirements:
-            //the modulus of the square ID and the grid width cannot be 0 (an object cannot start at the end of a row),
-            //AND the modulus of the square ID and the grid width must be less than OR equal to the grid width minus (the length of the treasure minus (the square's index + 1))
-            valid = treasureSquares[0].id % gridWidth !== 0 && treasureSquares[0].id % gridWidth <= gridWidth - (treasureSquares.length - (index + 1)))
-            console.log(treasureSquares[0].id)
-            console.log(treasureSquares[0].id % gridWidth)
-            console.log(treasureSquares.length)
-           
+        valid = treasureSquares[0].id % gridWidth !== 0 && treasureSquares[0].id % gridWidth <= gridWidth - (treasureSquares.length - (index + 1)))       
+    //A vertically-oriented treasure cannot start on the last row.
     } else {
         treasureSquares.every((_treasureSquare, index) =>
             valid = treasureSquares[0].id < 56 + (gridWidth * index + 1)
         )
     }
 
+    //A treasure square is available (not taken) if it is not included in the takenSquares array
     const notTaken = treasureSquares.every(treasureSquare => !takenSquares.includes(treasureSquare))
 
+    //If the starting square is valid and not taken, push it to the Treasure object's location array, and the takenSquares array.
+    //Otherwise, call the addTreasurePiece function
     if (valid && notTaken) {
         treasureSquares.forEach(treasureSquare => {
             Treasure.location.push(treasureSquare)
@@ -205,7 +216,12 @@ function addTreasurePiece(Treasure) {
 
 }
 
+//For each treasure in the Treasure class, cmplete the addTreasurePiece function
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
+
+console.log(chest.location)
+console.log(umbrella.location)
+console.log(surfboard.location)
 
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
@@ -217,6 +233,12 @@ let largeTreasureHits = 0;
 //Counter for remaining turns
 let remainingTurns = document.getElementById("turnCounter")
 let remainingTurnsCount = 24;
+
+(function() {
+    
+}
+
+)
 
 //Images of hidden treasures, indicating size and shape of object
 let smallTreasurePic = document.getElementById("picitem1")
@@ -244,29 +266,12 @@ function onClick(thisSquare) {
     if(takenSquares.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
        turnCount = turnCount+1;
-       if(turnCount == 24)  {
-        alert("Game Over");
-       }
-       hitCount = hitCount+1;
-       if(hitCount == 9)    {
-        alert("Congrats, you won!");
-       }
+       hitCount = hitCount+1;    
     }   else    {
         thisSquare.style.backgroundColor= "#3CDFFF";
         turnCount = turnCount+1;
-        if(turnCount == 24)  {
-            alert("Game Over");
-            chest.location[0].style.backgroundColor="#FFFF00";
-            chest.location[1].style.backgroundColor="#FFFF00";
-            umbrella.location[0].style.backgroundColor="#FC6600";
-            umbrella.location[1].style.backgroundColor="#FC6600";
-            umbrella.location[2].style.backgroundColor="#FC6600";
-            surfboard.location[0].style.backgroundColor="#03AC13";
-            surfboard.location[1].style.backgroundColor="#03AC13";
-            surfboard.location[2].style.backgroundColor="#03AC13";
-            surfboard.location[3].style.backgroundColor="#03AC13";
-        }
     }
+
     if(chest.location.includes(thisSquare))  {
         smallTreasureHits = smallTreasureHits+1;
         if(smallTreasureHits == 2)  {
@@ -297,6 +302,24 @@ function onClick(thisSquare) {
             foundLargeTreasure();
         }
     }
+
+    if(hitCount == 9) {
+        showWinGameModal();
+    }
+
+    if(turnCount == 24 && hitCount < 9) {
+        alert("Game Over");
+        chest.location[0].style.backgroundColor="#FFFF00";
+            chest.location[1].style.backgroundColor="#FFFF00";
+            umbrella.location[0].style.backgroundColor="#FC6600";
+            umbrella.location[1].style.backgroundColor="#FC6600";
+            umbrella.location[2].style.backgroundColor="#FC6600";
+            surfboard.location[0].style.backgroundColor="#03AC13";
+            surfboard.location[1].style.backgroundColor="#03AC13";
+            surfboard.location[2].style.backgroundColor="#03AC13";
+            surfboard.location[3].style.backgroundColor="#03AC13";
+    }
+    
 }
 
 //First EL activates main function for confirming if treasure is present
