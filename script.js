@@ -1,6 +1,24 @@
+//Counters for turns, total hits, and specific treasure hits
+let turnCount = 0;
+let hitCount = 0;
+let smallTreasureHits = 0;
+let mediumTreasureHits = 0;
+let largeTreasureHits = 0;
+
+//Counter for remaining turns
+let remainingTurns = document.getElementById("turnCounter")
+let remainingTurnsCount = 24;
+
+//Images of hidden treasures, indicating size and shape of object
+let smallTreasurePic = document.getElementById("picitem1")
+let mediumTreasurePic = document.getElementById("picitem2")
+let largeTreasurePic = document.getElementById("picitem3")
+
 //welcomeModal
 const welcomeModal = document.getElementById("welcomeModal");
-const startGameBtn = document.getElementById("startGameBtn"); 
+const easyModeBtn = document.getElementById("easyModeBtn");
+const normalModeBtn = document.getElementById("normalModeBtn");
+const hardModeBtn = document.getElementById("hardModeBtn");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn")
 
 function showWelcomeModal() {
@@ -11,9 +29,24 @@ function hideWelcomeModal() {
     welcomeModal.style.display = "none";
 }
 
-startGameBtn.onclick = function() {
+easyModeBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+    document.getElementById("turnCounter").innerHTML = "30";
+    remainingTurnsCount = 30;
+    turnCount = -6;
+}
+
+normalModeBtn.onclick = function() {
     welcomeModal.style.display = "none";
 }
+
+hardModeBtn.onclick = function() {
+    welcomeModal.style.display = "none";
+    document.getElementById("turnCounter").innerHTML = "19";
+    remainingTurnsCount = 19;
+    turnCount = 5;
+}
+
 
 //howToPlayModal
 const howToPlayModal = document.getElementById("howToPlayModal");
@@ -36,6 +69,33 @@ window.onclick = function(event) {
     if (event.target == howToPlayModal) {
         howToPlayModal.style.display = "none";
     }
+}
+
+const winPlayAgainBtn = document.getElementById("winPlayAgain");
+const losePlayAgainBtn = document.getElementById("losePlayAgain");
+
+winPlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);
+    
+}
+
+losePlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);
+    
+}
+
+//winGame Modal
+const winGameModal = document.getElementById("winGameModal");
+
+function showWinGameModal() {
+    winGameModal.style.display = "block";
+}
+
+//gameOverModal
+const gameOverModal = document.getElementById("gameOverModal");
+
+function showGameOverModal() {
+    gameOverModal.style.display = "block";
 }
 
 //Width of grid
@@ -135,6 +195,7 @@ const surfboard = new Treasure("surfboard", 4, [])
 
 const treasures = [chest, umbrella, surfboard]
 
+
 //Squares that are randomly selected and considered valid are added to this array so they are no longer in play
 let takenSquares = []
     
@@ -213,28 +274,12 @@ function addTreasurePiece(Treasure) {
 
 }
 
-//For each treasure in the Treasure class, cmplete the addTreasurePiece function
+//For each treasure in the Treasure class, call the addTreasurePiece function
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
 
 console.log(chest.location)
 console.log(umbrella.location)
 console.log(surfboard.location)
-
-//Counters for turns, total hits, and specific treasure hits
-let turnCount = 0;
-let hitCount = 0;
-let smallTreasureHits = 0;
-let mediumTreasureHits = 0;
-let largeTreasureHits = 0;
-
-//Counter for remaining turns
-let remainingTurns = document.getElementById("turnCounter")
-let remainingTurnsCount = 24;
-
-//Images of hidden treasures, indicating size and shape of object
-let smallTreasurePic = document.getElementById("picitem1")
-let mediumTreasurePic = document.getElementById("picitem2")
-let largeTreasurePic = document.getElementById("picitem3")
 
 //Functions which change hidden treasure images to images of actual treasure 
 //(currently using green squares as placeholder)
@@ -294,60 +339,28 @@ function onClick(thisSquare) {
         }
     }
 
+    if(turnCount == 24 && hitCount < 9) {
+        chest.location[0].style.backgroundColor="#FFFF00";
+        chest.location[1].style.backgroundColor="#FFFF00";
+        umbrella.location[0].style.backgroundColor="#FC6600";
+        umbrella.location[1].style.backgroundColor="#FC6600";
+        umbrella.location[2].style.backgroundColor="#FC6600";
+        surfboard.location[0].style.backgroundColor="#03AC13";
+        surfboard.location[1].style.backgroundColor="#03AC13";
+        surfboard.location[2].style.backgroundColor="#03AC13";
+        surfboard.location[3].style.backgroundColor="#03AC13";
+    }
+
+    if(turnCount == 24 && hitCount < 9) {
+        showGameOverModal();
+    }
+
     if(hitCount == 9) {
         showWinGameModal();
     }
 
-    if(turnCount == 24 && hitCount < 9) {
-        alert("Game Over");
-        chest.location[0].style.backgroundColor="#FFFF00";
-            chest.location[1].style.backgroundColor="#FFFF00";
-            umbrella.location[0].style.backgroundColor="#FC6600";
-            umbrella.location[1].style.backgroundColor="#FC6600";
-            umbrella.location[2].style.backgroundColor="#FC6600";
-            surfboard.location[0].style.backgroundColor="#03AC13";
-            surfboard.location[1].style.backgroundColor="#03AC13";
-            surfboard.location[2].style.backgroundColor="#03AC13";
-            surfboard.location[3].style.backgroundColor="#03AC13";
-    }
-    
 }
 
-//winGame Modal
-const winGameModal = document.getElementById("winGameModal");
-
-function showWinGameModal() {
-    winGameModal.style.display = "block";
-}
-
-const playAgainBtn = document.getElementById("playAgainBtn");
-
-//playAgainBtn.onClick = function() {
-
-
-//}
-
-//playAgainBtn.onclick = function() {
-    //winGameModal.style.display = "none";
-    //turnCount = 0;
-    //hitCount = 0;
-    //smallTreasureHits = 0;
-    //mediumTreasureHits = 0;
-    //largeTreasureHits = 0;
-   // remainingTurnsCount = 24;
-    //smallTreasurePic.src = "images/redSquares2.png";
-    //mediumTreasurePic.src = "images/redSquares3.png";
-   // largeTreasurePic.src = "images/redSquares4.png";
-    //takenSquares = [];
-    //treasureSquares = [];
-    //chest.location = [];
-   // umbrella.location = [];
-   // surfboard.location = [];
-    //forEach
-
-   // getRandomSquare(allSquares);
-    //addTreasurePiece(Treasure);
-//}
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1

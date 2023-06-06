@@ -13,7 +13,9 @@
 
         <!--WelcomeModal Content-->
         <div class="welcomeModalContent">
-          <button id = "startGameBtn">Start Game</button>
+          <button id = "easyModeBtn">Easy</button>
+          <button id = "normalModeBtn">Normal</button>
+          <button id = "hardModeBtn">Hard</button>
           <button id="welcomeHowToPlayBtn">How to Play</button>
             <p>Welcome!</p>
         </div>
@@ -241,7 +243,10 @@
         </div>
 
      <!--Section showing remaining turns for user to find treasures-->
-     <h2 id="turnCounter">24</h2>
+     <div id="RemainingTurnsCounter">
+          <h2>Remaining Turns</h2>
+               <p id="turnCounter">24</p>
+     </div>
 
      <!--Section Showing Remaining Items for User to Find-->
      <div id="itemList">
@@ -271,15 +276,24 @@
 
      <!--The winGame Modal-->
      <div id="winGameModal" class="winGameModal">
-          <!--HowToPlayModal Content-->
+          <!--winGame Modal Content-->
           <div class="winGameModalContent">
           <p>Congrats, you found all the treasures!
-          <p><h3 id="winningTurnCounter">24</h2>
+          <p><h3 id="winningTurnCounter">24</h3>
           </p>
-          <button onClick = "window.location.reload()">Play Again!</button>
+          <button id ="winPlayAgain">Play Again!</button>
+     </div>
+
+     <!--The gameOver Modal-->
+     <div id="gameOverModal" class="gameOverModal">
+          <!--gameOver Modal Content-->
+          <div class="gameOverModalContent">
+          <p>Sorry, you ran out of turns.</p>
+          <p>Would you like to play try again?</p>
+          <button id ="losePlayAgain">Play Again!</button>
      </div>
 
      <script src="script.js"></script>
 </body>
-u
+
 </html>
