@@ -38,6 +38,8 @@ easyModeBtn.onclick = function() {
 
 normalModeBtn.onclick = function() {
     welcomeModal.style.display = "none";
+    document.getElementById("turnCounter").innerHTML = "24";
+    remainingTurnsCount = 24;
 }
 
 hardModeBtn.onclick = function() {
@@ -198,7 +200,7 @@ const treasures = [chest, umbrella, surfboard]
 
 //Squares that are randomly selected and considered valid are added to this array so they are no longer in play
 let takenSquares = []
-    
+
 //Gets a random square from the allSquares array 
 function getRandomSquare(allSquares) {
     //get random index value from allSquares
@@ -277,9 +279,19 @@ function addTreasurePiece(Treasure) {
 //For each treasure in the Treasure class, call the addTreasurePiece function
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
 
+
+//Places Mines, which will result in "Game Over" if user clicks on one
+const enableMines = document.getElementById("mineToggle");
+let validMineLocations = allSquares.filter(x => !takenSquares.includes(x));
+console.log(validMineLocations)
+
+const shuffledMineLocations = validMineLocations.sort(() => 0.5 - Math.random());
+let mineLocations = shuffledMineLocations.slice(0, 4);
+
 console.log(chest.location)
 console.log(umbrella.location)
 console.log(surfboard.location)
+console.log(mineLocations)
 
 //Functions which change hidden treasure images to images of actual treasure 
 //(currently using green squares as placeholder)
@@ -351,16 +363,21 @@ function onClick(thisSquare) {
         surfboard.location[3].style.backgroundColor="#03AC13";
     }
 
+    //This isn't working...
     if(turnCount == 24 && hitCount < 9) {
         showGameOverModal();
     }
 
+    if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+            alert("game over")
+    }
+     
     if(hitCount == 9) {
         showWinGameModal();
+        document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
     }
 
 }
-
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
