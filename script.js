@@ -182,6 +182,26 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
+const row1 = [a1, b1, c1, d1, e1, f1, g1, h1]
+const row2 = [a2, b2, c2, d2, e2, f2, g2, h2]
+const row3 = [a3, b3, c3, d3, e3, f3, g3, h3]
+const row4 = [a4, b4, c4, d4, e4, f4, g4, h4]
+const row5 = [a5, b5, c5, d5, e5, f5, g5, h5]
+const row6 = [a6, b6, c6, d6, e6, f6, g6, h6]
+const row7 = [a7, b7, c7, d7, e7, f7, g7, h7]
+const row8 = [a8, b8, c8, d8, e8, f8, g8, h8]
+const gridRows = [row1, row2, row3, row4, row5, row6, row7, row8]
+
+const column1 = [a1, a2, a3, a4, a5, a6, a7, a8]
+const column2 = [b1, b2, b3, b4, b5, b6, b7, b8]
+const column3 = [c1, c2, c3, c4, c5, c6, c7, c8]
+const column4 = [d1, d2, d3, d4, d5, d6, d7, d8]
+const column5 = [e1, e2, e3, e4, e5, e6, e7, e8]
+const column6 = [f1, f2, f3, f4, f5, f6, f7, f8]
+const column7 = [g1, g2, g3, g4, g5, g6, g7, g8]
+const column8 = [h1, h2, h3, h4, h5, h6, h7, h8]
+const gridColumns = [column1, column2, column3, column4, column5, column6, column7, column8]
+
 //Treasures
 class Treasure {
     constructor (name, length, location) {
@@ -283,7 +303,6 @@ treasures.forEach(Treasure => addTreasurePiece(Treasure));
 //Places Mines, which will result in "Game Over" if user clicks on one
 const enableMines = document.getElementById("mineToggle");
 let validMineLocations = allSquares.filter(x => !takenSquares.includes(x));
-console.log(validMineLocations)
 
 const shuffledMineLocations = validMineLocations.sort(() => 0.5 - Math.random());
 let mineLocations = shuffledMineLocations.slice(0, 4);
@@ -361,23 +380,36 @@ function onClick(thisSquare) {
         surfboard.location[1].style.backgroundColor="#03AC13";
         surfboard.location[2].style.backgroundColor="#03AC13";
         surfboard.location[3].style.backgroundColor="#03AC13";
-    }
-
-    //This isn't working...
-    if(turnCount == 24 && hitCount < 9) {
         showGameOverModal();
     }
 
-    if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
-            alert("game over")
+    //This isn't working...
+    if((turnCount == 24) && (hitCount !== 9)) {
+        
     }
+
+
+    //***Mine Detection functionality - UNDER DEVELOPMENT***//
+    //if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+        //Color isn't appearing...
+     //       thisSquare.style.backgroundColor="A020F0";
+     //       alert("game over");
+   // }
+
+    //if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
+    //    alert("hi");
+    //}
+
+    //if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
+     //       alert("mine is near");
+    //}
      
     if(hitCount == 9) {
         showWinGameModal();
         document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
     }
-
 }
+
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
@@ -644,4 +676,4 @@ g8.addEventListener("click", () => {
 h8.addEventListener("click", () => onClick(h8), {once : true});
 h8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true})
