@@ -73,19 +73,6 @@ window.onclick = function(event) {
     }
 }
 
-const winPlayAgainBtn = document.getElementById("winPlayAgain");
-const losePlayAgainBtn = document.getElementById("losePlayAgain");
-
-winPlayAgainBtn.onclick = function resetGame() {
-    location.replace(location.href);
-    
-}
-
-losePlayAgainBtn.onclick = function resetGame() {
-    location.replace(location.href);
-    
-}
-
 //winGame Modal
 const winGameModal = document.getElementById("winGameModal");
 
@@ -93,11 +80,21 @@ function showWinGameModal() {
     winGameModal.style.display = "block";
 }
 
+const winPlayAgainBtn = document.getElementById("winPlayAgain");
+winPlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);
+}
+
 //gameOverModal
 const gameOverModal = document.getElementById("gameOverModal");
 
 function showGameOverModal() {
     gameOverModal.style.display = "block";
+}
+
+const losePlayAgainBtn = document.getElementById("losePlayAgain");
+losePlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);  
 }
 
 //Width of grid
@@ -351,9 +348,11 @@ function onClick(thisSquare) {
     if(umbrella.location.includes(thisSquare))  {
         mediumTreasureHits = mediumTreasureHits+1;
         if(mediumTreasureHits == 3)  {
+            thisSquare.style.backgroundColor= "#DF2C14";
             umbrella.location[0].style.backgroundColor="#FC6600";
             umbrella.location[1].style.backgroundColor="#FC6600";
             umbrella.location[2].style.backgroundColor="#FC6600";
+            //setTimeout(function() { alert("my message"); }, 100);
             alert("You found the medium treasure!");
             foundMediumTreasure();
         }
@@ -380,29 +379,22 @@ function onClick(thisSquare) {
         surfboard.location[1].style.backgroundColor="#03AC13";
         surfboard.location[2].style.backgroundColor="#03AC13";
         surfboard.location[3].style.backgroundColor="#03AC13";
-        showGameOverModal();
+        showGameOverModal()
     }
-
-    //This isn't working...
-    if((turnCount == 24) && (hitCount !== 9)) {
-        
-    }
-
-
-    //***Mine Detection functionality - UNDER DEVELOPMENT***//
-    //if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+    
+    if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
         //Color isn't appearing...
-     //       thisSquare.style.backgroundColor="A020F0";
-     //       alert("game over");
-   // }
+            thisSquare.style.backgroundColor="A020F0";
+            alert("game over");
+    }
 
-    //if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
-    //    alert("hi");
-    //}
+    if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
+        alert("hi");
+    }
 
-    //if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
-     //       alert("mine is near");
-    //}
+    if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
+            alert("mine is near");
+    }
      
     if(hitCount == 9) {
         showWinGameModal();
