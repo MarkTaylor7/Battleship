@@ -15,85 +15,87 @@ let mediumTreasurePic = document.getElementById("picitem2")
 let largeTreasurePic = document.getElementById("picitem3")
 
 //welcomeModal
-const welcomeModal = document.getElementById("welcomeModal");
 const easyModeBtn = document.getElementById("easyModeBtn");
 const normalModeBtn = document.getElementById("normalModeBtn");
 const hardModeBtn = document.getElementById("hardModeBtn");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn")
 
+const modals = document.getElementsByClassName("modal");
+console.log(modals);
+
 function showWelcomeModal() {
-    welcomeModal.style.display = "block";
+    modals[0].style.display = "block";
 }
 
 function hideWelcomeModal() {
-    welcomeModal.style.display = "none";
+    modals[0].style.display = "none";
 }
 
 easyModeBtn.onclick = function() {
-    welcomeModal.style.display = "none";
+    modals[0].style.display = "none";
     document.getElementById("turnCounter").innerHTML = "30";
     remainingTurnsCount = 30;
     turnCount = -6;
 }
 
 normalModeBtn.onclick = function() {
-    welcomeModal.style.display = "none";
+    modals[0].style.display = "none";
     document.getElementById("turnCounter").innerHTML = "24";
     remainingTurnsCount = 24;
 }
 
 hardModeBtn.onclick = function() {
-    welcomeModal.style.display = "none";
+    modals[0].style.display = "none";
     document.getElementById("turnCounter").innerHTML = "19";
     remainingTurnsCount = 19;
     turnCount = 5;
 }
 
-
 //howToPlayModal
-const howToPlayModal = document.getElementById("howToPlayModal");
 const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
 const howToPlayModalSpan = document.getElementsByClassName("howToPlayClose")[0];
 
 howToPlayBtn.onclick = function() {
-    howToPlayModal.style.display = "block";
+    modals[1].style.display = "block";
 }
 
 howToPlayModalBtn.onclick = function() {
-    howToPlayModal.style.display = "block";
+    modals[1].style.display = "block";
 }
 
 howToPlayModalSpan.onclick = function() {
-    howToPlayModal.style.display = "none";
+    modals[1].style.display = "none";
 }
 
 window.onclick = function(event) {
-    if (event.target == howToPlayModal) {
-        howToPlayModal.style.display = "none";
+    if (event.target == modals[1]) {
+        modals[1].style.display = "none";
     }
 }
 
-//winGame Modal
-const winGameModal = document.getElementById("winGameModal");
-
 function showWinGameModal() {
-    winGameModal.style.display = "block";
+    modals[2].style.display = "block";
+}
+
+function showGameOverModal() {
+    modals[3].style.display = "block";
+}
+
+function showGameOverMineModal() {
+    modals[4].style.display = "block";
 }
 
 const winPlayAgainBtn = document.getElementById("winPlayAgain");
 winPlayAgainBtn.onclick = function resetGame() {
     location.replace(location.href);
 }
-
-//gameOverModal
-const gameOverModal = document.getElementById("gameOverModal");
-
-function showGameOverModal() {
-    gameOverModal.style.display = "block";
-}
-
 const losePlayAgainBtn = document.getElementById("losePlayAgain");
 losePlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);  
+}
+
+const losePlayAgainMineBtn = document.getElementById("losePlayAgainMine");
+losePlayAgainMineBtn.onclick = function resetGame() {
     location.replace(location.href);  
 }
 
@@ -385,7 +387,7 @@ function onClick(thisSquare) {
     if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
         //Color isn't appearing...
             thisSquare.style.backgroundColor="A020F0";
-            alert("game over");
+            showGameOverMineModal();
     }
 
     if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
