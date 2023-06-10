@@ -306,10 +306,6 @@ let validMineLocations = allSquares.filter(x => !takenSquares.includes(x));
 const shuffledMineLocations = validMineLocations.sort(() => 0.5 - Math.random());
 let mineLocations = shuffledMineLocations.slice(0, 4);
 
-console.log(chest.location)
-console.log(umbrella.location)
-console.log(surfboard.location)
-console.log(mineLocations)
 
 //Functions which change hidden treasure images to images of actual treasure 
 //(currently using green squares as placeholder)
@@ -325,6 +321,10 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
+console.log(chest.location)
+console.log(umbrella.location)
+console.log(surfboard.location)
+console.log(mineLocations)
 
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure.
