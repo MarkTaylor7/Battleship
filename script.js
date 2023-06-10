@@ -390,13 +390,13 @@ function onClick(thisSquare) {
             showGameOverMineModal();
     }
 
-    if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
-        alert("hi");
-    }
+    //if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
+       //alert("hi");
+    //}
 
-    if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
-            alert("mine is near");
-    }
+    //if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
+           // alert("mine is near");
+    //}
      
     if(hitCount == 9) {
         showWinGameModal();
