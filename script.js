@@ -274,8 +274,6 @@ const column7 = [g1, g2, g3, g4, g5, g6, g7, g8]
 const column8 = [h1, h2, h3, h4, h5, h6, h7, h8]
 const gridColumns = [column1, column2, column3, column4, column5, column6, column7, column8]
 
-
-
 //Treasures
 class Treasure {
     constructor (name, length, location) {
@@ -374,7 +372,15 @@ function addTreasurePiece(Treasure) {
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
 
 
-//Places Mines, which will result in "Game Over" if user clicks on one
+//Mines
+//If a square is near a mine, it will appear in a closeToMine array:
+let closeToMine1 = [];
+let closeToMine2 = [];
+let closeToMine3 = [];
+let closeToMine4 = [];
+let closeToAnyMine = [closeToMine1, closeToMine2, closeToMine3, closeToMine4];
+
+//Places Mines in random locations, which will result in "Game Over" if user clicks on one
 const enableMines = document.getElementById("mineToggle");
 let validMineLocations = allSquares.filter(x => !takenSquares.includes(x));
 
@@ -382,13 +388,73 @@ const shuffledMineLocations = validMineLocations.sort(() => 0.5 - Math.random())
 let mineLocations = shuffledMineLocations.slice(0, 4);
 
 
+//Determines if a Square is near a mine
+rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
+    if (!column1.includes(rightOfMine1)) {
+        closeToMine1.push(rightOfMine1)
+    }
 
-let closeToMine1 = [a1, a2];
-let closeToMine2 = [b4, b5, c7, d8];
-let closeToMine3 = [a1, a2];
-let closeToMine4 = [a1];
-let closeToAnyMine = [closeToMine1, closeToMine2, closeToMine3, closeToMine4];
+rightOfMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id));
+    if (!column1.includes(rightOfMine2)) {
+        closeToMine2.push(rightOfMine2)
+    }
 
+rightOfMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id));
+    if (!column1.includes(rightOfMine3)) {
+        closeToMine3.push(rightOfMine3)
+    }
+
+rightOfMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id));
+    if (!column1.includes(rightOfMine4)) {
+        closeToMine4.push(rightOfMine4)
+    }
+ 
+leftOfMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id));
+    if (!column8.includes(leftOfMine1)) {
+        closeToMine1.push(leftOfMine1)
+    }
+
+leftOfMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id));
+    if (!column8.includes(leftOfMine2)) {
+        closeToMine2.push(leftOfMine2)
+    }
+
+leftOfMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id));
+    if (!column8.includes(leftOfMine3)) {
+        closeToMine3.push(leftOfMine3)
+    }
+
+leftOfMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id));
+    if (!column8.includes(leftOfMine4)) {
+        closeToMine4.push(leftOfMine4)
+    }
+
+aboveMine1 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[0].id));
+    closeToMine1.push(aboveMine1);
+
+aboveMine2 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[1].id));
+    closeToMine2.push(aboveMine2);
+
+aboveMine3 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[2].id));
+    closeToMine3.push(aboveMine3);
+
+aboveMine4 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[3].id));
+    closeToMine4.push(aboveMine4);
+
+belowMine1 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[0].id));
+    closeToMine1.push(belowMine1);
+
+belowMine2 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[1].id));
+    closeToMine2.push(belowMine2);
+
+belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[2].id));
+    closeToMine3.push(belowMine3);
+
+belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
+    closeToMine4.push(belowMine4);
+
+
+//Each square is checked to see if it is in one of the closeToMine arrays. If so, its mineCount value is increased by 1.
 for (let i = 0; i < allSquares.length; i++)
     if (closeToMine1.includes(allSquares[i])) {
         allSquares[i].mineCount = allSquares[i].mineCount+1
@@ -413,6 +479,7 @@ console.log(chest.location)
 console.log(umbrella.location)
 console.log(surfboard.location)
 console.log(mineLocations)
+console.log(allSquares)
 console.log(a1.mineCount)
 console.log(a2.mineCount)
 console.log(allMineCounts)
@@ -499,15 +566,6 @@ function onClick(thisSquare) {
             showGameOverMineModal();
     }
 
-    //if(closeToMine1.includes(thisSquare)) {
-    //    thisSquareMineCount = thisSquareMineCount+1;
-    //}
-
-
-    //if(enableMines.checked == true && closeToMine.includes(thisSquare)) {
-      //  alert("mine is close by!");
-    //}
-
     if(hitCount == 9) {
         showWinGameModal();
         document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
@@ -523,7 +581,8 @@ a1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a1.mineCount;
-    a1.innerHTML = a1.mineCount}, {once : true});
+    //To do: Insert the below line into remaining event listeners
+    if(enableMines.checked == true) {a1.innerHTML = a1.mineCount}}, {once : true});
 b1.addEventListener("click", () => onClick(b1), {once : true});
 b1.addEventListener("click", () => {
     remainingTurnsCount --;
