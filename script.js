@@ -21,7 +21,6 @@ const hardModeBtn = document.getElementById("hardModeBtn");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn")
 
 const modals = document.getElementsByClassName("modal");
-console.log(modals);
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -103,77 +102,141 @@ losePlayAgainMineBtn.onclick = function resetGame() {
 const gridWidth = 8;
 
 //Grid Squares
-const a1 = document.getElementById(1)
+const a1 = document.getElementById(1);
+let a1MineCount = 0;
 const b1 = document.getElementById(2)
+let b1MineCount = 0;
 const c1 = document.getElementById(3)
+let c1MineCount = 0;
 const d1 = document.getElementById(4)
+let d1MineCount = 0;
 const e1 = document.getElementById(5)
+let e1MineCount = 0;
 const f1 = document.getElementById(6)
+let f1MineCount = 0;
 const g1 = document.getElementById(7)
+let g1MineCount = 0;
 const h1 = document.getElementById(8)
+let h1MineCount = 0;
 
 const a2 = document.getElementById(9)
+let a2MineCount = 0;
 const b2 = document.getElementById(10)
+let b2MineCount = 0;
 const c2 = document.getElementById(11)
+let c2MineCount = 0;
 const d2 = document.getElementById(12)
+let d2MineCount = 0;
 const e2 = document.getElementById(13)
+let e2MineCount = 0;
 const f2 = document.getElementById(14)
+let f2MineCount = 0;
 const g2 = document.getElementById(15)
+let g2MineCount = 0;
 const h2 = document.getElementById(16)
+let h2MineCount = 0;
 
 const a3 = document.getElementById(17)
+let a3MineCount = 0;
 const b3 = document.getElementById(18)
+let b3MineCount = 0;
 const c3 = document.getElementById(19)
+let c3MineCount = 0;
 const d3 = document.getElementById(20)
+let d3MineCount = 0;
 const e3 = document.getElementById(21)
+let e3MineCount = 0;
 const f3 = document.getElementById(22)
+let f3MineCount = 0;
 const g3 = document.getElementById(23)
+let g3MineCount = 0;
 const h3 = document.getElementById(24)
+let h3MineCount = 0;
 
 const a4 = document.getElementById(25)
+let a4MineCount = 0;
 const b4 = document.getElementById(26)
+let b4MineCount = 0;
 const c4 = document.getElementById(27)
+let c4MineCount = 0;
 const d4 = document.getElementById(28)
+let d4MineCount = 0;
 const e4 = document.getElementById(29)
+let e4MineCount = 0;
 const f4 = document.getElementById(30)
+let f4MineCount = 0;
 const g4 = document.getElementById(31)
+let g4MineCount = 0;
 const h4 = document.getElementById(32)
+let h4MineCount = 0;
 
 const a5 = document.getElementById(33)
+let a5MineCount = 0;
 const b5 = document.getElementById(34)
+let b5MineCount = 0;
 const c5 = document.getElementById(35)
+let c5MineCount = 0;
 const d5 = document.getElementById(36)
+let d5MineCount = 0;
 const e5 = document.getElementById(37)
+let e5MineCount = 0;
 const f5 = document.getElementById(38)
+let f5MineCount = 0;
 const g5 = document.getElementById(39)
+let g5MineCount = 0;
 const h5 = document.getElementById(40)
+let h5MineCount = 0;
 
 const a6 = document.getElementById(41)
+let a6MineCount = 0;
 const b6 = document.getElementById(42)
+let b6MineCount = 0;
 const c6 = document.getElementById(43)
+let c6MineCount = 0;
 const d6 = document.getElementById(44)
+let d6MineCount = 0;
 const e6 = document.getElementById(45)
+let e6MineCount = 0;
 const f6 = document.getElementById(46)
+let f6MineCount = 0;
 const g6 = document.getElementById(47)
+let g6MineCount = 0;
 const h6 = document.getElementById(48)
+let h6MineCount = 0;
 
 const a7 = document.getElementById(49)
+let a7MineCount = 0;
 const b7 = document.getElementById(50)
+let b7MineCount = 0;
 const c7 = document.getElementById(51)
+let c7MineCount = 0;
 const d7 = document.getElementById(52)
+let d7MineCount = 0;
 const e7 = document.getElementById(53)
+let e7MineCount = 0;
 const f7 = document.getElementById(54)
+let f7MineCount = 0;
 const g7 = document.getElementById(55)
+let g7MineCount = 0;
 const h7 = document.getElementById(56)
+let h7MineCount = 0;
 
 const a8 = document.getElementById(57)
+let a8MineCount = 0;
 const b8 = document.getElementById(58)
+let b8MineCount = 0;
 const c8 = document.getElementById(59)
+let c8MineCount = 0;
 const d8 = document.getElementById(60)
+let d8MineCount = 0;
 const e8 = document.getElementById(61)
+let e8MineCount = 0;
 const f8 = document.getElementById(62)
+let f8MineCount = 0;
 const g8 = document.getElementById(63)
+let g8MineCount = 0;
 const h8 = document.getElementById(64)
+let h8MineCount = 0;
 
 const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, h2,
     a3, b3, c3, d3, e3, f3, g3, h3, a4, b4, c4, d4, e4, f4, g4, h4,
@@ -200,6 +263,8 @@ const column6 = [f1, f2, f3, f4, f5, f6, f7, f8]
 const column7 = [g1, g2, g3, g4, g5, g6, g7, g8]
 const column8 = [h1, h2, h3, h4, h5, h6, h7, h8]
 const gridColumns = [column1, column2, column3, column4, column5, column6, column7, column8]
+
+
 
 //Treasures
 class Treasure {
@@ -307,6 +372,69 @@ const shuffledMineLocations = validMineLocations.sort(() => 0.5 - Math.random())
 let mineLocations = shuffledMineLocations.slice(0, 4);
 
 
+
+let closeToMine1 = [a1];
+let closeToMine2 = [a1, b2];
+let closeToMine3 = [a1];
+let closeToMine4 = [];
+let closeToAnyMine = [];
+
+//Need to generalize the below functions to every grid Square
+if (closeToMine1.includes(a1)) {
+    a1MineCount = a1MineCount + 1;
+}
+
+if (closeToMine2.includes(a1)) {
+    a1MineCount = a1MineCount + 1;
+}
+
+if (closeToMine3.includes(a1)) {
+    a1MineCount = a1MineCount + 1;
+}
+
+if (closeToMine4.includes(a1)) {
+    a1MineCount = a1MineCount + 1;
+}
+
+function getCloseToMineSquares(closeToMine1) {
+    allSquares
+    let toTheLeft
+    if (enableMines.checked == true) {
+    allSquares.every((_allSquare) => 
+    toTheLeft = Number(allSquares[0].id) + 1 == Number(mineLocations[0].id));
+    }
+
+    if (toTheLeft) {
+        allSquares.forEach(allSquare => {
+            closeToMine1.push(allSquare)
+        })
+    } 
+}
+console.log(closeToMine1)
+
+let toTheLeftofMine1
+
+//if (Number(allSquares[23].id) + 1 < Number(mineLocations[0].id)) {
+    alert("hey there");
+}
+
+
+//let leftOfMine = 
+//let toTheLeft = mineLocations.map(leftOfMine);
+//function leftOfMine(value, index, array) {
+    //return value.id -1;
+
+//}
+
+//(Number(allSquares[x].id) = mineLocations[0].id - 1)
+//the object in the allSquares array that is one index lower than mineLocations[0]o
+
+console.log(chest.location)
+console.log(umbrella.location)
+console.log(surfboard.location)
+console.log(mineLocations)
+
+
 //Functions which change hidden treasure images to images of actual treasure 
 //(currently using green squares as placeholder)
 function foundSmallTreasure()   {
@@ -321,13 +449,9 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
-console.log(chest.location)
-console.log(umbrella.location)
-console.log(surfboard.location)
-console.log(mineLocations)
 
 //Main function for confirming if a clicked square contains treasure, 
-//and sub-functions for confirming the same criteria with a specific treasure.
+//and sub-functions for confirming the same criteria with a specific treasure or a mine
 function onClick(thisSquare) {
     if(takenSquares.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
@@ -381,23 +505,22 @@ function onClick(thisSquare) {
         surfboard.location[1].style.backgroundColor="#03AC13";
         surfboard.location[2].style.backgroundColor="#03AC13";
         surfboard.location[3].style.backgroundColor="#03AC13";
+        //Set a timer on game over modal to appear after showing
+        //treasure locations, OR have game over modal appear above/below
+        //game board
         showGameOverModal()
     }
     
     if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
-        //Color isn't appearing...
-            thisSquare.style.backgroundColor="A020F0";
+            thisSquare.style.backgroundColor="#A020F0";
             showGameOverMineModal();
     }
 
-    //if(!column1.includes(thisSquare) && (enableMines.checked == true) && (mineLocations.includes(thisSquare-1))) {
-       //alert("hi");
+
+    //if(enableMines.checked == true && closeToMine.includes(thisSquare)) {
+      //  alert("mine is close by!");
     //}
 
-    //if(enableMines.checked == true && (mineLocations.includes(thisSquare)+1)) {
-           // alert("mine is near");
-    //}
-     
     if(hitCount == 9) {
         showWinGameModal();
         document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
@@ -411,263 +534,391 @@ function onClick(thisSquare) {
 a1.addEventListener("click", () => onClick(a1), {once : true});
 a1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a1MineCount;
+    a1.innerHTML = a1MineCount}, {once : true});
 b1.addEventListener("click", () => onClick(b1), {once : true});
 b1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b1MineCount;
+    b1.innerHTML = b1MineCount}, {once : true});
 c1.addEventListener("click", () => onClick(c1), {once : true});
 c1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c1MineCount;
+    c1.innerHTML = c1MineCount}, {once : true});
 d1.addEventListener("click", () => onClick(d1), {once : true});
 d1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d1MineCount;
+    d1.innerHTML = d1MineCount}, {once : true});
 e1.addEventListener("click", () => onClick(e1), {once : true});
 e1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e1MineCount;
+    e1.innerHTML = e1MineCount}, {once : true});
 f1.addEventListener("click", () => onClick(f1), {once : true});
 f1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f1MineCount;
+    f1.innerHTML = f1MineCount}, {once : true});
 g1.addEventListener("click", () => onClick(g1), {once : true});
 g1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g1MineCount;
+    g1.innerHTML = g1MineCount}, {once : true});
 h1.addEventListener("click", () => onClick(h1), {once : true});
 h1.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h1MineCount;
+    h1.innerHTML = h1MineCount}, {once : true});
 
 a2.addEventListener("click", () => onClick(a2), {once : true});
 a2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a2MineCount;
+    a2.innerHTML = a2MineCount}, {once : true});
 b2.addEventListener("click", () => onClick(b2), {once : true});
 b2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b2MineCount;
+    b2.innerHTML = b2MineCount}, {once : true});
 c2.addEventListener("click", () => onClick(c2), {once : true});
 c2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c2MineCount;
+    c2.innerHTML = c2MineCount}, {once : true});
 d2.addEventListener("click", () => onClick(d2), {once : true});
 d2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d2MineCount;
+    d2.innerHTML = d2MineCount}, {once : true});
 e2.addEventListener("click", () => onClick(e2), {once : true});
 e2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e2MineCount;
+    e2.innerHTML = e2MineCount}, {once : true});
 f2.addEventListener("click", () => onClick(f2), {once : true});
 f2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f2MineCount;
+    f2.innerHTML = f2MineCount}, {once : true});
 g2.addEventListener("click", () => onClick(g2), {once : true});
 g2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g2MineCount;
+    g2.innerHTML = g2MineCount}, {once : true});
 h2.addEventListener("click", () => onClick(h2), {once : true});
 h2.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h2MineCount;
+    h2.innerHTML = h2MineCount}, {once : true});
 
 a3.addEventListener("click", () => onClick(a3), {once : true});
 a3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a3MineCount;
+    a3.innerHTML = a3MineCount}, {once : true});
 b3.addEventListener("click", () => onClick(b3), {once : true});
 b3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b3MineCount;
+    b3.innerHTML = b3MineCount}, {once : true});
 c3.addEventListener("click", () => onClick(c3), {once : true});
 c3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c3MineCount;
+    c3.innerHTML = c3MineCount}, {once : true});
 d3.addEventListener("click", () => onClick(d3), {once : true});
 d3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d3MineCount;
+    d3.innerHTML = d3MineCount}, {once : true});
 e3.addEventListener("click", () => onClick(e3), {once : true});
 e3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e3MineCount;
+    e3.innerHTML = e3MineCount}, {once : true});
 f3.addEventListener("click", () => onClick(f3), {once : true});
 f3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f3MineCount;
+    f3.innerHTML = f3MineCount}, {once : true});
 g3.addEventListener("click", () => onClick(g3), {once : true});
 g3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g3MineCount;
+    g3.innerHTML = g3MineCount}, {once : true});
 h3.addEventListener("click", () => onClick(h3), {once : true});
 h3.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h3MineCount;
+    h3.innerHTML = h3MineCount}, {once : true});
 
 a4.addEventListener("click", () => onClick(a4), {once : true});
 a4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a4MineCount;
+    a4.innerHTML = a4MineCount}, {once : true});
 b4.addEventListener("click", () => onClick(b4), {once : true});
 b4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b4MineCount;
+    b4.innerHTML = b4MineCount}, {once : true});
 c4.addEventListener("click", () => onClick(c4), {once : true});
 c4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c4MineCount;
+    c4.innerHTML = c4MineCount}, {once : true});
 d4.addEventListener("click", () => onClick(d4), {once : true});
 d4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d4MineCount;
+    d4.innerHTML = d4MineCount}, {once : true});
 e4.addEventListener("click", () => onClick(e4), {once : true});
 e4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e4MineCount;
+    e4.innerHTML = e4MineCount}, {once : true});
 f4.addEventListener("click", () => onClick(f4), {once : true});
 f4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f4MineCount;
+    f4.innerHTML = f4MineCount}, {once : true});
 g4.addEventListener("click", () => onClick(g4), {once : true});
 g4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g4MineCount;
+    g4.innerHTML = g4MineCount}, {once : true});
 h4.addEventListener("click", () => onClick(h4), {once : true});
 h4.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h4MineCount;
+    h4.innerHTML = h4MineCount}, {once : true});
 
 a5.addEventListener("click", () => onClick(a5), {once : true});
 a5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a5MineCount;
+    a5.innerHTML = a5MineCount}, {once : true});
 b5.addEventListener("click", () => onClick(b5), {once : true});
 b5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b5MineCount;
+    b5.innerHTML = b5MineCount}, {once : true});
 c5.addEventListener("click", () => onClick(c5), {once : true});
 c5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c5MineCount;
+    c5.innerHTML = c5MineCount}, {once : true});
 d5.addEventListener("click", () => onClick(d5), {once : true});
 d5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d5MineCount;
+    d5.innerHTML = d5MineCount}, {once : true});
 e5.addEventListener("click", () => onClick(e5), {once : true});
 e5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e5MineCount;
+    e5.innerHTML = e5MineCount}, {once : true});
 f5.addEventListener("click", () => onClick(f5), {once : true});
 f5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f5MineCount;
+    f5.innerHTML = f5MineCount}, {once : true});
 g5.addEventListener("click", () => onClick(g5), {once : true});
 g5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g5MineCount;
+    g5.innerHTML = g5MineCount}, {once : true});
 h5.addEventListener("click", () => onClick(h5), {once : true});
 h5.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h5MineCount;
+    h5.innerHTML = h5MineCount}, {once : true});
 
 a6.addEventListener("click", () => onClick(a6), {once : true});
 a6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a6MineCount;
+    a6.innerHTML = a6MineCount}, {once : true});
 b6.addEventListener("click", () => onClick(b6), {once : true});
 b6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b6MineCount;
+    b6.innerHTML = b6MineCount}, {once : true});
 c6.addEventListener("click", () => onClick(c6), {once : true});
 c6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c6MineCount;
+    c6.innerHTML = c6MineCount}, {once : true});
 d6.addEventListener("click", () => onClick(d6), {once : true});
 d6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d6MineCount;
+    d6.innerHTML = d6MineCount}, {once : true});
 e6.addEventListener("click", () => onClick(e6), {once : true});
 e6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e6MineCount;
+    e6.innerHTML = e6MineCount}, {once : true});
 f6.addEventListener("click", () => onClick(f6), {once : true});
 f6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f6MineCount;
+    f6.innerHTML = f6MineCount}, {once : true});
 g6.addEventListener("click", () => onClick(g6), {once : true});
 g6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g6MineCount;
+    g6.innerHTML = g6MineCount}, {once : true});
 h6.addEventListener("click", () => onClick(h6), {once : true});
 h6.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h6MineCount;
+    h6.innerHTML = h6MineCount}, {once : true});
 
 a7.addEventListener("click", () => onClick(a7), {once : true});
 a7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a7MineCount;
+    a7.innerHTML = a7MineCount}, {once : true});
 b7.addEventListener("click", () => onClick(b7), {once : true});
 b7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b7MineCount;
+    b7.innerHTML = b7MineCount}, {once : true});
 c7.addEventListener("click", () => onClick(c7), {once : true});
 c7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c7MineCount;
+    c7.innerHTML = c7MineCount}, {once : true});
 d7.addEventListener("click", () => onClick(d7), {once : true});
 d7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d7MineCount;
+    d7.innerHTML = d7MineCount}, {once : true});
 e7.addEventListener("click", () => onClick(e7), {once : true});
 e7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e7MineCount;
+    e7.innerHTML = e7MineCount}, {once : true});
 f7.addEventListener("click", () => onClick(f7), {once : true});
 f7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount
+    f7MineCount;
+    f7.innerHTML = f7MineCount}, {once : true});
 g7.addEventListener("click", () => onClick(g7), {once : true});
 g7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g7MineCount;
+    g7.innerHTML = g7MineCount}, {once : true});
 h7.addEventListener("click", () => onClick(h7), {once : true});
 h7.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h7MineCount;
+    h7.innerHTML = h7MineCount}, {once : true});
 
 a8.addEventListener("click", () => onClick(a8), {once : true});
 a8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    a8MineCount;
+    a8.innerHTML = a8MineCount}, {once : true});
 b8.addEventListener("click", () => onClick(b8), {once : true});
 b8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    b8MineCount;
+    b8.innerHTML = b8MineCount}, {once : true});
 c8.addEventListener("click", () => onClick(c8), {once : true});
 c8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    c8MineCount;
+    c8.innerHTML = c8MineCount}, {once : true});
 d8.addEventListener("click", () => onClick(d8), {once : true});
 d8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    d8MineCount;
+    d8.innerHTML = d8MineCount}, {once : true});
 e8.addEventListener("click", () => onClick(e8), {once : true});
 e8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    e8MineCount;
+    e8.innerHTML = e8MineCount}, {once : true});
 f8.addEventListener("click", () => onClick(f8), {once : true});
 f8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    f8MineCount;
+    f8.innerHTML = f8MineCount}, {once : true});
 g8.addEventListener("click", () => onClick(g8), {once : true});
 g8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true});
+    remainingTurns.innerHTML = remainingTurnsCount;
+    g8MineCount;
+    g8.innerHTML = g8MineCount}, {once : true});
 h8.addEventListener("click", () => onClick(h8), {once : true});
 h8.addEventListener("click", () => {
     remainingTurnsCount --;
-    remainingTurns.innerHTML = remainingTurnsCount;}, {once : true})
+    remainingTurns.innerHTML = remainingTurnsCount;
+    h8MineCount;
+    h8.innerHTML = h8MineCount}, {once : true})
