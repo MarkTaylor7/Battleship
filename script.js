@@ -453,6 +453,85 @@ belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number
 belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
     closeToMine4.push(belowMine4);
 
+upperRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) - gridWidth);
+    if(!column1.includes(upperRightMine1)) {
+        closeToMine1.push(upperRightMine1)
+    }
+
+upperRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) - gridWidth);
+    if(!column1.includes(upperRightMine2)) {
+        closeToMine2.push(upperRightMine2)
+    }
+
+upperRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) - gridWidth);
+    if(!column1.includes(upperRightMine3)) {
+        closeToMine3.push(upperRightMine3)
+    }
+
+upperRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) - gridWidth);
+    if(!column1.includes(upperRightMine4)) {
+        closeToMine4.push(upperRightMine4)
+    }
+
+lowerRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) + gridWidth);
+    if(!column1.includes(lowerRightMine1)) {
+        closeToMine1.push(lowerRightMine1)
+    }
+
+lowerRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) + gridWidth);
+    if(!column1.includes(lowerRightMine2)) {
+        closeToMine2.push(lowerRightMine2)
+    }
+
+lowerRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) + gridWidth);
+    if(!column1.includes(lowerRightMine3)) {
+        closeToMine3.push(lowerRightMine3)
+    }
+
+lowerRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) + gridWidth);
+    if(!column1.includes(lowerRightMine4)) {
+        closeToMine4.push(lowerRightMine4)
+    }
+
+upperLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) - gridWidth);
+if (!column8.includes(upperLeftMine1)) {
+    closeToMine1.push(upperLeftMine1)
+}
+
+upperLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) - gridWidth);
+if (!column8.includes(upperLeftMine2)) {
+    closeToMine2.push(upperLeftMine2)
+}
+
+upperLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) - gridWidth);
+if (!column8.includes(upperLeftMine3)) {
+    closeToMine3.push(upperLeftMine3)
+}
+
+upperLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) - gridWidth);
+if (!column8.includes(upperLeftMine4)) {
+    closeToMine4.push(upperLeftMine4)
+}
+
+lowerLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) + gridWidth);
+if (!column8.includes(lowerLeftMine1)) {
+    closeToMine1.push(lowerLeftMine1)
+}
+
+lowerLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) + gridWidth);
+if (!column8.includes(lowerLeftMine2)) {
+    closeToMine2.push(lowerLeftMine2)
+}
+
+lowerLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) + gridWidth);
+if (!column8.includes(lowerLeftMine3)) {
+    closeToMine3.push(lowerLeftMine3)
+}
+
+lowerLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) + gridWidth);
+if (!column8.includes(lowerLeftMine4)) {
+    closeToMine4.push(lowerLeftMine4)
+}
 
 //Each square is checked to see if it is in one of the closeToMine arrays. If so, its mineCount value is increased by 1.
 for (let i = 0; i < allSquares.length; i++)
@@ -479,9 +558,6 @@ console.log(chest.location)
 console.log(umbrella.location)
 console.log(surfboard.location)
 console.log(mineLocations)
-console.log(allSquares)
-console.log(a1.mineCount)
-console.log(a2.mineCount)
 console.log(allMineCounts)
 
 
@@ -588,383 +664,383 @@ b1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b1.mineCount;
-    b1.innerHTML = b1.mineCount}, {once : true});
+    if(enableMines.checked == true) b1.innerHTML = b1.mineCount}, {once : true});
 c1.addEventListener("click", () => onClick(c1), {once : true});
 c1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c1.mineCount;
-    c1.innerHTML = c1.mineCount}, {once : true});
+    if(enableMines.checked == true) c1.innerHTML = c1.mineCount}, {once : true});
 d1.addEventListener("click", () => onClick(d1), {once : true});
 d1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d1.mineCount;
-    d1.innerHTML = d1.mineCount}, {once : true});
+    if(enableMines.checked == true) d1.innerHTML = d1.mineCount}, {once : true});
 e1.addEventListener("click", () => onClick(e1), {once : true});
 e1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e1.mineCount;
-    e1.innerHTML = e1.mineCount}, {once : true});
+    if(enableMines.checked == true) e1.innerHTML = e1.mineCount}, {once : true});
 f1.addEventListener("click", () => onClick(f1), {once : true});
 f1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f1.mineCount;
-    f1.innerHTML = f1.mineCount}, {once : true});
+    if(enableMines.checked == true) f1.innerHTML = f1.mineCount}, {once : true});
 g1.addEventListener("click", () => onClick(g1), {once : true});
 g1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g1.mineCount;
-    g1.innerHTML = g1.mineCount}, {once : true});
+    if(enableMines.checked == true) g1.innerHTML = g1.mineCount}, {once : true});
 h1.addEventListener("click", () => onClick(h1), {once : true});
 h1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h1.mineCount;
-    h1.innerHTML = h1.mineCount}, {once : true});
+    if(enableMines.checked == true) h1.innerHTML = h1.mineCount}, {once : true});
 
 a2.addEventListener("click", () => onClick(a2), {once : true});
 a2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a2.mineCount;
-    a2.innerHTML = a2.mineCount}, {once : true});
+    if(enableMines.checked == true) a2.innerHTML = a2.mineCount}, {once : true});
 b2.addEventListener("click", () => onClick(b2), {once : true});
 b2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b2.mineCount;
-    b2.innerHTML = b2.mineCount}, {once : true});
+    if(enableMines.checked == true) b2.innerHTML = b2.mineCount}, {once : true});
 c2.addEventListener("click", () => onClick(c2), {once : true});
 c2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c2.mineCount;
-    c2.innerHTML = c2.mineCount}, {once : true});
+    if(enableMines.checked == true) c2.innerHTML = c2.mineCount}, {once : true});
 d2.addEventListener("click", () => onClick(d2), {once : true});
 d2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d2.mineCount;
-    d2.innerHTML = d2.mineCount}, {once : true});
+    if(enableMines.checked == true) d2.innerHTML = d2.mineCount}, {once : true});
 e2.addEventListener("click", () => onClick(e2), {once : true});
 e2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e2.mineCount;
-    e2.innerHTML = e2.mineCount}, {once : true});
+    if(enableMines.checked == true) e2.innerHTML = e2.mineCount}, {once : true});
 f2.addEventListener("click", () => onClick(f2), {once : true});
 f2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f2.mineCount;
-    f2.innerHTML = f2.mineCount}, {once : true});
+    if(enableMines.checked == true) f2.innerHTML = f2.mineCount}, {once : true});
 g2.addEventListener("click", () => onClick(g2), {once : true});
 g2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g2.mineCount;
-    g2.innerHTML = g2.mineCount}, {once : true});
+    if(enableMines.checked == true) g2.innerHTML = g2.mineCount}, {once : true});
 h2.addEventListener("click", () => onClick(h2), {once : true});
 h2.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h2.mineCount;
-    h2.innerHTML = h2.mineCount}, {once : true});
+    if(enableMines.checked == true) h2.innerHTML = h2.mineCount}, {once : true});
 
 a3.addEventListener("click", () => onClick(a3), {once : true});
 a3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a3.mineCount;
-    a3.innerHTML = a3.mineCount}, {once : true});
+    if(enableMines.checked == true) a3.innerHTML = a3.mineCount}, {once : true});
 b3.addEventListener("click", () => onClick(b3), {once : true});
 b3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b3.mineCount;
-    b3.innerHTML = b3.mineCount}, {once : true});
+    if(enableMines.checked == true) b3.innerHTML = b3.mineCount}, {once : true});
 c3.addEventListener("click", () => onClick(c3), {once : true});
 c3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c3.mineCount;
-    c3.innerHTML = c3.mineCount}, {once : true});
+    if(enableMines.checked == true) c3.innerHTML = c3.mineCount}, {once : true});
 d3.addEventListener("click", () => onClick(d3), {once : true});
 d3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d3.mineCount;
-    d3.innerHTML = d3.mineCount}, {once : true});
+    if(enableMines.checked == true) d3.innerHTML = d3.mineCount}, {once : true});
 e3.addEventListener("click", () => onClick(e3), {once : true});
 e3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e3.mineCount;
-    e3.innerHTML = e3.mineCount}, {once : true});
+    if(enableMines.checked == true) e3.innerHTML = e3.mineCount}, {once : true});
 f3.addEventListener("click", () => onClick(f3), {once : true});
 f3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f3.mineCount;
-    f3.innerHTML = f3.mineCount}, {once : true});
+    if(enableMines.checked == true) f3.innerHTML = f3.mineCount}, {once : true});
 g3.addEventListener("click", () => onClick(g3), {once : true});
 g3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g3.mineCount;
-    g3.innerHTML = g3.mineCount}, {once : true});
+    if(enableMines.checked == true) g3.innerHTML = g3.mineCount}, {once : true});
 h3.addEventListener("click", () => onClick(h3), {once : true});
 h3.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h3.mineCount;
-    h3.innerHTML = h3.mineCount}, {once : true});
+    if(enableMines.checked == true) h3.innerHTML = h3.mineCount}, {once : true});
 
 a4.addEventListener("click", () => onClick(a4), {once : true});
 a4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a4.mineCount;
-    a4.innerHTML = a4.mineCount}, {once : true});
+    if(enableMines.checked == true) a4.innerHTML = a4.mineCount}, {once : true});
 b4.addEventListener("click", () => onClick(b4), {once : true});
 b4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b4.mineCount;
-    b4.innerHTML = b4.mineCount}, {once : true});
+    if(enableMines.checked == true) b4.innerHTML = b4.mineCount}, {once : true});
 c4.addEventListener("click", () => onClick(c4), {once : true});
 c4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c4.mineCount;
-    c4.innerHTML = c4.mineCount}, {once : true});
+    if(enableMines.checked == true) c4.innerHTML = c4.mineCount}, {once : true});
 d4.addEventListener("click", () => onClick(d4), {once : true});
 d4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d4.mineCount;
-    d4.innerHTML = d4.mineCount}, {once : true});
+    if(enableMines.checked == true) d4.innerHTML = d4.mineCount}, {once : true});
 e4.addEventListener("click", () => onClick(e4), {once : true});
 e4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e4.mineCount;
-    e4.innerHTML = e4.mineCount}, {once : true});
+    if(enableMines.checked == true) e4.innerHTML = e4.mineCount}, {once : true});
 f4.addEventListener("click", () => onClick(f4), {once : true});
 f4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f4.mineCount;
-    f4.innerHTML = f4.mineCount}, {once : true});
+    if(enableMines.checked == true) f4.innerHTML = f4.mineCount}, {once : true});
 g4.addEventListener("click", () => onClick(g4), {once : true});
 g4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g4.mineCount;
-    g4.innerHTML = g4.mineCount}, {once : true});
+    if(enableMines.checked == true) g4.innerHTML = g4.mineCount}, {once : true});
 h4.addEventListener("click", () => onClick(h4), {once : true});
 h4.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h4.mineCount;
-    h4.innerHTML = h4.mineCount}, {once : true});
+    if(enableMines.checked == true) h4.innerHTML = h4.mineCount}, {once : true});
 
 a5.addEventListener("click", () => onClick(a5), {once : true});
 a5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a5.mineCount;
-    a5.innerHTML = a5.mineCount}, {once : true});
+    if(enableMines.checked == true) a5.innerHTML = a5.mineCount}, {once : true});
 b5.addEventListener("click", () => onClick(b5), {once : true});
 b5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b5.mineCount;
-    b5.innerHTML = b5.mineCount}, {once : true});
+    if(enableMines.checked == true) b5.innerHTML = b5.mineCount}, {once : true});
 c5.addEventListener("click", () => onClick(c5), {once : true});
 c5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c5.mineCount;
-    c5.innerHTML = c5.mineCount}, {once : true});
+    if(enableMines.checked == true) c5.innerHTML = c5.mineCount}, {once : true});
 d5.addEventListener("click", () => onClick(d5), {once : true});
 d5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d5.mineCount;
-    d5.innerHTML = d5.mineCount}, {once : true});
+    if(enableMines.checked == true) d5.innerHTML = d5.mineCount}, {once : true});
 e5.addEventListener("click", () => onClick(e5), {once : true});
 e5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e5.mineCount;
-    e5.innerHTML = e5.mineCount}, {once : true});
+    if(enableMines.checked == true) e5.innerHTML = e5.mineCount}, {once : true});
 f5.addEventListener("click", () => onClick(f5), {once : true});
 f5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f5.mineCount;
-    f5.innerHTML = f5.mineCount}, {once : true});
+    if(enableMines.checked == true) f5.innerHTML = f5.mineCount}, {once : true});
 g5.addEventListener("click", () => onClick(g5), {once : true});
 g5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g5.mineCount;
-    g5.innerHTML = g5.mineCount}, {once : true});
+    if(enableMines.checked == true) g5.innerHTML = g5.mineCount}, {once : true});
 h5.addEventListener("click", () => onClick(h5), {once : true});
 h5.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h5.mineCount;
-    h5.innerHTML = h5.mineCount}, {once : true});
+    if(enableMines.checked == true) h5.innerHTML = h5.mineCount}, {once : true});
 
 a6.addEventListener("click", () => onClick(a6), {once : true});
 a6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a6.mineCount;
-    a6.innerHTML = a6.mineCount}, {once : true});
+    if(enableMines.checked == true) a6.innerHTML = a6.mineCount}, {once : true});
 b6.addEventListener("click", () => onClick(b6), {once : true});
 b6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b6.mineCount;
-    b6.innerHTML = b6.mineCount}, {once : true});
+    if(enableMines.checked == true) b6.innerHTML = b6.mineCount}, {once : true});
 c6.addEventListener("click", () => onClick(c6), {once : true});
 c6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c6.mineCount;
-    c6.innerHTML = c6.mineCount}, {once : true});
+    if(enableMines.checked == true) c6.innerHTML = c6.mineCount}, {once : true});
 d6.addEventListener("click", () => onClick(d6), {once : true});
 d6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d6.mineCount;
-    d6.innerHTML = d6.mineCount}, {once : true});
+    if(enableMines.checked == true) d6.innerHTML = d6.mineCount}, {once : true});
 e6.addEventListener("click", () => onClick(e6), {once : true});
 e6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e6.mineCount;
-    e6.innerHTML = e6.mineCount}, {once : true});
+    if(enableMines.checked == true) e6.innerHTML = e6.mineCount}, {once : true});
 f6.addEventListener("click", () => onClick(f6), {once : true});
 f6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f6.mineCount;
-    f6.innerHTML = f6.mineCount}, {once : true});
+    if(enableMines.checked == true) f6.innerHTML = f6.mineCount}, {once : true});
 g6.addEventListener("click", () => onClick(g6), {once : true});
 g6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g6.mineCount;
-    g6.innerHTML = g6.mineCount}, {once : true});
+    if(enableMines.checked == true) g6.innerHTML = g6.mineCount}, {once : true});
 h6.addEventListener("click", () => onClick(h6), {once : true});
 h6.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h6.mineCount;
-    h6.innerHTML = h6.mineCount}, {once : true});
+    if(enableMines.checked == true) h6.innerHTML = h6.mineCount}, {once : true});
 
 a7.addEventListener("click", () => onClick(a7), {once : true});
 a7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a7.mineCount;
-    a7.innerHTML = a7.mineCount}, {once : true});
+    if(enableMines.checked == true) a7.innerHTML = a7.mineCount}, {once : true});
 b7.addEventListener("click", () => onClick(b7), {once : true});
 b7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b7.mineCount;
-    b7.innerHTML = b7.mineCount}, {once : true});
+    if(enableMines.checked == true) b7.innerHTML = b7.mineCount}, {once : true});
 c7.addEventListener("click", () => onClick(c7), {once : true});
 c7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c7.mineCount;
-    c7.innerHTML = c7.mineCount}, {once : true});
+    if(enableMines.checked == true) c7.innerHTML = c7.mineCount}, {once : true});
 d7.addEventListener("click", () => onClick(d7), {once : true});
 d7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d7.mineCount;
-    d7.innerHTML = d7.mineCount}, {once : true});
+    if(enableMines.checked == true) d7.innerHTML = d7.mineCount}, {once : true});
 e7.addEventListener("click", () => onClick(e7), {once : true});
 e7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e7.mineCount;
-    e7.innerHTML = e7.mineCount}, {once : true});
+    if(enableMines.checked == true) e7.innerHTML = e7.mineCount}, {once : true});
 f7.addEventListener("click", () => onClick(f7), {once : true});
 f7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount
     f7.mineCount;
-    f7.innerHTML = f7.mineCount}, {once : true});
+    if(enableMines.checked == true) f7.innerHTML = f7.mineCount}, {once : true});
 g7.addEventListener("click", () => onClick(g7), {once : true});
 g7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g7.mineCount;
-    g7.innerHTML = g7.mineCount}, {once : true});
+    if(enableMines.checked == true) g7.innerHTML = g7.mineCount}, {once : true});
 h7.addEventListener("click", () => onClick(h7), {once : true});
 h7.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h7.mineCount;
-    h7.innerHTML = h7.mineCount}, {once : true});
+    if(enableMines.checked == true) h7.innerHTML = h7.mineCount}, {once : true});
 
 a8.addEventListener("click", () => onClick(a8), {once : true});
 a8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a8.mineCount;
-    a8.innerHTML = a8.mineCount}, {once : true});
+    if(enableMines.checked == true) a8.innerHTML = a8.mineCount}, {once : true});
 b8.addEventListener("click", () => onClick(b8), {once : true});
 b8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     b8.mineCount;
-    b8.innerHTML = b8.mineCount}, {once : true});
+    if(enableMines.checked == true) b8.innerHTML = b8.mineCount}, {once : true});
 c8.addEventListener("click", () => onClick(c8), {once : true});
 c8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     c8.mineCount;
-    c8.innerHTML = c8.mineCount}, {once : true});
+    if(enableMines.checked == true) c8.innerHTML = c8.mineCount}, {once : true});
 d8.addEventListener("click", () => onClick(d8), {once : true});
 d8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     d8.mineCount;
-    d8.innerHTML = d8.mineCount}, {once : true});
+    if(enableMines.checked == true) d8.innerHTML = d8.mineCount}, {once : true});
 e8.addEventListener("click", () => onClick(e8), {once : true});
 e8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     e8.mineCount;
-    e8.innerHTML = e8.mineCount}, {once : true});
+    if(enableMines.checked == true) e8.innerHTML = e8.mineCount}, {once : true});
 f8.addEventListener("click", () => onClick(f8), {once : true});
 f8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     f8.mineCount;
-    f8.innerHTML = f8.mineCount}, {once : true});
+    if(enableMines.checked == true) f8.innerHTML = f8.mineCount}, {once : true});
 g8.addEventListener("click", () => onClick(g8), {once : true});
 g8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     g8.mineCount;
-    g8.innerHTML = g8.mineCount}, {once : true});
+    if(enableMines.checked == true) g8.innerHTML = g8.mineCount}, {once : true});
 h8.addEventListener("click", () => onClick(h8), {once : true});
 h8.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     h8.mineCount;
-    h8.innerHTML = h8.mineCount}, {once : true})
+    if(enableMines.checked == true) h8.innerHTML = h8.mineCount}, {once : true})

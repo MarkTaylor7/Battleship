@@ -38,22 +38,17 @@ h1  {
     
     
 .row    {
+    flex-wrap: nowrap;
     display: flex;
     margin: auto;        
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    height: 5%;
     }
 
-.row  {
-    flex-wrap: nowrap;
-    }
-    
 .column {
     background-color:peru;
-    height: 5%;
+    height: 10%;
     padding: 1rem 0;
     flex: 1;
     gap: 2px;
@@ -63,6 +58,7 @@ h1  {
     flex-basis: 1;
     font-size: 3em;
     justify-content: center;   
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 
 .column:hover {
