@@ -14,6 +14,8 @@ body {
     text-align: center;
     margin: auto;
     max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
     }
 
 h1  {
@@ -33,7 +35,8 @@ h1  {
     margin: 0 auto;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-bottom: 2%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
     }
     
     
@@ -61,6 +64,7 @@ h1  {
     justify-content: center;   
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: peru;
+    
     }
 
 .column:hover {
@@ -113,8 +117,10 @@ h1  {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    width: 70%;
     align-self: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
 }
 
 /*The Mines Switch*/
@@ -174,6 +180,8 @@ input:checked + .slider:before {
 
 button {
     background-color: peru;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
     }
 
 p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -198,25 +206,27 @@ div {
     border-color: black;
     font-size: 70%;
     width: 90%;
-    }
-
-
-
+    
+}
 
 #RemainingTurnsCounter  {
     background-color:bisque;
     text-align: center;
     margin: auto;
     width: 30%;
+    height: 10%;
     font-size: large;
     float: left;
+    border-bottom-left-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
+    bottom
     }
 
 #turnCounter    {background-color:bisque;
     text-align: center;
     margin: auto;
     width: 20%;
-    font-size: 100%;
+    font-size: 79%;
     }
 
 h2  {
@@ -234,10 +244,14 @@ h2  {
 
 #itemList   {background-color:bisque;
     text-align: center;
+    font-size: 60%;
     margin: auto;
     width: 70%;
     float: right;
     height: 10%;
+    border-bottom-right-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
+    box
     }
 
 h3  {
@@ -262,12 +276,33 @@ h4 {
     text-align: center;
     }
 
+#socials {
+    text-align: center;
+    margin: auto;
+    clear: both
+    }
+
 #credit {
     background-color:bisque;
-    width: 70%;
+    width: 65%;
     text-align: center; 
     margin: auto;
-    font-size: 25%;
+    font-weight: bold;
+    font-size: 50%;
+    text-transform: uppercase;
+    align-content: center;
+    border-style:hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
+    clear: both
+    }
+
+#credit a:hover {
+    color: blue
+    }
+
+a {
+    text-decoration: none;
     }
         
 
