@@ -581,10 +581,12 @@ function foundLargeTreasure()   {
 function onClick(thisSquare) {
     if(takenSquares.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
+       thisSquare.style.color= "#DF2C14";
        turnCount = turnCount+1;
        hitCount = hitCount+1;    
     }   else    {
         thisSquare.style.backgroundColor= "#3CDFFF";
+        thisSquare.style.color= "#3CDFFF";
         turnCount = turnCount+1;
     }
 
@@ -593,6 +595,13 @@ function onClick(thisSquare) {
         if(smallTreasureHits == 2)  {
             chest.location[0].style.backgroundColor="#FFFF00";
             chest.location[1].style.backgroundColor="#FFFF00";
+                if (enableMines.checked == false) {
+                    chest.location[0].style.color="#FFFF00";
+                    chest.location[1].style.color="#FFFF00";
+                    } else {
+                        chest.location[0].style.color="#000000";
+                        chest.location[1].style.color="#000000";
+                    } 
             alert("You found the small treasure!");
             foundSmallTreasure();
         }
@@ -604,6 +613,15 @@ function onClick(thisSquare) {
             umbrella.location[0].style.backgroundColor="#FC6600";
             umbrella.location[1].style.backgroundColor="#FC6600";
             umbrella.location[2].style.backgroundColor="#FC6600";
+                if (enableMines.checked == false) {
+                    umbrella.location[0].style.color="#FC6600";
+                    umbrella.location[1].style.color="#FC6600";
+                    umbrella.location[2].style.color="#FC6600";
+                    } else { 
+                        umbrella.location[0].style.color="#000000";
+                        umbrella.location[1].style.color="#000000";
+                        umbrella.location[2].style.color="#000000";
+                    }
             //setTimeout(function() { alert("my message"); }, 100);
             alert("You found the medium treasure!");
             foundMediumTreasure();
@@ -616,29 +634,65 @@ function onClick(thisSquare) {
             surfboard.location[1].style.backgroundColor="#03AC13";
             surfboard.location[2].style.backgroundColor="#03AC13";
             surfboard.location[3].style.backgroundColor="#03AC13";
-            alert("You found the large treasure!");
-            foundLargeTreasure();
+                if (enableMines.checked == false) {
+                    surfboard.location[0].style.color="#03AC13";
+                    surfboard.location[1].style.color="#03AC13";
+                    surfboard.location[2].style.color="#03AC13";
+                    surfboard.location[3].style.color="#03AC13";
+                    } else {
+                        surfboard.location[0].style.color="#000000";
+                        surfboard.location[1].style.color="#000000";
+                        surfboard.location[2].style.color="#000000";
+                        surfboard.location[3].style.color="#000000";
+                    }
+    alert("You found the large treasure!");
+    foundLargeTreasure();
         }
     }
 
     if(turnCount == 24 && hitCount < 9) {
         chest.location[0].style.backgroundColor="#FFFF00";
         chest.location[1].style.backgroundColor="#FFFF00";
+        chest.location[0].style.color="#FFFF00";
+        chest.location[1].style.color="#FFFF00";
         umbrella.location[0].style.backgroundColor="#FC6600";
         umbrella.location[1].style.backgroundColor="#FC6600";
         umbrella.location[2].style.backgroundColor="#FC6600";
+        umbrella.location[0].style.color="#FC6600";
+        umbrella.location[1].style.color="#FC6600";
+        umbrella.location[2].style.color="#FC6600";
         surfboard.location[0].style.backgroundColor="#03AC13";
         surfboard.location[1].style.backgroundColor="#03AC13";
         surfboard.location[2].style.backgroundColor="#03AC13";
         surfboard.location[3].style.backgroundColor="#03AC13";
+        surfboard.location[0].style.color="#03AC13";
+        surfboard.location[1].style.color="#03AC13";
+        surfboard.location[2].style.color="#03AC13";
+        surfboard.location[3].style.color="#03AC13";
+        if (enableMines.checked == true) {
+            mineLocations[0].style.backgroundColor="#A020F0";
+            mineLocations[0].style.color="#A020F0";
+            mineLocations[1].style.backgroundColor="#A120F0";
+            mineLocations[1].style.color="#A020F0";
+            mineLocations[2].style.backgroundColor="#A020F0";
+            mineLocations[2].style.color="#A020F0";
+            mineLocations[3].style.backgroundColor="#A020F0";
+            mineLocations[3].style.color="#A020F0";
+        }
         //Set a timer on game over modal to appear after showing
         //treasure locations, OR have game over modal appear above/below
         //game board
         showGameOverModal()
     }
     
+    if(enableMines.checked == true) {
+        thisSquare.style.color="#000000";
+    }
+
+
     if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
             thisSquare.style.backgroundColor="#A020F0";
+            thisSquare.style.color="#A020F0";
             showGameOverMineModal();
     }
 
@@ -657,8 +711,7 @@ a1.addEventListener("click", () => {
     remainingTurnsCount --;
     remainingTurns.innerHTML = remainingTurnsCount;
     a1.mineCount;
-    //To do: Insert the below line into remaining event listeners
-    if(enableMines.checked == true) {a1.innerHTML = a1.mineCount}}, {once : true});
+    if(enableMines.checked == true) a1.innerHTML = a1.mineCount}, {once : true});
 b1.addEventListener("click", () => onClick(b1), {once : true});
 b1.addEventListener("click", () => {
     remainingTurnsCount --;

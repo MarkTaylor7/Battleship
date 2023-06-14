@@ -52,17 +52,20 @@ h1  {
     padding: 1rem 0;
     flex: 1;
     gap: 2px;
+    
     align-content: center;
-    border: 0.5px solid rgb(214, 198, 144);
+    border: 0.5px solid rgb(0, 0, 0);
     display: flex;
     flex-basis: 1;
     font-size: 3em;
     justify-content: center;   
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: peru;
     }
 
 .column:hover {
     background-color:sandybrown;
+    color:sandybrown;
     }
 
 
