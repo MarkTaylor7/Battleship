@@ -218,8 +218,7 @@ div {
     font-size: large;
     float: left;
     border-bottom-left-radius: 10px;
-    box-shadow: 5px 5px 15px rgba(0,0,0,.3);
-    bottom
+    box-shadow: 5px 5px 15px rgba(0,0,0,.3)
     }
 
 #turnCounter    {background-color:bisque;
@@ -251,7 +250,6 @@ h2  {
     height: 10%;
     border-bottom-right-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0,0,0,.3);
-    box
     }
 
 h3  {
