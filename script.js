@@ -1,5 +1,9 @@
 //When the user clicks the first square, this turns to true. Used to prevent user from clicking on a mine at start of game.
 let gameStart = false;
+let mineExploded = false;
+function explodeMine() {
+    mineExploded = true;
+}
 
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
@@ -75,12 +79,62 @@ window.onclick = function(event) {
     }
 }
 
+
+let timeout;
+
+function winGameTimeout() {
+    timeout = setTimeout(showWinGameModal, 2000);
+}
+
 function showWinGameModal() {
     modals[2].style.display = "block";
 }
 
+function revealTreasuresAndMinesTimeout() {
+    timeout = setTimeout(revealTreasuresAndMines, 2000);
+}
+
+function revealTreasuresAndMines() {
+    chest.location[0].style.backgroundColor="#FFFF00";
+    chest.location[1].style.backgroundColor="#FFFF00";
+    chest.location[0].style.color="#FFFF00";
+    chest.location[1].style.color="#FFFF00";
+    umbrella.location[0].style.backgroundColor="#FC6600";
+    umbrella.location[1].style.backgroundColor="#FC6600";
+    umbrella.location[2].style.backgroundColor="#FC6600";
+    umbrella.location[0].style.color="#FC6600";
+    umbrella.location[1].style.color="#FC6600";
+    umbrella.location[2].style.color="#FC6600";
+    surfboard.location[0].style.backgroundColor="#03AC13";
+    surfboard.location[1].style.backgroundColor="#03AC13";
+    surfboard.location[2].style.backgroundColor="#03AC13";
+    surfboard.location[3].style.backgroundColor="#03AC13";
+    surfboard.location[0].style.color="#03AC13";
+    surfboard.location[1].style.color="#03AC13";
+    surfboard.location[2].style.color="#03AC13";
+    surfboard.location[3].style.color="#03AC13";
+        if (enableMines.checked == true) {
+            mineLocations[0].style.backgroundColor="#A020F0";
+            mineLocations[0].style.color="#A020F0";
+            mineLocations[1].style.backgroundColor="#A120F0";
+            mineLocations[1].style.color="#A020F0";
+            mineLocations[2].style.backgroundColor="#A020F0";
+            mineLocations[2].style.color="#A020F0";
+            mineLocations[3].style.backgroundColor="#A020F0";
+            mineLocations[3].style.color="#A020F0";
+        }
+}
+
+function gameOverTimeout() {
+    timeout = setTimeout(showGameOverModal, 4500);
+}
+
 function showGameOverModal() {
     modals[3].style.display = "block";
+}
+
+function gameOverMineTimeout() {
+    timeout = setTimeout(showGameOverMineModal, 4500);
 }
 
 function showGameOverMineModal() {
@@ -100,6 +154,18 @@ const losePlayAgainMineBtn = document.getElementById("losePlayAgainMine");
 losePlayAgainMineBtn.onclick = function resetGame() {
     location.replace(location.href);  
 }
+
+const showSolutionBtn = document.getElementById("revealObjects");
+showSolutionBtn.onclick = function () {
+    modals[3].style.display = "none";
+    gameOverTimeout();
+    }
+
+const showSolutionBtnMine = document.getElementById("revealObjectsMine");
+showSolutionBtnMine.onclick = function () {
+    modals[4].style.display = "none";
+    gameOverTimeout();
+    }
 
 //Width of grid
 const gridWidth = 8;
@@ -580,742 +646,776 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
+
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure or a mine
 function onClick(thisSquare) {
 
-    if(takenSquares.includes(thisSquare))   {
-       thisSquare.style.backgroundColor= "#DF2C14";
-       thisSquare.style.color= "#DF2C14";
-       turnCount = turnCount+1;
-       hitCount = hitCount+1;
-    }   else    {
-            thisSquare.style.backgroundColor= "#3CDFFF";
-            thisSquare.style.color= "#3CDFFF";
-            turnCount = turnCount+1;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 9) {
+        if(takenSquares.includes(thisSquare))   {
+        thisSquare.style.backgroundColor= "#DF2C14";
+        thisSquare.style.color= "#DF2C14";
+        turnCount = turnCount+1;
+        hitCount = hitCount+1;
+        
+        }   else    {
+                thisSquare.style.backgroundColor= "#3CDFFF";
+                thisSquare.style.color= "#3CDFFF";
+                turnCount = turnCount+1;
 
+            }
+
+        if(chest.location.includes(thisSquare))  {
+            smallTreasureHits = smallTreasureHits+1;
+            if(smallTreasureHits == 2)  {
+                chest.location[0].style.backgroundColor="#FFFF00";
+                chest.location[1].style.backgroundColor="#FFFF00";
+                    if (enableMines.checked == false) {
+                        chest.location[0].style.color="#FFFF00";
+                        chest.location[1].style.color="#FFFF00";
+                        } else {
+                            chest.location[0].style.color="#000000";
+                            chest.location[1].style.color="#000000";
+                        } 
+                alert("You found the small treasure!");
+                foundSmallTreasure();
+            }
+        }
+        if(umbrella.location.includes(thisSquare))  {
+            mediumTreasureHits = mediumTreasureHits+1;
+            if(mediumTreasureHits == 3)  {
+                thisSquare.style.backgroundColor= "#DF2C14";
+                umbrella.location[0].style.backgroundColor="#FC6600";
+                umbrella.location[1].style.backgroundColor="#FC6600";
+                umbrella.location[2].style.backgroundColor="#FC6600";
+                    if (enableMines.checked == false) {
+                        umbrella.location[0].style.color="#FC6600";
+                        umbrella.location[1].style.color="#FC6600";
+                        umbrella.location[2].style.color="#FC6600";
+                        } else { 
+                            umbrella.location[0].style.color="#000000";
+                            umbrella.location[1].style.color="#000000";
+                            umbrella.location[2].style.color="#000000";
+                        }
+                //setTimeout(function() { alert("my message"); }, 100);
+                alert("You found the medium treasure!");
+                foundMediumTreasure();
+            }
+        }
+        if(surfboard.location.includes(thisSquare))  {
+            largeTreasureHits = largeTreasureHits+1;
+            if(largeTreasureHits == 4)  {
+                surfboard.location[0].style.backgroundColor="#03AC13";
+                surfboard.location[1].style.backgroundColor="#03AC13";
+                surfboard.location[2].style.backgroundColor="#03AC13";
+                surfboard.location[3].style.backgroundColor="#03AC13";
+                    if (enableMines.checked == false) {
+                        surfboard.location[0].style.color="#03AC13";
+                        surfboard.location[1].style.color="#03AC13";
+                        surfboard.location[2].style.color="#03AC13";
+                        surfboard.location[3].style.color="#03AC13";
+                        } else {
+                            surfboard.location[0].style.color="#000000";
+                            surfboard.location[1].style.color="#000000";
+                            surfboard.location[2].style.color="#000000";
+                            surfboard.location[3].style.color="#000000";
+                        }
+        alert("You found the large treasure!");
+        foundLargeTreasure();
+            }
         }
 
-    if(chest.location.includes(thisSquare))  {
-        smallTreasureHits = smallTreasureHits+1;
-        if(smallTreasureHits == 2)  {
-            chest.location[0].style.backgroundColor="#FFFF00";
-            chest.location[1].style.backgroundColor="#FFFF00";
-                if (enableMines.checked == false) {
-                    chest.location[0].style.color="#FFFF00";
-                    chest.location[1].style.color="#FFFF00";
-                    } else {
-                        chest.location[0].style.color="#000000";
-                        chest.location[1].style.color="#000000";
-                    } 
-            alert("You found the small treasure!");
-            foundSmallTreasure();
+        if(turnCount == 24 && hitCount < 9) {
+            explodeMine();
+            revealTreasuresAndMinesTimeout()
+            gameOverTimeout();
         }
-    }
-    if(umbrella.location.includes(thisSquare))  {
-        mediumTreasureHits = mediumTreasureHits+1;
-        if(mediumTreasureHits == 3)  {
-            thisSquare.style.backgroundColor= "#DF2C14";
-            umbrella.location[0].style.backgroundColor="#FC6600";
-            umbrella.location[1].style.backgroundColor="#FC6600";
-            umbrella.location[2].style.backgroundColor="#FC6600";
-                if (enableMines.checked == false) {
-                    umbrella.location[0].style.color="#FC6600";
-                    umbrella.location[1].style.color="#FC6600";
-                    umbrella.location[2].style.color="#FC6600";
-                    } else { 
-                        umbrella.location[0].style.color="#000000";
-                        umbrella.location[1].style.color="#000000";
-                        umbrella.location[2].style.color="#000000";
-                    }
-            //setTimeout(function() { alert("my message"); }, 100);
-            alert("You found the medium treasure!");
-            foundMediumTreasure();
+        
+        if(enableMines.checked == true) {
+            thisSquare.style.color="#000000";
         }
-    }
-    if(surfboard.location.includes(thisSquare))  {
-        largeTreasureHits = largeTreasureHits+1;
-        if(largeTreasureHits == 4)  {
-            surfboard.location[0].style.backgroundColor="#03AC13";
-            surfboard.location[1].style.backgroundColor="#03AC13";
-            surfboard.location[2].style.backgroundColor="#03AC13";
-            surfboard.location[3].style.backgroundColor="#03AC13";
-                if (enableMines.checked == false) {
-                    surfboard.location[0].style.color="#03AC13";
-                    surfboard.location[1].style.color="#03AC13";
-                    surfboard.location[2].style.color="#03AC13";
-                    surfboard.location[3].style.color="#03AC13";
-                    } else {
-                        surfboard.location[0].style.color="#000000";
-                        surfboard.location[1].style.color="#000000";
-                        surfboard.location[2].style.color="#000000";
-                        surfboard.location[3].style.color="#000000";
-                    }
-    alert("You found the large treasure!");
-    foundLargeTreasure();
-        }
-    }
 
-    if(turnCount == 24 && hitCount < 9) {
-        chest.location[0].style.backgroundColor="#FFFF00";
-        chest.location[1].style.backgroundColor="#FFFF00";
-        chest.location[0].style.color="#FFFF00";
-        chest.location[1].style.color="#FFFF00";
-        umbrella.location[0].style.backgroundColor="#FC6600";
-        umbrella.location[1].style.backgroundColor="#FC6600";
-        umbrella.location[2].style.backgroundColor="#FC6600";
-        umbrella.location[0].style.color="#FC6600";
-        umbrella.location[1].style.color="#FC6600";
-        umbrella.location[2].style.color="#FC6600";
-        surfboard.location[0].style.backgroundColor="#03AC13";
-        surfboard.location[1].style.backgroundColor="#03AC13";
-        surfboard.location[2].style.backgroundColor="#03AC13";
-        surfboard.location[3].style.backgroundColor="#03AC13";
-        surfboard.location[0].style.color="#03AC13";
-        surfboard.location[1].style.color="#03AC13";
-        surfboard.location[2].style.color="#03AC13";
-        surfboard.location[3].style.color="#03AC13";
-        if (enableMines.checked == true) {
-            mineLocations[0].style.backgroundColor="#A020F0";
-            mineLocations[0].style.color="#A020F0";
-            mineLocations[1].style.backgroundColor="#A120F0";
-            mineLocations[1].style.color="#A020F0";
-            mineLocations[2].style.backgroundColor="#A020F0";
-            mineLocations[2].style.color="#A020F0";
-            mineLocations[3].style.backgroundColor="#A020F0";
-            mineLocations[3].style.color="#A020F0";
-        }
-        //Set a timer on game over modal to appear after showing
-        //treasure locations, OR have game over modal appear above/below
-        //game board
-        showGameOverModal()
-    }
-    
-    if(enableMines.checked == true) {
-        thisSquare.style.color="#000000";
-    }
-
-    if(gameStart == false) {
-        if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
-            const mineOnFirstSquare = thisSquare;
-            const foundIndex = mineLocations.findIndex(y => y == mineOnFirstSquare);
-            firstSquareSelected.push(mineOnFirstSquare);
-            mineLocations.splice(foundIndex, 1);
-            mineLocations.push(mineOnFirstSquare);
-            mineLocations.pop(mineOnFirstSquare);
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine1.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount-1
-                }
-
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine2.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount-1
-                }
-
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine3.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount-1
-                }
-
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine4.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount-1
-                }
-            closeToMine1 = [];
-            closeToMine2 = [];
-            closeToMine3 = [];
-            closeToMine4 = [];
-            console.log(closeToMine1)
-            mineLocations.push(shuffledMineLocations[4]);
-            console.log(mineLocations);
-                rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
-                    if (!column1.includes(rightOfMine1)) {
-                        closeToMine1.push(rightOfMine1)
-                    }
-                rightOfMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id));
-                    if (!column1.includes(rightOfMine2)) {
-                        closeToMine2.push(rightOfMine2)
-                    }
-
-                rightOfMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id));
-                    if (!column1.includes(rightOfMine3)) {
-                        closeToMine3.push(rightOfMine3)
-                    }
-
-                rightOfMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id));
-                    if (!column1.includes(rightOfMine4)) {
-                        closeToMine4.push(rightOfMine4)
-                    }
-                
-                leftOfMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id));
-                    if (!column8.includes(leftOfMine1)) {
-                        closeToMine1.push(leftOfMine1)
-                    }
-
-                leftOfMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id));
-                    if (!column8.includes(leftOfMine2)) {
-                        closeToMine2.push(leftOfMine2)
-                    }
-
-                leftOfMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id));
-                    if (!column8.includes(leftOfMine3)) {
-                        closeToMine3.push(leftOfMine3)
-                    }
-
-                leftOfMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id));
-                    if (!column8.includes(leftOfMine4)) {
-                        closeToMine4.push(leftOfMine4)
-                    }
-
-                aboveMine1 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[0].id));
-                    closeToMine1.push(aboveMine1);
-
-                aboveMine2 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[1].id));
-                    closeToMine2.push(aboveMine2);
-
-                aboveMine3 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[2].id));
-                    closeToMine3.push(aboveMine3);
-
-                aboveMine4 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[3].id));
-                    closeToMine4.push(aboveMine4);
-
-                belowMine1 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[0].id));
-                    closeToMine1.push(belowMine1);
-
-                belowMine2 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[1].id));
-                    closeToMine2.push(belowMine2);
-
-                belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[2].id));
-                    closeToMine3.push(belowMine3);
-
-                belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
-                    closeToMine4.push(belowMine4);
-
-                upperRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) - gridWidth);
-                    if(!column1.includes(upperRightMine1)) {
-                        closeToMine1.push(upperRightMine1)
-                    }
-
-                upperRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) - gridWidth);
-                    if(!column1.includes(upperRightMine2)) {
-                        closeToMine2.push(upperRightMine2)
-                    }
-
-                upperRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) - gridWidth);
-                    if(!column1.includes(upperRightMine3)) {
-                        closeToMine3.push(upperRightMine3)
-                    }
-
-                upperRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) - gridWidth);
-                    if(!column1.includes(upperRightMine4)) {
-                        closeToMine4.push(upperRightMine4)
-                    }
-
-                lowerRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) + gridWidth);
-                    if(!column1.includes(lowerRightMine1)) {
-                        closeToMine1.push(lowerRightMine1)
-                    }
-
-                lowerRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) + gridWidth);
-                    if(!column1.includes(lowerRightMine2)) {
-                        closeToMine2.push(lowerRightMine2)
-                    }
-
-                lowerRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) + gridWidth);
-                    if(!column1.includes(lowerRightMine3)) {
-                        closeToMine3.push(lowerRightMine3)
-                    }
-
-                lowerRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) + gridWidth);
-                    if(!column1.includes(lowerRightMine4)) {
-                        closeToMine4.push(lowerRightMine4)
-                    }
-
-                upperLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) - gridWidth);
-                    if (!column8.includes(upperLeftMine1)) {
-                    closeToMine1.push(upperLeftMine1)
-                    }
-
-                upperLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) - gridWidth);
-                    if (!column8.includes(upperLeftMine2)) {
-                    closeToMine2.push(upperLeftMine2)
-                    }
-
-                upperLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) - gridWidth);
-                    if (!column8.includes(upperLeftMine3)) {
-                    closeToMine3.push(upperLeftMine3)
-                    }
-
-                upperLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) - gridWidth);
-                    if (!column8.includes(upperLeftMine4)) {
-                    closeToMine4.push(upperLeftMine4)
-                    }
-
-                lowerLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) + gridWidth);
-                    if (!column8.includes(lowerLeftMine1)) {
-                    closeToMine1.push(lowerLeftMine1)
-                    }
-
-                lowerLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) + gridWidth);
-                    if (!column8.includes(lowerLeftMine2)) {
-                    closeToMine2.push(lowerLeftMine2)
-                    }
-
-                lowerLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) + gridWidth);
-                    if (!column8.includes(lowerLeftMine3)) {
-                    closeToMine3.push(lowerLeftMine3)
-                    }
-
-                lowerLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) + gridWidth);
-                    if (!column8.includes(lowerLeftMine4)) {
-                    closeToMine4.push(lowerLeftMine4)
-                    }
-                
+        if(gameStart == false) {
+            if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+                const mineOnFirstSquare = thisSquare;
+                const foundIndex = mineLocations.findIndex(y => y == mineOnFirstSquare);
+                firstSquareSelected.push(mineOnFirstSquare);
+                mineLocations.splice(foundIndex, 1);
+                mineLocations.push(mineOnFirstSquare);
+                mineLocations.pop(mineOnFirstSquare);
                 for (let i = 0; i < allSquares.length; i++)
                     if (closeToMine1.includes(allSquares[i])) {
-                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                        allSquares[i].mineCount = allSquares[i].mineCount-1
                     }
 
                 for (let i = 0; i < allSquares.length; i++)
                     if (closeToMine2.includes(allSquares[i])) {
-                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                        allSquares[i].mineCount = allSquares[i].mineCount-1
                     }
 
                 for (let i = 0; i < allSquares.length; i++)
                     if (closeToMine3.includes(allSquares[i])) {
-                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                        allSquares[i].mineCount = allSquares[i].mineCount-1
                     }
 
                 for (let i = 0; i < allSquares.length; i++)
                     if (closeToMine4.includes(allSquares[i])) {
-                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                        allSquares[i].mineCount = allSquares[i].mineCount-1
                     }
-        }        
-    } 
-    
-    if(gameStart == true) {
-        if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
-            mineLocations[0].style.backgroundColor="#A020F0";
-            mineLocations[0].style.color="#A020F0";
-            mineLocations[1].style.backgroundColor="#A120F0";
-            mineLocations[1].style.color="#A020F0";
-            mineLocations[2].style.backgroundColor="#A020F0";
-            mineLocations[2].style.color="#A020F0";
-            mineLocations[3].style.backgroundColor="#A020F0";
-            mineLocations[3].style.color="#A020F0";
-            showGameOverMineModal();      
-            }  
-        }
+                closeToMine1 = [];
+                closeToMine2 = [];
+                closeToMine3 = [];
+                closeToMine4 = [];
+                console.log(closeToMine1)
+                mineLocations.push(shuffledMineLocations[4]);
+                console.log(mineLocations);
+                    rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
+                        if (!column1.includes(rightOfMine1)) {
+                            closeToMine1.push(rightOfMine1)
+                        }
+                    rightOfMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id));
+                        if (!column1.includes(rightOfMine2)) {
+                            closeToMine2.push(rightOfMine2)
+                        }
 
-    if(hitCount == 9) {
-        if (enableMines.checked == true) {
-            mineLocations[0].style.backgroundColor="#A020F0";
-            mineLocations[0].style.color="#A020F0";
-            mineLocations[1].style.backgroundColor="#A120F0";
-            mineLocations[1].style.color="#A020F0";
-            mineLocations[2].style.backgroundColor="#A020F0";
-            mineLocations[2].style.color="#A020F0";
-            mineLocations[3].style.backgroundColor="#A020F0";
-            mineLocations[3].style.color="#A020F0";
+                    rightOfMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id));
+                        if (!column1.includes(rightOfMine3)) {
+                            closeToMine3.push(rightOfMine3)
+                        }
+
+                    rightOfMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id));
+                        if (!column1.includes(rightOfMine4)) {
+                            closeToMine4.push(rightOfMine4)
+                        }
+                    
+                    leftOfMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id));
+                        if (!column8.includes(leftOfMine1)) {
+                            closeToMine1.push(leftOfMine1)
+                        }
+
+                    leftOfMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id));
+                        if (!column8.includes(leftOfMine2)) {
+                            closeToMine2.push(leftOfMine2)
+                        }
+
+                    leftOfMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id));
+                        if (!column8.includes(leftOfMine3)) {
+                            closeToMine3.push(leftOfMine3)
+                        }
+
+                    leftOfMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id));
+                        if (!column8.includes(leftOfMine4)) {
+                            closeToMine4.push(leftOfMine4)
+                        }
+
+                    aboveMine1 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[0].id));
+                        closeToMine1.push(aboveMine1);
+
+                    aboveMine2 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[1].id));
+                        closeToMine2.push(aboveMine2);
+
+                    aboveMine3 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[2].id));
+                        closeToMine3.push(aboveMine3);
+
+                    aboveMine4 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[3].id));
+                        closeToMine4.push(aboveMine4);
+
+                    belowMine1 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[0].id));
+                        closeToMine1.push(belowMine1);
+
+                    belowMine2 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[1].id));
+                        closeToMine2.push(belowMine2);
+
+                    belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[2].id));
+                        closeToMine3.push(belowMine3);
+
+                    belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
+                        closeToMine4.push(belowMine4);
+
+                    upperRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) - gridWidth);
+                        if(!column1.includes(upperRightMine1)) {
+                            closeToMine1.push(upperRightMine1)
+                        }
+
+                    upperRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) - gridWidth);
+                        if(!column1.includes(upperRightMine2)) {
+                            closeToMine2.push(upperRightMine2)
+                        }
+
+                    upperRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) - gridWidth);
+                        if(!column1.includes(upperRightMine3)) {
+                            closeToMine3.push(upperRightMine3)
+                        }
+
+                    upperRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) - gridWidth);
+                        if(!column1.includes(upperRightMine4)) {
+                            closeToMine4.push(upperRightMine4)
+                        }
+
+                    lowerRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) + gridWidth);
+                        if(!column1.includes(lowerRightMine1)) {
+                            closeToMine1.push(lowerRightMine1)
+                        }
+
+                    lowerRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) + gridWidth);
+                        if(!column1.includes(lowerRightMine2)) {
+                            closeToMine2.push(lowerRightMine2)
+                        }
+
+                    lowerRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) + gridWidth);
+                        if(!column1.includes(lowerRightMine3)) {
+                            closeToMine3.push(lowerRightMine3)
+                        }
+
+                    lowerRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) + gridWidth);
+                        if(!column1.includes(lowerRightMine4)) {
+                            closeToMine4.push(lowerRightMine4)
+                        }
+
+                    upperLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) - gridWidth);
+                        if (!column8.includes(upperLeftMine1)) {
+                        closeToMine1.push(upperLeftMine1)
+                        }
+
+                    upperLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) - gridWidth);
+                        if (!column8.includes(upperLeftMine2)) {
+                        closeToMine2.push(upperLeftMine2)
+                        }
+
+                    upperLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) - gridWidth);
+                        if (!column8.includes(upperLeftMine3)) {
+                        closeToMine3.push(upperLeftMine3)
+                        }
+
+                    upperLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) - gridWidth);
+                        if (!column8.includes(upperLeftMine4)) {
+                        closeToMine4.push(upperLeftMine4)
+                        }
+
+                    lowerLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) + gridWidth);
+                        if (!column8.includes(lowerLeftMine1)) {
+                        closeToMine1.push(lowerLeftMine1)
+                        }
+
+                    lowerLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) + gridWidth);
+                        if (!column8.includes(lowerLeftMine2)) {
+                        closeToMine2.push(lowerLeftMine2)
+                        }
+
+                    lowerLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) + gridWidth);
+                        if (!column8.includes(lowerLeftMine3)) {
+                        closeToMine3.push(lowerLeftMine3)
+                        }
+
+                    lowerLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) + gridWidth);
+                        if (!column8.includes(lowerLeftMine4)) {
+                        closeToMine4.push(lowerLeftMine4)
+                        }
+                    
+                    for (let i = 0; i < allSquares.length; i++)
+                        if (closeToMine1.includes(allSquares[i])) {
+                            allSquares[i].mineCount = allSquares[i].mineCount+1
+                        }
+
+                    for (let i = 0; i < allSquares.length; i++)
+                        if (closeToMine2.includes(allSquares[i])) {
+                            allSquares[i].mineCount = allSquares[i].mineCount+1
+                        }
+
+                    for (let i = 0; i < allSquares.length; i++)
+                        if (closeToMine3.includes(allSquares[i])) {
+                            allSquares[i].mineCount = allSquares[i].mineCount+1
+                        }
+
+                    for (let i = 0; i < allSquares.length; i++)
+                        if (closeToMine4.includes(allSquares[i])) {
+                            allSquares[i].mineCount = allSquares[i].mineCount+1
+                        }
+            }        
+        } 
+        
+        if(gameStart == true) {
+            if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+                explodeMine();
+                revealTreasuresAndMinesTimeout();
+                gameOverMineTimeout();      
+                }  
+            }
+
+        if(hitCount == 9) {
+            if (enableMines.checked == true) {
+                mineLocations[0].style.backgroundColor="#A020F0";
+                mineLocations[0].style.color="#A020F0";
+                mineLocations[1].style.backgroundColor="#A120F0";
+                mineLocations[1].style.color="#A020F0";
+                mineLocations[2].style.backgroundColor="#A020F0";
+                mineLocations[2].style.color="#A020F0";
+                mineLocations[3].style.backgroundColor="#A020F0";
+                mineLocations[3].style.color="#A020F0";
+            }
+            winGameTimeout();
+            document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
         }
-        showWinGameModal();
-        document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
+        gameStart = true;
     }
-    gameStart = true;
 }
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
 //Each EL can only fire one time
+
 a1.addEventListener("click", () => onClick(a1), {once : true});
 a1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a1.mineCount;
     if(enableMines.checked == true) a1.innerHTML = a1.mineCount}, {once : true});
 b1.addEventListener("click", () => onClick(b1), {once : true});
 b1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+        remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b1.mineCount;
     if(enableMines.checked == true) b1.innerHTML = b1.mineCount}, {once : true});
 c1.addEventListener("click", () => onClick(c1), {once : true});
 c1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c1.mineCount;
     if(enableMines.checked == true) c1.innerHTML = c1.mineCount}, {once : true});
 d1.addEventListener("click", () => onClick(d1), {once : true});
 d1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d1.mineCount;
     if(enableMines.checked == true) d1.innerHTML = d1.mineCount}, {once : true});
 e1.addEventListener("click", () => onClick(e1), {once : true});
 e1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e1.mineCount;
     if(enableMines.checked == true) e1.innerHTML = e1.mineCount}, {once : true});
 f1.addEventListener("click", () => onClick(f1), {once : true});
 f1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f1.mineCount;
     if(enableMines.checked == true) f1.innerHTML = f1.mineCount}, {once : true});
 g1.addEventListener("click", () => onClick(g1), {once : true});
 g1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g1.mineCount;
     if(enableMines.checked == true) g1.innerHTML = g1.mineCount}, {once : true});
 h1.addEventListener("click", () => onClick(h1), {once : true});
 h1.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h1.mineCount;
     if(enableMines.checked == true) h1.innerHTML = h1.mineCount}, {once : true});
 
 a2.addEventListener("click", () => onClick(a2), {once : true});
 a2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a2.mineCount;
     if(enableMines.checked == true) a2.innerHTML = a2.mineCount}, {once : true});
 b2.addEventListener("click", () => onClick(b2), {once : true});
 b2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b2.mineCount;
     if(enableMines.checked == true) b2.innerHTML = b2.mineCount}, {once : true});
 c2.addEventListener("click", () => onClick(c2), {once : true});
 c2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c2.mineCount;
     if(enableMines.checked == true) c2.innerHTML = c2.mineCount}, {once : true});
 d2.addEventListener("click", () => onClick(d2), {once : true});
 d2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d2.mineCount;
     if(enableMines.checked == true) d2.innerHTML = d2.mineCount}, {once : true});
 e2.addEventListener("click", () => onClick(e2), {once : true});
 e2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e2.mineCount;
     if(enableMines.checked == true) e2.innerHTML = e2.mineCount}, {once : true});
 f2.addEventListener("click", () => onClick(f2), {once : true});
 f2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f2.mineCount;
     if(enableMines.checked == true) f2.innerHTML = f2.mineCount}, {once : true});
 g2.addEventListener("click", () => onClick(g2), {once : true});
 g2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g2.mineCount;
     if(enableMines.checked == true) g2.innerHTML = g2.mineCount}, {once : true});
 h2.addEventListener("click", () => onClick(h2), {once : true});
 h2.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h2.mineCount;
     if(enableMines.checked == true) h2.innerHTML = h2.mineCount}, {once : true});
 
 a3.addEventListener("click", () => onClick(a3), {once : true});
 a3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a3.mineCount;
     if(enableMines.checked == true) a3.innerHTML = a3.mineCount}, {once : true});
 b3.addEventListener("click", () => onClick(b3), {once : true});
 b3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b3.mineCount;
     if(enableMines.checked == true) b3.innerHTML = b3.mineCount}, {once : true});
 c3.addEventListener("click", () => onClick(c3), {once : true});
 c3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c3.mineCount;
     if(enableMines.checked == true) c3.innerHTML = c3.mineCount}, {once : true});
 d3.addEventListener("click", () => onClick(d3), {once : true});
 d3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d3.mineCount;
     if(enableMines.checked == true) d3.innerHTML = d3.mineCount}, {once : true});
 e3.addEventListener("click", () => onClick(e3), {once : true});
 e3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e3.mineCount;
     if(enableMines.checked == true) e3.innerHTML = e3.mineCount}, {once : true});
 f3.addEventListener("click", () => onClick(f3), {once : true});
 f3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f3.mineCount;
     if(enableMines.checked == true) f3.innerHTML = f3.mineCount}, {once : true});
 g3.addEventListener("click", () => onClick(g3), {once : true});
 g3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g3.mineCount;
     if(enableMines.checked == true) g3.innerHTML = g3.mineCount}, {once : true});
 h3.addEventListener("click", () => onClick(h3), {once : true});
 h3.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h3.mineCount;
     if(enableMines.checked == true) h3.innerHTML = h3.mineCount}, {once : true});
 
 a4.addEventListener("click", () => onClick(a4), {once : true});
 a4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a4.mineCount;
     if(enableMines.checked == true) a4.innerHTML = a4.mineCount}, {once : true});
 b4.addEventListener("click", () => onClick(b4), {once : true});
 b4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b4.mineCount;
     if(enableMines.checked == true) b4.innerHTML = b4.mineCount}, {once : true});
 c4.addEventListener("click", () => onClick(c4), {once : true});
 c4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c4.mineCount;
     if(enableMines.checked == true) c4.innerHTML = c4.mineCount}, {once : true});
 d4.addEventListener("click", () => onClick(d4), {once : true});
 d4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d4.mineCount;
     if(enableMines.checked == true) d4.innerHTML = d4.mineCount}, {once : true});
 e4.addEventListener("click", () => onClick(e4), {once : true});
 e4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e4.mineCount;
     if(enableMines.checked == true) e4.innerHTML = e4.mineCount}, {once : true});
 f4.addEventListener("click", () => onClick(f4), {once : true});
 f4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f4.mineCount;
     if(enableMines.checked == true) f4.innerHTML = f4.mineCount}, {once : true});
 g4.addEventListener("click", () => onClick(g4), {once : true});
 g4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g4.mineCount;
     if(enableMines.checked == true) g4.innerHTML = g4.mineCount}, {once : true});
 h4.addEventListener("click", () => onClick(h4), {once : true});
 h4.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h4.mineCount;
     if(enableMines.checked == true) h4.innerHTML = h4.mineCount}, {once : true});
 
 a5.addEventListener("click", () => onClick(a5), {once : true});
 a5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a5.mineCount;
     if(enableMines.checked == true) a5.innerHTML = a5.mineCount}, {once : true});
 b5.addEventListener("click", () => onClick(b5), {once : true});
 b5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b5.mineCount;
     if(enableMines.checked == true) b5.innerHTML = b5.mineCount}, {once : true});
 c5.addEventListener("click", () => onClick(c5), {once : true});
 c5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c5.mineCount;
     if(enableMines.checked == true) c5.innerHTML = c5.mineCount}, {once : true});
 d5.addEventListener("click", () => onClick(d5), {once : true});
 d5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d5.mineCount;
     if(enableMines.checked == true) d5.innerHTML = d5.mineCount}, {once : true});
 e5.addEventListener("click", () => onClick(e5), {once : true});
 e5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e5.mineCount;
     if(enableMines.checked == true) e5.innerHTML = e5.mineCount}, {once : true});
 f5.addEventListener("click", () => onClick(f5), {once : true});
 f5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f5.mineCount;
     if(enableMines.checked == true) f5.innerHTML = f5.mineCount}, {once : true});
 g5.addEventListener("click", () => onClick(g5), {once : true});
 g5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g5.mineCount;
     if(enableMines.checked == true) g5.innerHTML = g5.mineCount}, {once : true});
 h5.addEventListener("click", () => onClick(h5), {once : true});
 h5.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h5.mineCount;
     if(enableMines.checked == true) h5.innerHTML = h5.mineCount}, {once : true});
 
 a6.addEventListener("click", () => onClick(a6), {once : true});
 a6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a6.mineCount;
     if(enableMines.checked == true) a6.innerHTML = a6.mineCount}, {once : true});
 b6.addEventListener("click", () => onClick(b6), {once : true});
 b6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b6.mineCount;
     if(enableMines.checked == true) b6.innerHTML = b6.mineCount}, {once : true});
 c6.addEventListener("click", () => onClick(c6), {once : true});
 c6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c6.mineCount;
     if(enableMines.checked == true) c6.innerHTML = c6.mineCount}, {once : true});
 d6.addEventListener("click", () => onClick(d6), {once : true});
 d6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d6.mineCount;
     if(enableMines.checked == true) d6.innerHTML = d6.mineCount}, {once : true});
 e6.addEventListener("click", () => onClick(e6), {once : true});
 e6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e6.mineCount;
     if(enableMines.checked == true) e6.innerHTML = e6.mineCount}, {once : true});
 f6.addEventListener("click", () => onClick(f6), {once : true});
 f6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f6.mineCount;
     if(enableMines.checked == true) f6.innerHTML = f6.mineCount}, {once : true});
 g6.addEventListener("click", () => onClick(g6), {once : true});
 g6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g6.mineCount;
     if(enableMines.checked == true) g6.innerHTML = g6.mineCount}, {once : true});
 h6.addEventListener("click", () => onClick(h6), {once : true});
 h6.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h6.mineCount;
     if(enableMines.checked == true) h6.innerHTML = h6.mineCount}, {once : true});
 
 a7.addEventListener("click", () => onClick(a7), {once : true});
 a7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a7.mineCount;
     if(enableMines.checked == true) a7.innerHTML = a7.mineCount}, {once : true});
 b7.addEventListener("click", () => onClick(b7), {once : true});
 b7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b7.mineCount;
     if(enableMines.checked == true) b7.innerHTML = b7.mineCount}, {once : true});
 c7.addEventListener("click", () => onClick(c7), {once : true});
 c7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c7.mineCount;
     if(enableMines.checked == true) c7.innerHTML = c7.mineCount}, {once : true});
 d7.addEventListener("click", () => onClick(d7), {once : true});
 d7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d7.mineCount;
     if(enableMines.checked == true) d7.innerHTML = d7.mineCount}, {once : true});
 e7.addEventListener("click", () => onClick(e7), {once : true});
 e7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e7.mineCount;
     if(enableMines.checked == true) e7.innerHTML = e7.mineCount}, {once : true});
 f7.addEventListener("click", () => onClick(f7), {once : true});
 f7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount
     f7.mineCount;
     if(enableMines.checked == true) f7.innerHTML = f7.mineCount}, {once : true});
 g7.addEventListener("click", () => onClick(g7), {once : true});
 g7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g7.mineCount;
     if(enableMines.checked == true) g7.innerHTML = g7.mineCount}, {once : true});
 h7.addEventListener("click", () => onClick(h7), {once : true});
 h7.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h7.mineCount;
     if(enableMines.checked == true) h7.innerHTML = h7.mineCount}, {once : true});
 
 a8.addEventListener("click", () => onClick(a8), {once : true});
 a8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     a8.mineCount;
     if(enableMines.checked == true) a8.innerHTML = a8.mineCount}, {once : true});
 b8.addEventListener("click", () => onClick(b8), {once : true});
 b8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     b8.mineCount;
     if(enableMines.checked == true) b8.innerHTML = b8.mineCount}, {once : true});
 c8.addEventListener("click", () => onClick(c8), {once : true});
 c8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     c8.mineCount;
     if(enableMines.checked == true) c8.innerHTML = c8.mineCount}, {once : true});
 d8.addEventListener("click", () => onClick(d8), {once : true});
 d8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     d8.mineCount;
     if(enableMines.checked == true) d8.innerHTML = d8.mineCount}, {once : true});
 e8.addEventListener("click", () => onClick(e8), {once : true});
 e8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     e8.mineCount;
     if(enableMines.checked == true) e8.innerHTML = e8.mineCount}, {once : true});
 f8.addEventListener("click", () => onClick(f8), {once : true});
 f8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     f8.mineCount;
     if(enableMines.checked == true) f8.innerHTML = f8.mineCount}, {once : true});
 g8.addEventListener("click", () => onClick(g8), {once : true});
 g8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     g8.mineCount;
     if(enableMines.checked == true) g8.innerHTML = g8.mineCount}, {once : true});
 h8.addEventListener("click", () => onClick(h8), {once : true});
 h8.addEventListener("click", () => {
-    remainingTurnsCount --;
+    if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 10) {
+    remainingTurnsCount --};
     remainingTurns.innerHTML = remainingTurnsCount;
     h8.mineCount;
     if(enableMines.checked == true) h8.innerHTML = h8.mineCount}, {once : true});
