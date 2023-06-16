@@ -1,3 +1,6 @@
+//When the user clicks the first square, this turns to true. Used to prevent user from clicking on a mine at start of game.
+let gameStart = false;
+
 //Counters for turns, total hits, and specific treasure hits
 let turnCount = 0;
 let hitCount = 0;
@@ -9,7 +12,7 @@ let largeTreasureHits = 0;
 let remainingTurns = document.getElementById("turnCounter")
 let remainingTurnsCount = 24;
 
-//Images of hidden treasures, indicating size and shape of object
+//Images of hidden treasures, hinting at lengths of treasures
 let smallTreasurePic = document.getElementById("picitem1")
 let mediumTreasurePic = document.getElementById("picitem2")
 let largeTreasurePic = document.getElementById("picitem3")
@@ -577,16 +580,15 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
 };
 
-gameStart = false;
-
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure or a mine
 function onClick(thisSquare) {
+
     if(takenSquares.includes(thisSquare))   {
        thisSquare.style.backgroundColor= "#DF2C14";
        thisSquare.style.color= "#DF2C14";
        turnCount = turnCount+1;
-       hitCount = hitCount+1;    
+       hitCount = hitCount+1;
     }   else    {
             thisSquare.style.backgroundColor= "#3CDFFF";
             thisSquare.style.color= "#3CDFFF";
@@ -693,12 +695,11 @@ function onClick(thisSquare) {
         thisSquare.style.color="#000000";
     }
 
-    if (gameStart==false) {
+    if(gameStart == false) {
         if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
             const mineOnFirstSquare = thisSquare;
             const foundIndex = mineLocations.findIndex(y => y == mineOnFirstSquare);
             firstSquareSelected.push(mineOnFirstSquare);
-            console.log(firstSquareSelected);
             mineLocations.splice(foundIndex, 1);
             mineLocations.push(mineOnFirstSquare);
             mineLocations.pop(mineOnFirstSquare);
@@ -728,179 +729,184 @@ function onClick(thisSquare) {
             console.log(closeToMine1)
             mineLocations.push(shuffledMineLocations[4]);
             console.log(mineLocations);
-            rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
-                if (!column1.includes(rightOfMine1)) {
-                    closeToMine1.push(rightOfMine1)
-                }
-            rightOfMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id));
-                if (!column1.includes(rightOfMine2)) {
-                    closeToMine2.push(rightOfMine2)
-                }
+                rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
+                    if (!column1.includes(rightOfMine1)) {
+                        closeToMine1.push(rightOfMine1)
+                    }
+                rightOfMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id));
+                    if (!column1.includes(rightOfMine2)) {
+                        closeToMine2.push(rightOfMine2)
+                    }
 
-            rightOfMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id));
-                if (!column1.includes(rightOfMine3)) {
-                    closeToMine3.push(rightOfMine3)
-                }
+                rightOfMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id));
+                    if (!column1.includes(rightOfMine3)) {
+                        closeToMine3.push(rightOfMine3)
+                    }
 
-            rightOfMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id));
-                if (!column1.includes(rightOfMine4)) {
-                    closeToMine4.push(rightOfMine4)
-                }
-            
-            leftOfMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id));
-                if (!column8.includes(leftOfMine1)) {
-                    closeToMine1.push(leftOfMine1)
-                }
+                rightOfMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id));
+                    if (!column1.includes(rightOfMine4)) {
+                        closeToMine4.push(rightOfMine4)
+                    }
+                
+                leftOfMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id));
+                    if (!column8.includes(leftOfMine1)) {
+                        closeToMine1.push(leftOfMine1)
+                    }
 
-            leftOfMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id));
-                if (!column8.includes(leftOfMine2)) {
-                    closeToMine2.push(leftOfMine2)
-                }
+                leftOfMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id));
+                    if (!column8.includes(leftOfMine2)) {
+                        closeToMine2.push(leftOfMine2)
+                    }
 
-            leftOfMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id));
-                if (!column8.includes(leftOfMine3)) {
-                    closeToMine3.push(leftOfMine3)
-                }
+                leftOfMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id));
+                    if (!column8.includes(leftOfMine3)) {
+                        closeToMine3.push(leftOfMine3)
+                    }
 
-            leftOfMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id));
-                if (!column8.includes(leftOfMine4)) {
-                    closeToMine4.push(leftOfMine4)
-                }
+                leftOfMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id));
+                    if (!column8.includes(leftOfMine4)) {
+                        closeToMine4.push(leftOfMine4)
+                    }
 
-            aboveMine1 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[0].id));
-                closeToMine1.push(aboveMine1);
+                aboveMine1 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[0].id));
+                    closeToMine1.push(aboveMine1);
 
-            aboveMine2 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[1].id));
-                closeToMine2.push(aboveMine2);
+                aboveMine2 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[1].id));
+                    closeToMine2.push(aboveMine2);
 
-            aboveMine3 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[2].id));
-                closeToMine3.push(aboveMine3);
+                aboveMine3 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[2].id));
+                    closeToMine3.push(aboveMine3);
 
-            aboveMine4 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[3].id));
-                closeToMine4.push(aboveMine4);
+                aboveMine4 = allSquares.find(element => Number(element.id) + gridWidth == Number(mineLocations[3].id));
+                    closeToMine4.push(aboveMine4);
 
-            belowMine1 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[0].id));
-                closeToMine1.push(belowMine1);
+                belowMine1 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[0].id));
+                    closeToMine1.push(belowMine1);
 
-            belowMine2 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[1].id));
-                closeToMine2.push(belowMine2);
+                belowMine2 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[1].id));
+                    closeToMine2.push(belowMine2);
 
-            belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[2].id));
-                closeToMine3.push(belowMine3);
+                belowMine3 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[2].id));
+                    closeToMine3.push(belowMine3);
 
-            belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
-                closeToMine4.push(belowMine4);
+                belowMine4 = allSquares.find(element => Number(element.id) - gridWidth == Number(mineLocations[3].id));
+                    closeToMine4.push(belowMine4);
 
-            upperRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) - gridWidth);
-                if(!column1.includes(upperRightMine1)) {
-                    closeToMine1.push(upperRightMine1)
-                }
+                upperRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) - gridWidth);
+                    if(!column1.includes(upperRightMine1)) {
+                        closeToMine1.push(upperRightMine1)
+                    }
 
-            upperRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) - gridWidth);
-                if(!column1.includes(upperRightMine2)) {
-                    closeToMine2.push(upperRightMine2)
-                }
+                upperRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) - gridWidth);
+                    if(!column1.includes(upperRightMine2)) {
+                        closeToMine2.push(upperRightMine2)
+                    }
 
-            upperRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) - gridWidth);
-                if(!column1.includes(upperRightMine3)) {
-                    closeToMine3.push(upperRightMine3)
-                }
+                upperRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) - gridWidth);
+                    if(!column1.includes(upperRightMine3)) {
+                        closeToMine3.push(upperRightMine3)
+                    }
 
-            upperRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) - gridWidth);
-                if(!column1.includes(upperRightMine4)) {
-                    closeToMine4.push(upperRightMine4)
-                }
+                upperRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) - gridWidth);
+                    if(!column1.includes(upperRightMine4)) {
+                        closeToMine4.push(upperRightMine4)
+                    }
 
-            lowerRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) + gridWidth);
-                if(!column1.includes(lowerRightMine1)) {
-                    closeToMine1.push(lowerRightMine1)
-                }
+                lowerRightMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id) + gridWidth);
+                    if(!column1.includes(lowerRightMine1)) {
+                        closeToMine1.push(lowerRightMine1)
+                    }
 
-            lowerRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) + gridWidth);
-                if(!column1.includes(lowerRightMine2)) {
-                    closeToMine2.push(lowerRightMine2)
-                }
+                lowerRightMine2 = allSquares.find(element => Number(element.id) > Number(mineLocations[1].id) + gridWidth);
+                    if(!column1.includes(lowerRightMine2)) {
+                        closeToMine2.push(lowerRightMine2)
+                    }
 
-            lowerRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) + gridWidth);
-                if(!column1.includes(lowerRightMine3)) {
-                    closeToMine3.push(lowerRightMine3)
-                }
+                lowerRightMine3 = allSquares.find(element => Number(element.id) > Number(mineLocations[2].id) + gridWidth);
+                    if(!column1.includes(lowerRightMine3)) {
+                        closeToMine3.push(lowerRightMine3)
+                    }
 
-            lowerRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) + gridWidth);
-                if(!column1.includes(lowerRightMine4)) {
-                    closeToMine4.push(lowerRightMine4)
-                }
+                lowerRightMine4 = allSquares.find(element => Number(element.id) > Number(mineLocations[3].id) + gridWidth);
+                    if(!column1.includes(lowerRightMine4)) {
+                        closeToMine4.push(lowerRightMine4)
+                    }
 
-            upperLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) - gridWidth);
-                if (!column8.includes(upperLeftMine1)) {
-                closeToMine1.push(upperLeftMine1)
-                }
+                upperLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) - gridWidth);
+                    if (!column8.includes(upperLeftMine1)) {
+                    closeToMine1.push(upperLeftMine1)
+                    }
 
-            upperLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) - gridWidth);
-                if (!column8.includes(upperLeftMine2)) {
-                closeToMine2.push(upperLeftMine2)
-                }
+                upperLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) - gridWidth);
+                    if (!column8.includes(upperLeftMine2)) {
+                    closeToMine2.push(upperLeftMine2)
+                    }
 
-            upperLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) - gridWidth);
-                if (!column8.includes(upperLeftMine3)) {
-                closeToMine3.push(upperLeftMine3)
-                }
+                upperLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) - gridWidth);
+                    if (!column8.includes(upperLeftMine3)) {
+                    closeToMine3.push(upperLeftMine3)
+                    }
 
-            upperLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) - gridWidth);
-                if (!column8.includes(upperLeftMine4)) {
-                closeToMine4.push(upperLeftMine4)
-                }
+                upperLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) - gridWidth);
+                    if (!column8.includes(upperLeftMine4)) {
+                    closeToMine4.push(upperLeftMine4)
+                    }
 
-            lowerLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) + gridWidth);
-                if (!column8.includes(lowerLeftMine1)) {
-                closeToMine1.push(lowerLeftMine1)
-                }
+                lowerLeftMine1 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[0].id) + gridWidth);
+                    if (!column8.includes(lowerLeftMine1)) {
+                    closeToMine1.push(lowerLeftMine1)
+                    }
 
-            lowerLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) + gridWidth);
-                if (!column8.includes(lowerLeftMine2)) {
-                closeToMine2.push(lowerLeftMine2)
-                }
+                lowerLeftMine2 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[1].id) + gridWidth);
+                    if (!column8.includes(lowerLeftMine2)) {
+                    closeToMine2.push(lowerLeftMine2)
+                    }
 
-            lowerLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) + gridWidth);
-                if (!column8.includes(lowerLeftMine3)) {
-                closeToMine3.push(lowerLeftMine3)
-                }
+                lowerLeftMine3 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[2].id) + gridWidth);
+                    if (!column8.includes(lowerLeftMine3)) {
+                    closeToMine3.push(lowerLeftMine3)
+                    }
 
-            lowerLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) + gridWidth);
-                if (!column8.includes(lowerLeftMine4)) {
-                closeToMine4.push(lowerLeftMine4)
-                }
-            
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine1.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount+1
-                }
+                lowerLeftMine4 = allSquares.findLast(element => Number(element.id) < Number(mineLocations[3].id) + gridWidth);
+                    if (!column8.includes(lowerLeftMine4)) {
+                    closeToMine4.push(lowerLeftMine4)
+                    }
+                
+                for (let i = 0; i < allSquares.length; i++)
+                    if (closeToMine1.includes(allSquares[i])) {
+                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                    }
 
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine2.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount+1
-                }
+                for (let i = 0; i < allSquares.length; i++)
+                    if (closeToMine2.includes(allSquares[i])) {
+                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                    }
 
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine3.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount+1
-                }
+                for (let i = 0; i < allSquares.length; i++)
+                    if (closeToMine3.includes(allSquares[i])) {
+                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                    }
 
-            for (let i = 0; i < allSquares.length; i++)
-                if (closeToMine4.includes(allSquares[i])) {
-                    allSquares[i].mineCount = allSquares[i].mineCount+1
-                }
-            }
-        
-    }   
+                for (let i = 0; i < allSquares.length; i++)
+                    if (closeToMine4.includes(allSquares[i])) {
+                        allSquares[i].mineCount = allSquares[i].mineCount+1
+                    }
+        }        
+    } 
     
-    if (gameStart==true) {
+    if(gameStart == true) {
         if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
-            thisSquare.style.backgroundColor="#A020F0";
-            thisSquare.style.color="#A020F0";
+            mineLocations[0].style.backgroundColor="#A020F0";
+            mineLocations[0].style.color="#A020F0";
+            mineLocations[1].style.backgroundColor="#A120F0";
+            mineLocations[1].style.color="#A020F0";
+            mineLocations[2].style.backgroundColor="#A020F0";
+            mineLocations[2].style.color="#A020F0";
+            mineLocations[3].style.backgroundColor="#A020F0";
+            mineLocations[3].style.color="#A020F0";
             showGameOverMineModal();      
+            }  
         }
-    }
 
     if(hitCount == 9) {
         if (enableMines.checked == true) {
@@ -916,11 +922,8 @@ function onClick(thisSquare) {
         showWinGameModal();
         document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount - 1); 
     }
-
-    {gameStart==true;}
+    gameStart = true;
 }
-
-console.log(gameStart)
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
