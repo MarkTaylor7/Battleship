@@ -122,8 +122,6 @@ function revealTreasuresAndMines() {
             mineLocations[1].style.color="#A020F0";
             mineLocations[2].style.backgroundColor="#A020F0";
             mineLocations[2].style.color="#A020F0";
-            mineLocations[3].style.backgroundColor="#A020F0";
-            mineLocations[3].style.color="#A020F0";
         }
 }
 
@@ -770,7 +768,6 @@ function onClick(thisSquare) {
                 closeToMine2 = [];
                 closeToMine3 = [];
                 closeToMine4 = [];
-                console.log(closeToMine1)
                 mineLocations.push(shuffledMineLocations[4]);
                 console.log(mineLocations);
                     rightOfMine1 = allSquares.find(element => Number(element.id) > Number(mineLocations[0].id));
@@ -940,9 +937,18 @@ function onClick(thisSquare) {
         
         if(gameStart == true) {
             if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+                const endOfGameMine = thisSquare;
+                const endOfGameMineIndex = mineLocations.findIndex(y => y == endOfGameMine);
+                firstSquareSelected.push(endOfGameMine);
+                mineLocations.splice(endOfGameMineIndex, 1);
+                mineLocations.push(endOfGameMine);
+                mineLocations.pop(endOfGameMine);
+                thisSquare.style.backgroundColor="#FF1694";
+                thisSquare.style.color="#FF1694";
                 remainingTurnsCount --;
                 mineExploded = true;
                 revealTreasuresAndMinesTimeout();
+                
                 gameOverMineTimeout();      
                 }  
             }
@@ -958,6 +964,7 @@ function onClick(thisSquare) {
                 mineLocations[3].style.backgroundColor="#A020F0";
                 mineLocations[3].style.color="#A020F0";
             }
+            
             remainingTurnsCount --;
             allTreasuresFound = true;
             winGameTimeout();
