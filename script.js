@@ -29,27 +29,31 @@ const modals = document.getElementsByClassName("modal");
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
 }
 
 function hideWelcomeModal() {
     modals[0].style.display = "none";
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
 }
 
 easyModeBtn.onclick = function() {
-    modals[0].style.display = "none";
+    hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "30";
     remainingTurnsCount = 30;
     turnCount = -6;
 }
 
 normalModeBtn.onclick = function() {
-    modals[0].style.display = "none";
+    hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "24";
     remainingTurnsCount = 24;
 }
 
 hardModeBtn.onclick = function() {
-    modals[0].style.display = "none";
+    hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "19";
     remainingTurnsCount = 19;
     turnCount = 5;
@@ -124,7 +128,7 @@ function revealTreasuresAndMines() {
 }
 
 function gameOverTimeout() {
-    timeout = setTimeout(showGameOverModal, 4500);
+    timeout = setTimeout(showGameOverModal, 3750);
 }
 
 function showGameOverModal() {
@@ -132,7 +136,7 @@ function showGameOverModal() {
 }
 
 function gameOverMineTimeout() {
-    timeout = setTimeout(showGameOverMineModal, 4500);
+    timeout = setTimeout(showGameOverMineModal, 3750);
 }
 
 function showGameOverMineModal() {
@@ -153,6 +157,12 @@ losePlayAgainMineBtn.onclick = function resetGame() {
     location.replace(location.href);  
 }
 
+const showSolutionBtnAfterWin = document.getElementById("revealObjectsAfterWin");
+showSolutionBtnAfterWin.onclick = function () {
+    modals[2].style.display = "none";
+    winGameTimeout();
+    }
+
 const showSolutionBtn = document.getElementById("revealObjects");
 showSolutionBtn.onclick = function () {
     modals[3].style.display = "none";
@@ -162,7 +172,7 @@ showSolutionBtn.onclick = function () {
 const showSolutionBtnMine = document.getElementById("revealObjectsMine");
 showSolutionBtnMine.onclick = function () {
     modals[4].style.display = "none";
-    gameOverTimeout();
+    gameOverMineTimeout();
     }
 
 //Width of grid
