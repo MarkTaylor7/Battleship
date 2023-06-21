@@ -101,12 +101,12 @@ function revealTreasuresAndMines() {
     chest.location[1].style.backgroundColor="#FFFF00";
     chest.location[0].style.color="#FFFF00";
     chest.location[1].style.color="#FFFF00";
-    umbrella.location[0].style.backgroundColor="#FC6600";
-    umbrella.location[1].style.backgroundColor="#FC6600";
-    umbrella.location[2].style.backgroundColor="#FC6600";
-    umbrella.location[0].style.color="#FC6600";
-    umbrella.location[1].style.color="#FC6600";
-    umbrella.location[2].style.color="#FC6600";
+    golfClubs.location[0].style.backgroundColor="#FC6600";
+    golfClubs.location[1].style.backgroundColor="#FC6600";
+    golfClubs.location[2].style.backgroundColor="#FC6600";
+    golfClubs.location[0].style.color="#FC6600";
+    golfClubs.location[1].style.color="#FC6600";
+    golfClubs.location[2].style.color="#FC6600";
     surfboard.location[0].style.backgroundColor="#03AC13";
     surfboard.location[1].style.backgroundColor="#03AC13";
     surfboard.location[2].style.backgroundColor="#03AC13";
@@ -359,10 +359,10 @@ class Treasure {
 }
 
 const chest = new Treasure("chest", 2, [])
-const umbrella = new Treasure("umbrella", 3, [])
+const golfClubs = new Treasure("golfClubs", 3, [])
 const surfboard = new Treasure("surfboard", 4, [])
 
-const treasures = [chest, umbrella, surfboard]
+const treasures = [chest, golfClubs, surfboard]
 
 
 //Squares that are randomly selected and considered valid are added to this array so they are no longer in play
@@ -632,7 +632,7 @@ for (let i = 0; i < allSquares.length; i++)
     }
 
 console.log(chest.location)
-console.log(umbrella.location)
+console.log(golfClubs.location)
 console.log(surfboard.location)
 console.log(mineLocations)
 
@@ -655,6 +655,27 @@ function disableGridClick() {
     for (let i = 0; i < collection.length; i++) {
         collection[i].style.cursor = "not-allowed";
     }
+}
+
+function chestFoundAlert() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbarChest");
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function golfClubsFoundAlert() {
+    var x = document.getElementById("snackbarGolfClubs");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function surfboardFoundAlert() {
+    var x = document.getElementById("snackbarSurfboard");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 //Main function for confirming if a clicked square contains treasure, 
@@ -690,29 +711,29 @@ function onClick(thisSquare) {
                             chest.location[0].style.color="#000000";
                             chest.location[1].style.color="#000000";
                         } 
-                alert("You found the small treasure!");
+                chestFoundAlert();
                 foundSmallTreasure();
             }
         }
-        if(umbrella.location.includes(thisSquare))  {
+        if(golfClubs.location.includes(thisSquare))  {
             thisSquare.style.cursor = "auto";
             mediumTreasureHits = mediumTreasureHits+1;
             if(mediumTreasureHits == 3)  {
                 thisSquare.style.backgroundColor= "#DF2C14";
-                umbrella.location[0].style.backgroundColor="#FC6600";
-                umbrella.location[1].style.backgroundColor="#FC6600";
-                umbrella.location[2].style.backgroundColor="#FC6600";
+                golfClubs.location[0].style.backgroundColor="#FC6600";
+                golfClubs.location[1].style.backgroundColor="#FC6600";
+                golfClubs.location[2].style.backgroundColor="#FC6600";
                     if (enableMines.checked == false) {
-                        umbrella.location[0].style.color="#FC6600";
-                        umbrella.location[1].style.color="#FC6600";
-                        umbrella.location[2].style.color="#FC6600";
+                        golfClubs.location[0].style.color="#FC6600";
+                        golfClubs.location[1].style.color="#FC6600";
+                        golfClubs.location[2].style.color="#FC6600";
                         } else { 
-                            umbrella.location[0].style.color="#000000";
-                            umbrella.location[1].style.color="#000000";
-                            umbrella.location[2].style.color="#000000";
+                            golfClubs.location[0].style.color="#000000";
+                            golfClubs.location[1].style.color="#000000";
+                            golfClubs.location[2].style.color="#000000";
                         }
                 //setTimeout(function() { alert("my message"); }, 100);
-                alert("You found the medium treasure!");
+                golfClubsFoundAlert();
                 foundMediumTreasure();
             }
         }
@@ -735,8 +756,8 @@ function onClick(thisSquare) {
                             surfboard.location[2].style.color="#000000";
                             surfboard.location[3].style.color="#000000";
                         }
-        alert("You found the large treasure!");
-        foundLargeTreasure();
+            surfboardFoundAlert();
+            foundLargeTreasure();
             }
         }
 
