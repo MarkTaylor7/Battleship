@@ -1,5 +1,6 @@
 body {
     background-color:tan;
+    margin: 0;
     }
 
 #mainContainer  {
@@ -7,6 +8,7 @@ body {
     max-height: 100%;
     text-align: center;
     margin: auto;
+    
     }
 
 #title  {
@@ -199,6 +201,10 @@ p2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
         text-align: center;
     }
 
+p3  {
+    color: rgb(27, 145, 255);
+    }   
+
 div {
     border-width: 3px;
     border-color: black;
@@ -272,6 +278,13 @@ h4 {
     text-align: center;
     }
 
+footer {
+    background-color:rgb(27, 145, 255);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: -5px;
+
+    }
+
 #socials {
     text-align: center;
     margin: auto;
@@ -279,8 +292,9 @@ h4 {
     }
 
 #credit {
-    background-color:bisque;
-    width: 65%;
+    background-color:rgb(255, 255, 255);
+    width: 50%;
+    text
     text-align: center; 
     margin: auto;
     font-weight: bold;
