@@ -640,15 +640,22 @@ console.log(mineLocations)
 //(currently using green squares as placeholder)
 function foundSmallTreasure()   {
     smallTreasurePic.src = "images/greenSquares2.png";
-};
+}
 
 function foundMediumTreasure()   {
     mediumTreasurePic.src = "images/greenSquares3.png";
-};
+}
 
 function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4.png";
-};
+}
+
+function disableGridClick() {
+    const collection = document.getElementsByClassName("column");
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.cursor = "not-allowed";
+    }
+}
 
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure or a mine
@@ -656,12 +663,14 @@ function onClick(thisSquare) {
 
     if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 9) {
         if(takenSquares.includes(thisSquare))   {
-        thisSquare.style.backgroundColor= "#DF2C14";
-        thisSquare.style.color= "#DF2C14";
-        turnCount = turnCount+1;
-        hitCount = hitCount+1;
+            thisSquare.style.cursor = "auto";
+            thisSquare.style.backgroundColor= "#DF2C14";
+            thisSquare.style.color= "#DF2C14";
+            turnCount = turnCount+1;
+            hitCount = hitCount+1;
         
         }   else    {
+                thisSquare.style.cursor = "auto";
                 thisSquare.style.backgroundColor= "#3CDFFF";
                 thisSquare.style.color= "#3CDFFF";
                 turnCount = turnCount+1;
@@ -669,6 +678,7 @@ function onClick(thisSquare) {
             }
 
         if(chest.location.includes(thisSquare))  {
+            thisSquare.style.cursor = "auto";
             smallTreasureHits = smallTreasureHits+1;
             if(smallTreasureHits == 2)  {
                 chest.location[0].style.backgroundColor="#FFFF00";
@@ -685,6 +695,7 @@ function onClick(thisSquare) {
             }
         }
         if(umbrella.location.includes(thisSquare))  {
+            thisSquare.style.cursor = "auto";
             mediumTreasureHits = mediumTreasureHits+1;
             if(mediumTreasureHits == 3)  {
                 thisSquare.style.backgroundColor= "#DF2C14";
@@ -706,6 +717,7 @@ function onClick(thisSquare) {
             }
         }
         if(surfboard.location.includes(thisSquare))  {
+            thisSquare.style.cursor = "auto";
             largeTreasureHits = largeTreasureHits+1;
             if(largeTreasureHits == 4)  {
                 surfboard.location[0].style.backgroundColor="#03AC13";
@@ -729,6 +741,7 @@ function onClick(thisSquare) {
         }
 
         if(turnCount == 24 && hitCount < 9) {
+            disableGridClick()
             revealTreasuresAndMinesTimeout()
             gameOverTimeout();
         }
@@ -739,6 +752,7 @@ function onClick(thisSquare) {
 
         if(gameStart == false) {
             if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
+                thisSquare.style.cursor = "auto";
                 const mineOnFirstSquare = thisSquare;
                 const foundIndex = mineLocations.findIndex(y => y == mineOnFirstSquare);
                 firstSquareSelected.push(mineOnFirstSquare);
@@ -947,8 +961,9 @@ function onClick(thisSquare) {
                 thisSquare.style.color="#FF1694";
                 remainingTurnsCount --;
                 mineExploded = true;
+                console.log(mineLocations);
+                disableGridClick();
                 revealTreasuresAndMinesTimeout();
-                
                 gameOverMineTimeout();      
                 }  
             }
@@ -964,7 +979,8 @@ function onClick(thisSquare) {
                 mineLocations[3].style.backgroundColor="#A020F0";
                 mineLocations[3].style.color="#A020F0";
             }
-            
+
+            disableGridClick();
             remainingTurnsCount --;
             allTreasuresFound = true;
             winGameTimeout();
