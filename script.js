@@ -319,35 +319,8 @@ const allSquares = [a1, b1, c1, d1, e1, f1, g1, h1, a2, b2, c2, d2, e2, f2, g2, 
     a7, b7, c7, d7, e7, f7, g7, h7, a8, b8, c8, d8, e8, f8, g8, h8 
 ];
 
-let allMineCounts = [a1.mineCount, b1.mineCount, c1.mineCount, d1.mineCount, e1.mineCount, f1.mineCount, g1.mineCount, h1.mineCount,
-    a2.mineCount, b2.mineCount, c2.mineCount, d2.mineCount, e2.mineCount, f2.mineCount, g2.mineCount, h2.mineCount,
-    a3.mineCount, b3.mineCount, c3.mineCount, d3.mineCount, e3.mineCount, f3.mineCount, g3.mineCount, h3.mineCount,
-    a4.mineCount, b4.mineCount, c4.mineCount, d4.mineCount, e4.mineCount, f4.mineCount, g4.mineCount, h4.mineCount,
-    a5.mineCount, b5.mineCount, c5.mineCount, d5.mineCount, e5.mineCount, f5.mineCount, g5.mineCount, h5.mineCount,
-    a6.mineCount, b6.mineCount, c6.mineCount, d6.mineCount, e6.mineCount, f6.mineCount, g6.mineCount, h6.mineCount,
-    a7.mineCount, b7.mineCount, c7.mineCount, d7.mineCount, e7.mineCount, f7.mineCount, g7.mineCount, h7.mineCount,
-    a8.mineCount, b8.mineCount, c8.mineCount, d8.mineCount, e8.mineCount, f8.mineCount, g8.mineCount, h8.mineCount
-];
-
-const row1 = [a1, b1, c1, d1, e1, f1, g1, h1]
-const row2 = [a2, b2, c2, d2, e2, f2, g2, h2]
-const row3 = [a3, b3, c3, d3, e3, f3, g3, h3]
-const row4 = [a4, b4, c4, d4, e4, f4, g4, h4]
-const row5 = [a5, b5, c5, d5, e5, f5, g5, h5]
-const row6 = [a6, b6, c6, d6, e6, f6, g6, h6]
-const row7 = [a7, b7, c7, d7, e7, f7, g7, h7]
-const row8 = [a8, b8, c8, d8, e8, f8, g8, h8]
-const gridRows = [row1, row2, row3, row4, row5, row6, row7, row8]
-
 const column1 = [a1, a2, a3, a4, a5, a6, a7, a8]
-const column2 = [b1, b2, b3, b4, b5, b6, b7, b8]
-const column3 = [c1, c2, c3, c4, c5, c6, c7, c8]
-const column4 = [d1, d2, d3, d4, d5, d6, d7, d8]
-const column5 = [e1, e2, e3, e4, e5, e6, e7, e8]
-const column6 = [f1, f2, f3, f4, f5, f6, f7, f8]
-const column7 = [g1, g2, g3, g4, g5, g6, g7, g8] 
 const column8 = [h1, h2, h3, h4, h5, h6, h7, h8]
-const gridColumns = [column1, column2, column3, column4, column5, column6, column7, column8]
 
 //Treasures
 class Treasure {
@@ -453,7 +426,6 @@ let closeToMine1 = [];
 let closeToMine2 = [];
 let closeToMine3 = [];
 let closeToMine4 = [];
-let closeToAnyMine = [closeToMine1, closeToMine2, closeToMine3, closeToMine4];
 
 let firstSquareSelected = [];
 
@@ -1472,3 +1444,4 @@ h8.addEventListener("click", () => {
     remainingTurns.innerHTML = remainingTurnsCount;
     h8.mineCount;
     if(enableMines.checked == true) h8.innerHTML = h8.mineCount}, {once : true});
+
