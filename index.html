@@ -27,6 +27,7 @@
     </div> 
 
    <div id="mainContainer">
+   <div id="subContainer">
      
      <!--Title at top of page-->
         <div id="title">
@@ -128,19 +129,18 @@
         </div>
 
      <!--Section showing remaining turns for user to find treasures-->
-      <div id=statusBar>
-         <div id="RemainingTurnsCounter">
+      <div class=statusBar>
+         <div class="statusBarChild" id="RemainingTurnsCounter">
                <h2>Remaining Turns</h2>
-                     <p id="turnCounter">?</p>
+                     <div id="turnCounter">?</div>
          </div>
-
          <!--Section Showing Remaining Items for User to Find-->
-         <div id="itemList">
-               <h3>Buried Items</h3>
-               <button id="howToPlayModalBtn">?</button>
-               <img id="picitem1" src="images/redSquares2.png"  alt="2 red squares">
-               <img id="picitem2" src="images/redSquares3.png"  alt="3 red squares">
-               <img id="picitem3" src="images/redSquares4.png"  alt="4 red squares">
+         <div class="statusBarChild" id="itemList">
+            <h3>Buried Items</h3>
+            <button id="howToPlayModalBtn">?</button>
+            <img id="picitem1" src="images/redSquares2.png"  alt="2 red squares">
+            <img id="picitem2" src="images/redSquares3.png"  alt="3 red squares">
+            <img id="picitem3" src="images/redSquares4.png"  alt="4 red squares">
          </div>
       </div>
 
@@ -183,6 +183,7 @@
           </div>
          </div>
       </div>
+   </div>
    <div class="bar"></div>
    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#68e0cf" fill-opacity="1" d="M0,256L26.7,234.7C53.3,213,107,171,160,138.7C213.3,107,267,85,320,85.3C373.3,85,427,107,480,133.3C533.3,160,587,192,640,192C693.3,192,747,160,800,133.3C853.3,107,907,85,960,101.3C1013.3,117,1067,171,1120,170.7C1173.3,171,1227,117,1280,112C1333.3,107,1387,149,1413,170.7L1440,192L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z"></path></svg></div>
       </div>
