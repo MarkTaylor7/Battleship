@@ -24,7 +24,6 @@ body {
 #title  {
     background-color:bisque;
     text-align: center;
-    width: 100%;
     height: 3.0rem;
     border-left-color: rgb(167, 132, 86);
     border-left-style: solid;
@@ -32,6 +31,7 @@ body {
     border-right-color: rgb(167, 132, 86);
     border-right-style: solid;
     border-right-width: 3px;
+    margin:0;
     }
 
 h1  {
@@ -40,27 +40,14 @@ h1  {
     color:saddlebrown;
     font-weight: bold;
     text-transform: uppercase;
-    
     text-align: center;
     margin: 0;
-    }
-
-#howToPlayModalBtn {
-    display: block;
-    background: saddlebrown;
-    color: #fff;
-    border-radius: 50%;
-    width: 1.8rem;
-    height: 1.8rem;
-    line-height: 1rem;
-    text-align: center;
-    font-size: 1rem;
-    font-family: Verdana;
+    align-content: center;
+    padding-top: 0.5rem;
     }
 
 #content {
-    min-height: calc(100vh - 705.758px);
-    width: 100%;
+    min-height: calc(100vh - 305.758px);
     align-content: center;
     border-color: rgb(167, 132, 86);
     border-style: solid;
@@ -117,13 +104,13 @@ h1  {
     height: 4rem;
     display: flex;
     margin: 0%;
-    border-left-color: rgb(167, 132, 86);
+    border-left-color: #a78456;
     border-left-style: solid;
     border-left-width: 0.15px;
-    border-right-color: rgb(167, 132, 86);
+    border-right-color: #a78456;
     border-right-style: solid;
     border-right-width: 0.15px;
-    border-top-color: rgb(167, 132, 86);
+    border-top-color: #a78456;
     border-top-style: solid;
     border-top-width: 0.85px;
     }
@@ -148,6 +135,7 @@ h2  {
     line-height: 0.5rem;
     margin-left: 0.5rem;
     width: 8.0rem; 
+    margin-top: 0.5rem;
     }
 
 #turnCounter    {
@@ -164,7 +152,6 @@ h2  {
 #itemList   {background-color:bisque;
     text-align: center;
     font-size: small;
-    margin: 0;
     height: 4rem;
     border-style: none;
     width: 100%;
@@ -178,6 +165,7 @@ h3  {
     text-transform: uppercase;
     text-align: center;
     line-height: 0.5rem;
+    margin-top: 0.5rem;
     }
 
 #howToPlayContainer {
@@ -187,13 +175,30 @@ h3  {
     margin: 0;
     height: 4rem;
     text-align: center;
-    
-}
+    border-right-color: #a78456;
+    border-right-style: solid;
+    border-right-width: 2.85px;
+    }
+
+#howToPlayModalBtn {
+    display: block;
+    background: saddlebrown;
+    color: #fff;
+    border-radius: 50%;
+    width: 1.8rem;
+    height: 1.8rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Verdana;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    }
 
 .foundTreasuresBar {
     position: relative;
     width: 100%;
-    height: 8rem;
+    height: 6rem;
     background-image: linear-gradient(to top, #755c3e 0%, #deb887 100%);
     margin-bottom: 0rem;
     border-top: 1px solid rgba(210, 180, 140, 0.3);
@@ -204,16 +209,15 @@ h3  {
     }
 
 svg {
-    margin-top: -15em;
+    margin-top: -5rem;
     z-index: 1;
     }
 
 footer {
     background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
-    
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: -1rem;
-    height: 220px;
+    height: 15rem;
     }
 
 #socials {
