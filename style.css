@@ -199,6 +199,7 @@ h3  {
 
 .foundTreasuresBar {
     position: relative;
+    display: flex;
     width: 100%;
     background-image: linear-gradient(to top, #755c3e 0%, rgb(222, 184, 135) 100%);
     border-top: 1px solid rgba(210, 180, 140, 0.3);
@@ -207,7 +208,25 @@ h3  {
     min-height: 17vh;
     max-height: 17vh;
     z-index: -1;
+    justify-content: center;
     }
+
+.treasuresBarChild {
+    width: 30%;
+    height: 3rem;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    align-content: center;
+    margin: 0;
+}
+
+.treasurePic {
+    max-width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: 0.75rem;
+}
 
 #wetSandBar {
     width: 100%;
