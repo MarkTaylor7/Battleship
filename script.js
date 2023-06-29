@@ -635,19 +635,28 @@ function chestFoundAlert() {
     // Add the "show" class to DIV
     x.className = "show";
     // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
 }
 
 function golfClubsFoundAlert() {
     var x = document.getElementById("snackbarGolfClubs");
     x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
 }
 
 function surfboardFoundAlert() {
     var x = document.getElementById("snackbarSurfboard");
     x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
+}
+
+const treasureChestImage = document.getElementById("chestImage");
+const golfClubsImage = document.getElementById("golfClubsImage");
+const surfboardImage = document.getElementById("surfboardImage");
+
+function showTreasureImage(treasurePic) {
+    let img = treasurePic;
+    img.style.visibility = "visible";
 }
 
 //Main function for confirming if a clicked square contains treasure, 
@@ -682,7 +691,8 @@ function onClick(thisSquare) {
                         } else {
                             chest.location[0].style.color="#000000";
                             chest.location[1].style.color="#000000";
-                        } 
+                        }
+                showTreasureImage(treasureChestImage); 
                 chestFoundAlert();
                 foundSmallTreasure();
             }
@@ -704,7 +714,7 @@ function onClick(thisSquare) {
                             golfClubs.location[1].style.color="#000000";
                             golfClubs.location[2].style.color="#000000";
                         }
-                //setTimeout(function() { alert("my message"); }, 100);
+                showTreasureImage(golfClubsImage);
                 golfClubsFoundAlert();
                 foundMediumTreasure();
             }
@@ -728,6 +738,7 @@ function onClick(thisSquare) {
                             surfboard.location[2].style.color="#000000";
                             surfboard.location[3].style.color="#000000";
                         }
+            showTreasureImage(surfboardImage);
             surfboardFoundAlert();
             foundLargeTreasure();
             }
