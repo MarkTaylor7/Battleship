@@ -11,13 +11,14 @@
 <body onload="showWelcomeModal()">
    <!--The WelcomeModal-->
     <div class="modal">
-        <div class="modal-content">
-          <h1>Buried Treasure</h1>
-          <p>Choose your difficulty:</p>
-          <p><button id = "easyModeBtn">Easy</button></p>
-          <p><button id = "normalModeBtn">Normal</button></p>
-          <p><button id = "hardModeBtn">Hard</button></p>
-          <p><button id="welcomeHowToPlayBtn">How to Play</button></p>
+        <div class="modal-content" id="welcomeModalContent">
+          <h5>Buried Treasure</h5>
+          
+          <div id = "welcomeHowToPlayBtnContainer"><button id="welcomeHowToPlayBtn">How to Play</button></div>
+          Choose your difficulty:
+          <button id = "easyModeBtn">Easy</button>
+          <button id = "normalModeBtn">Normal</button>
+          <button id = "hardModeBtn">Hard</button>
           <p>Activate Mines</p>
           <label class="switch"></p>
                <input type="checkbox" id="mineToggle">
@@ -31,9 +32,7 @@
      
      <!--Title at top of page-->
         <div id="title">
-            <h1>Buried Treasure 
-            
-         </div>
+            <h1>Buried Treasure</div>
         <div id="content">
 
         <!--The 8x8 grid that acts as the playing area-->
