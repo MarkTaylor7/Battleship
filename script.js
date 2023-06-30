@@ -23,7 +23,7 @@ let largeTreasurePic = document.getElementById("picitem3")
 const easyModeBtn = document.getElementById("easyModeBtn");
 const normalModeBtn = document.getElementById("normalModeBtn");
 const hardModeBtn = document.getElementById("hardModeBtn");
-const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn")
+const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn");
 
 const modals = document.getElementsByClassName("modal");
 
