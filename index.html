@@ -9,23 +9,26 @@
 </head>
 
 <body onload="showWelcomeModal()">
-   <!--The WelcomeModal-->
-    <div class="modal">
-        <div class="modal-content" id="welcomeModalContent">
-          <h5>Buried Treasure</h5>
-          
-          <div id = "welcomeHowToPlayBtnContainer"><button id="welcomeHowToPlayBtn">How to Play</button></div>
-          Choose your difficulty:
-          <button id = "easyModeBtn">Easy</button>
-          <button id = "normalModeBtn">Normal</button>
-          <button id = "hardModeBtn">Hard</button>
-          <p>Activate Mines</p>
-          <label class="switch"></p>
+   <div class="modal">
+      <div class="modal-content" id="welcomeModalContent">
+      <h5>Buried Treasure</h5>
+      
+      <div id = "welcomeHowToPlayBtnContainer"><button id="welcomeHowToPlayBtn">How to Play</button></div>
+      
+      <div class = "difficultyButtonsColumn">
+         <div class = "difficultyButtons" id = "easyModeContainer"><button id = "easyModeBtn">Easy</button></div>
+         <div class = "difficultyButtons" id = "normalModeContainer"><button id = "normalModeBtn">Normal</button></div>
+         <div class = "difficultyButtons" id = "hardModeContainer"><button id = "hardModeBtn">Hard</button></div>
+         <div class = "difficultyButtons" id = "activateMinesContainer">Activate Mines:
+            <label class="switch">
                <input type="checkbox" id="mineToggle">
                <span class="slider round"></span>
-          </label></p>
-        </div>
-    </div> 
+            </label>
+         </div>
+      </div>
+      
+      </div>
+   </div> 
 
    <div id="mainContainer">
    <div id="subContainer">
@@ -142,7 +145,7 @@
             <img id="picitem2" src="images/redSquares3.png"  alt="3 red squares">
             <img id="picitem3" src="images/redSquares4.png"  alt="4 red squares">
          </div>
-         <div class="statusBarChild" id="howToPlayContainer"><button id="howToPlayModalBtn">?</button></h1></div>
+         <div class="statusBarChild" id="howToPlayContainer"><button id="howToPlayModalBtn">?</button></div>
       </div>
 
      <!--The HowToPlayModal-->

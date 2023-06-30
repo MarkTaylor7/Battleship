@@ -12,7 +12,7 @@ let largeTreasureHits = 0;
 
 //Counter for remaining turns
 let remainingTurns = document.getElementById("turnCounter")
-let remainingTurnsCount = 24;
+let remainingTurnsCount = 25;
 
 //Images of hidden treasures, hinting at lengths of treasures
 let smallTreasurePic = document.getElementById("picitem1")
@@ -43,19 +43,19 @@ easyModeBtn.onclick = function() {
     hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "30";
     remainingTurnsCount = 30;
-    turnCount = -6;
+    turnCount = -5;
 }
 
 normalModeBtn.onclick = function() {
     hideWelcomeModal();
-    document.getElementById("turnCounter").innerHTML = "24";
-    remainingTurnsCount = 24;
+    document.getElementById("turnCounter").innerHTML = "25";
+    remainingTurnsCount = 25;
 }
 
 hardModeBtn.onclick = function() {
     hideWelcomeModal();
-    document.getElementById("turnCounter").innerHTML = "19";
-    remainingTurnsCount = 19;
+    document.getElementById("turnCounter").innerHTML = "20";
+    remainingTurnsCount = 20;
     turnCount = 5;
 }
 
@@ -744,7 +744,7 @@ function onClick(thisSquare) {
             }
         }
 
-        if(turnCount == 24 && hitCount < 9) {
+        if(turnCount == 25 && hitCount < 9) {
             disableGridClick()
             revealTreasuresAndMinesTimeout()
             gameOverTimeout();
