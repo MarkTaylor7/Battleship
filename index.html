@@ -158,18 +158,18 @@
 
      <!--The Win Game Modal-->
      <div class="modal">
-          <div class="modal-content">
+         <div class="modal-content" id="winGameModalContent">
           <h3>Congrats, you found all the treasures!</h3>
           <p>Remaining Turns</p>
           <p id="winningTurnCounter"></p>
           <button id ="winPlayAgain">Play Again!</button>
           <button id ="revealObjectsAfterWin">Show Solution</button>
-          </div>
+         </div>
      </div>
 
      <!--The Game Over (Out of Turns) Modal-->
      <div class="modal">
-          <div class="modal-content">
+          <div class="modal-content" id="gameOverTurnsModalContent">
           <h4>Sorry, you ran out of turns.</h4>
           <p>Would you like to play again?</p>
           <button id ="losePlayAgain">Play Again!</button>
@@ -179,7 +179,7 @@
 
      <!--The Game Over (Hit Mine) Modal-->
      <div class="modal">
-          <div class="modal-content">
+          <div class="modal-content" id="gameOverMinesModalContent">
           <h4>Sorry, you hit a mine.</h4>
           <p>Would you like to play again?</p>
           <button id ="losePlayAgainMine">Play Again!</button>
