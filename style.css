@@ -354,6 +354,7 @@ h4 {
     border-width: 0.2 rem;
     align-self: center;
     margin: 5% auto;
+    max-width: 50rem;
     width: 80vw;
 }
 
