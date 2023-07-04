@@ -16,6 +16,7 @@ body {
 
 #subContainer {
     width: 97%;
+    max-width: 30rem;
     align-content: center;
     margin: auto;
     border-top-color: rgb(167, 132, 86);
@@ -198,6 +199,7 @@ h3  {
     margin-top: 1rem;
     }
 
+
 .foundTreasuresBar {
     position: relative;
     display: flex;
@@ -206,15 +208,24 @@ h3  {
     border-top: 1px solid rgba(210, 180, 140, 0.3);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
-    min-height: 17vh;
-    max-height: 17vh;
+    min-height: 22vh;
     z-index: -1;
     justify-content: center;
+    margin-top: -3rem;
     }
+
+.foundTreasuresParent {
+    width: 97%;
+    max-width: 30rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
 
 .treasuresBarChild {
     height: 3rem;
     align-content: center;
+    margin-top: 3rem;
 }
 
 #smallTreasureContainer {
@@ -251,6 +262,8 @@ h3  {
 svg {
     z-index: 1;
     border-bottom: 1px solid #68e0cf(210, 180, 140, 0.3);
+    
+    
     }
 
 footer {
