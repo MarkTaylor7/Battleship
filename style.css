@@ -91,7 +91,7 @@ h1  {
     font-size: 1.5rem;
     justify-content: center;   
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: bisque;
+    color: #ffe4c4;
     cursor: pointer;
     user-select: none;
     width: 100%;
@@ -259,12 +259,20 @@ h3  {
     margin-bottom: -35vh;
 }
 
-svg {
+#svg-wave {
     z-index: 1;
     border-bottom: 1px solid #68e0cf(210, 180, 140, 0.3);
-    
-    
+    margin-top: -1.2%;
     }
+
+#svg-github {
+    margin-right: 0.25rem;
+}
+
+#svg-linkedin {
+    margin-left: 0.25rem;
+}
+
 
 footer {
     background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
@@ -278,26 +286,31 @@ footer {
     text-align: center;
     margin: auto;
     padding-top: 2rem;
-    clear: both
+    
+
     }
 
+
 #credit {
-    background-color:rgb(255, 255, 255);
-    width: 10rem;
+    background-color:#00065a;
+    max-width: 18rem;
     text-align: center; 
     margin: auto;
     font-weight: bold;
-    font-size: 40%;
+    font-size: 0.75rem;
     text-transform: uppercase;
     align-content: center;
     border-style:hidden;
     border-radius: 10px;
-    clear: both;
-    padding: 2px;
+    
+    }
+
+#credit a {
+    color: white;
     }
 
 #credit a:hover {
-    color: rgb(255, 0, 221)
+    color: rgb(229, 255, 0)
     }
 
 a {
@@ -618,7 +631,7 @@ p2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     }
 
 p3  {
-    color: rgb(27, 145, 255);
+    color: #59e6ff;
     }   
 
 #snackbarChest {

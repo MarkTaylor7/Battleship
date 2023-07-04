@@ -659,6 +659,9 @@ function showTreasureImage(treasurePic) {
     img.style.visibility = "visible";
 }
 
+let image = newImage();
+let div
+
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure or a mine
 function onClick(thisSquare) {
@@ -673,7 +676,7 @@ function onClick(thisSquare) {
         
         }   else    {
                 thisSquare.style.cursor = "auto";
-                thisSquare.style.backgroundColor= "#3CDFFF";
+                thisSquare.style.background=holeImage;
                 thisSquare.style.color= "#3CDFFF";
                 turnCount = turnCount+1;
 
