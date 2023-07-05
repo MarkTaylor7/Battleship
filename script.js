@@ -97,31 +97,56 @@ function revealTreasuresAndMinesTimeout() {
 }
 
 function revealTreasuresAndMines() {
-    chest.location[0].style.backgroundColor="#FFFF00";
-    chest.location[1].style.backgroundColor="#FFFF00";
-    chest.location[0].style.color="#FFFF00";
-    chest.location[1].style.color="#FFFF00";
-    golfClubs.location[0].style.backgroundColor="#FC6600";
-    golfClubs.location[1].style.backgroundColor="#FC6600";
-    golfClubs.location[2].style.backgroundColor="#FC6600";
-    golfClubs.location[0].style.color="#FC6600";
-    golfClubs.location[1].style.color="#FC6600";
-    golfClubs.location[2].style.color="#FC6600";
-    surfboard.location[0].style.backgroundColor="#03AC13";
-    surfboard.location[1].style.backgroundColor="#03AC13";
-    surfboard.location[2].style.backgroundColor="#03AC13";
-    surfboard.location[3].style.backgroundColor="#03AC13";
-    surfboard.location[0].style.color="#03AC13";
-    surfboard.location[1].style.color="#03AC13";
-    surfboard.location[2].style.color="#03AC13";
-    surfboard.location[3].style.color="#03AC13";
+    chest.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    chest.location[0].style.backgroundSize = "cover";
+    chest.location[0].style.backgroundPosition = "center";
+    chest.location[0].style.color="transparent";
+    chest.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    chest.location[1].style.backgroundSize = "cover";
+    chest.location[1].style.backgroundPosition = "center";
+    chest.location[1].style.color="transparent";
+    golfClubs.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[0].style.backgroundSize = "cover";
+    golfClubs.location[0].style.backgroundPosition = "center";
+    golfClubs.location[0].style.color="transparent";
+    golfClubs.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[1].style.backgroundSize = "cover";
+    golfClubs.location[1].style.backgroundPosition = "center";
+    golfClubs.location[1].style.color="transparent";
+    golfClubs.location[2].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[2].style.backgroundSize = "cover";
+    golfClubs.location[2].style.backgroundPosition = "center";
+    golfClubs.location[2].style.color="transparent";
+    surfboard.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[0].style.backgroundSize = "cover";
+    surfboard.location[0].style.backgroundPosition = "center";
+    surfboard.location[0].style.color="transparent";
+    surfboard.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[1].style.backgroundSize = "cover";
+    surfboard.location[1].style.backgroundPosition = "center";
+    surfboard.location[1].style.color="transparent";
+    surfboard.location[2].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[2].style.backgroundSize = "cover";
+    surfboard.location[2].style.backgroundPosition = "center";
+    surfboard.location[2].style.color="transparent";
+    surfboard.location[3].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[3].style.backgroundSize = "cover";
+    surfboard.location[3].style.backgroundPosition = "center";
+    surfboard.location[3].style.color="transparent";
+    
         if (enableMines.checked == true) {
-            mineLocations[0].style.backgroundColor="#A020F0";
-            mineLocations[0].style.color="#A020F0";
-            mineLocations[1].style.backgroundColor="#A120F0";
-            mineLocations[1].style.color="#A020F0";
-            mineLocations[2].style.backgroundColor="#A020F0";
-            mineLocations[2].style.color="#A020F0";
+            mineLocations[0].style.background = "url('images/mine2.png') no-repeat";
+            mineLocations[0].style.backgroundSize = "cover";
+            mineLocations[0].style.backgroundPosition = "center";
+            mineLocations[0].style.color = "transparent";
+            mineLocations[1].style.background = "url('images/mine2.png') no-repeat";
+            mineLocations[1].style.backgroundSize = "cover";
+            mineLocations[1].style.backgroundPosition = "center";
+            mineLocations[1].style.color = "transparent";
+            mineLocations[2].style.background = "url('images/mine2.png') no-repeat";
+            mineLocations[2].style.backgroundSize = "cover";
+            mineLocations[2].style.backgroundPosition = "center";
+            mineLocations[2].style.color = "transparent";
         }
 }
 
@@ -659,9 +684,6 @@ function showTreasureImage(treasurePic) {
     img.style.visibility = "visible";
 }
 
-let image = newImage();
-let div
-
 //Main function for confirming if a clicked square contains treasure, 
 //and sub-functions for confirming the same criteria with a specific treasure or a mine
 function onClick(thisSquare) {
@@ -669,32 +691,31 @@ function onClick(thisSquare) {
     if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 9) {
         if(takenSquares.includes(thisSquare))   {
             thisSquare.style.cursor = "auto";
-            thisSquare.style.backgroundColor= "#DF2C14";
-            thisSquare.style.color= "#DF2C14";
+            thisSquare.style.background = "url('images/dugHoleTreasure.png') no-repeat";
+            thisSquare.style.backgroundSize = "cover";
+            thisSquare.style.backgroundPosition = "center";
+            thisSquare.style.color= "#fff661";
             turnCount = turnCount+1;
             hitCount = hitCount+1;
-        
         }   else    {
                 thisSquare.style.cursor = "auto";
-                thisSquare.style.background=holeImage;
-                thisSquare.style.color= "#3CDFFF";
+                thisSquare.style.background = "url('images/dugHole.png') no-repeat";
+                thisSquare.style.backgroundSize = "cover";
+                thisSquare.style.backgroundPosition = "center";
+                thisSquare.style.color= "#513c21";
                 turnCount = turnCount+1;
-
             }
 
         if(chest.location.includes(thisSquare))  {
             thisSquare.style.cursor = "auto";
             smallTreasureHits = smallTreasureHits+1;
             if(smallTreasureHits == 2)  {
-                chest.location[0].style.backgroundColor="#FFFF00";
-                chest.location[1].style.backgroundColor="#FFFF00";
-                    if (enableMines.checked == false) {
-                        chest.location[0].style.color="#FFFF00";
-                        chest.location[1].style.color="#FFFF00";
-                        } else {
-                            chest.location[0].style.color="#000000";
-                            chest.location[1].style.color="#000000";
-                        }
+                chest.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                chest.location[0].style.backgroundSize = "cover";
+                chest.location[0].style.backgroundPosition = "center";
+                chest.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                chest.location[1].style.backgroundSize = "cover";
+                chest.location[1].style.backgroundPosition = "center";
                 showTreasureImage(treasureChestImage); 
                 chestFoundAlert();
                 foundSmallTreasure();
@@ -704,19 +725,15 @@ function onClick(thisSquare) {
             thisSquare.style.cursor = "auto";
             mediumTreasureHits = mediumTreasureHits+1;
             if(mediumTreasureHits == 3)  {
-                thisSquare.style.backgroundColor= "#DF2C14";
-                golfClubs.location[0].style.backgroundColor="#FC6600";
-                golfClubs.location[1].style.backgroundColor="#FC6600";
-                golfClubs.location[2].style.backgroundColor="#FC6600";
-                    if (enableMines.checked == false) {
-                        golfClubs.location[0].style.color="#FC6600";
-                        golfClubs.location[1].style.color="#FC6600";
-                        golfClubs.location[2].style.color="#FC6600";
-                        } else { 
-                            golfClubs.location[0].style.color="#000000";
-                            golfClubs.location[1].style.color="#000000";
-                            golfClubs.location[2].style.color="#000000";
-                        }
+                golfClubs.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[0].style.backgroundSize = "cover";
+                golfClubs.location[0].style.backgroundPosition = "center";
+                golfClubs.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[1].style.backgroundSize = "cover";
+                golfClubs.location[1].style.backgroundPosition = "center";
+                golfClubs.location[2].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[2].style.backgroundSize = "cover";
+                golfClubs.location[2].style.backgroundPosition = "center";
                 showTreasureImage(golfClubsImage);
                 golfClubsFoundAlert();
                 foundMediumTreasure();
@@ -726,24 +743,21 @@ function onClick(thisSquare) {
             thisSquare.style.cursor = "auto";
             largeTreasureHits = largeTreasureHits+1;
             if(largeTreasureHits == 4)  {
-                surfboard.location[0].style.backgroundColor="#03AC13";
-                surfboard.location[1].style.backgroundColor="#03AC13";
-                surfboard.location[2].style.backgroundColor="#03AC13";
-                surfboard.location[3].style.backgroundColor="#03AC13";
-                    if (enableMines.checked == false) {
-                        surfboard.location[0].style.color="#03AC13";
-                        surfboard.location[1].style.color="#03AC13";
-                        surfboard.location[2].style.color="#03AC13";
-                        surfboard.location[3].style.color="#03AC13";
-                        } else {
-                            surfboard.location[0].style.color="#000000";
-                            surfboard.location[1].style.color="#000000";
-                            surfboard.location[2].style.color="#000000";
-                            surfboard.location[3].style.color="#000000";
-                        }
-            showTreasureImage(surfboardImage);
-            surfboardFoundAlert();
-            foundLargeTreasure();
+                surfboard.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[0].style.backgroundSize = "cover";
+                surfboard.location[0].style.backgroundPosition = "center";
+                surfboard.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[1].style.backgroundSize = "cover";
+                surfboard.location[1].style.backgroundPosition = "center";
+                surfboard.location[2].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[2].style.backgroundSize = "cover";
+                surfboard.location[2].style.backgroundPosition = "center";
+                surfboard.location[3].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[3].style.backgroundSize = "cover";
+                surfboard.location[3].style.backgroundPosition = "center";
+                showTreasureImage(surfboardImage);
+                surfboardFoundAlert();
+                foundLargeTreasure();
             }
         }
 
@@ -754,7 +768,11 @@ function onClick(thisSquare) {
         }
         
         if(enableMines.checked == true) {
+            if(takenSquares.includes(thisSquare)){
             thisSquare.style.color="#000000";
+            } else {
+                thisSquare.style.color="#ffffff";
+            }
         }
 
         if(gameStart == false) {
@@ -964,8 +982,11 @@ function onClick(thisSquare) {
                 mineLocations.splice(endOfGameMineIndex, 1);
                 mineLocations.push(endOfGameMine);
                 mineLocations.pop(endOfGameMine);
-                thisSquare.style.backgroundColor="#FF1694";
-                thisSquare.style.color="#FF1694";
+                thisSquare.style.background = "url('images/explosion.png') no-repeat";
+                thisSquare.style.backgroundSize = "cover";
+                thisSquare.style.backgroundPosition = "center";
+                thisSquare.style.backgroundColor="#ffff00";
+                thisSquare.style.color="transparent";
                 remainingTurnsCount --;
                 mineExploded = true;
                 console.log(mineLocations);
@@ -979,7 +1000,7 @@ function onClick(thisSquare) {
             if (enableMines.checked == true) {
                 mineLocations[0].style.backgroundColor="#A020F0";
                 mineLocations[0].style.color="#A020F0";
-                mineLocations[1].style.backgroundColor="#A120F0";
+                mineLocations[1].style.backgroundColor="#A020F0";
                 mineLocations[1].style.color="#A020F0";
                 mineLocations[2].style.backgroundColor="#A020F0";
                 mineLocations[2].style.color="#A020F0";
