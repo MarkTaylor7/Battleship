@@ -151,7 +151,7 @@ function revealTreasuresAndMines() {
 }
 
 function gameOverTimeout() {
-    timeout = setTimeout(showGameOverModal, 3750);
+    timeout = setTimeout(showGameOverModal, 1000);
 }
 
 function showGameOverModal() {
@@ -998,14 +998,22 @@ function onClick(thisSquare) {
 
         if(hitCount === 9) {
             if (enableMines.checked == true) {
-                mineLocations[0].style.backgroundColor="#A020F0";
-                mineLocations[0].style.color="#A020F0";
-                mineLocations[1].style.backgroundColor="#A020F0";
-                mineLocations[1].style.color="#A020F0";
-                mineLocations[2].style.backgroundColor="#A020F0";
-                mineLocations[2].style.color="#A020F0";
-                mineLocations[3].style.backgroundColor="#A020F0";
-                mineLocations[3].style.color="#A020F0";
+                mineLocations[0].style.background = "url('images/mine2.png') no-repeat";
+                mineLocations[0].style.backgroundSize = "cover";
+                mineLocations[0].style.backgroundPosition = "center";
+                mineLocations[0].style.color = "transparent";
+                mineLocations[1].style.background = "url('images/mine2.png') no-repeat";
+                mineLocations[1].style.backgroundSize = "cover";
+                mineLocations[1].style.backgroundPosition = "center";
+                mineLocations[1].style.color = "transparent";
+                mineLocations[2].style.background = "url('images/mine2.png') no-repeat";
+                mineLocations[2].style.backgroundSize = "cover";
+                mineLocations[2].style.backgroundPosition = "center";
+                mineLocations[2].style.color = "transparent";
+                mineLocations[3].style.background = "url('images/mine2.png') no-repeat";
+                mineLocations[3].style.backgroundSize = "cover";
+                mineLocations[3].style.backgroundPosition = "center";
+                mineLocations[3].style.color = "transparent";
             }
 
             disableGridClick();
