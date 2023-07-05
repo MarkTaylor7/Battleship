@@ -80,6 +80,9 @@ h1  {
 
 .column {
     background-color: bisque;
+    background-position: center;
+    display: block;
+    object-fit: fill;
     padding: 1rem 0;
     gap: 2px;
     align-content: center;
