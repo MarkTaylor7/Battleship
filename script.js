@@ -81,7 +81,6 @@ window.onclick = function(event) {
     }
 }
 
-
 let timeout;
 
 function winGameTimeout() {
@@ -93,7 +92,7 @@ function showWinGameModal() {
 }
 
 function revealTreasuresAndMinesTimeout() {
-    timeout = setTimeout(revealTreasuresAndMines, 2000);
+    timeout = setTimeout(revealTreasuresAndMines, 1500);
 }
 
 function revealTreasuresAndMines() {
@@ -147,6 +146,10 @@ function revealTreasuresAndMines() {
             mineLocations[2].style.backgroundSize = "cover";
             mineLocations[2].style.backgroundPosition = "center";
             mineLocations[2].style.color = "transparent";
+            mineLocations[3].style.background = "url('images/mine2.png') no-repeat";
+            mineLocations[3].style.backgroundSize = "cover";
+            mineLocations[3].style.backgroundPosition = "center";
+            mineLocations[3].style.color = "transparent";
         }
 }
 
@@ -156,14 +159,27 @@ function gameOverTimeout() {
 
 function showGameOverModal() {
     modals[3].style.display = "block";
+    
 }
 
 function gameOverMineTimeout() {
-    timeout = setTimeout(showGameOverMineModal, 3750);
+    timeout = setTimeout(showGameOverMineModal, 1000);
 }
 
 function showGameOverMineModal() {
     modals[4].style.display = "block";
+    revealTreasuresAndMines();
+}
+
+function playAgainPromptTimeout() {
+    timeout = setTimeout(playAgainPrompt, 3000);
+}
+
+function playAgainPrompt() {
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbarPlayAgain");
+    // Add the "show" class to DIV
+    x.className = "show";
 }
 
 const winPlayAgainBtn = document.getElementById("winPlayAgain");
@@ -189,7 +205,8 @@ showSolutionBtnAfterWin.onclick = function () {
 const showSolutionBtn = document.getElementById("revealObjects");
 showSolutionBtn.onclick = function () {
     modals[3].style.display = "none";
-    gameOverTimeout();
+    revealTreasuresAndMinesTimeout();
+    playAgainPromptTimeout();
     }
 
 const showSolutionBtnMine = document.getElementById("revealObjectsMine");
@@ -675,6 +692,7 @@ function surfboardFoundAlert() {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2500);
 }
 
+
 const treasureChestImage = document.getElementById("chestImage");
 const golfClubsImage = document.getElementById("golfClubsImage");
 const surfboardImage = document.getElementById("surfboardImage");
@@ -763,7 +781,6 @@ function onClick(thisSquare) {
 
         if(turnCount == 25 && hitCount < 9) {
             disableGridClick()
-            revealTreasuresAndMinesTimeout()
             gameOverTimeout();
         }
         
