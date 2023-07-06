@@ -31,7 +31,8 @@
    </div> 
 
    <div id="mainContainer">
-   <div id="subContainer">
+      
+      <div id="subContainer">
      
      <!--Title at top of page-->
         <div id="title">
@@ -130,10 +131,10 @@
                <div class="column" id=64>.</div>
             </div>
         </div>
-
+        
      <!--Section showing remaining turns for user to find treasures-->
       <div class=statusBar>
-         
+         <div id="playAgainPopUp"><button id = "popupPlayAgainBtn">Play again?</button></div>
          <div class="statusBarChild" id="RemainingTurnsCounter">
                <h2>Remaining Turns</h2>
                      <div id="turnCounter">?</div>
@@ -141,20 +142,33 @@
          <!--Section Showing Remaining Items for User to Find-->
          <div class="statusBarChild" id="itemList">
             <h3>Buried Items</h3>
-            <div id="snackbarPlayAgain">Play again?</div>
             <img id="picitem1" src="images/redSquares2.png"  alt="2 red squares">
             <img id="picitem2" src="images/redSquares3.png"  alt="3 red squares">
             <img id="picitem3" src="images/redSquares4.png"  alt="4 red squares">
          </div>
-         <div class="statusBarChild" id="howToPlayContainer"><button id="howToPlayModalBtn">?</button></div>
+         <div class="statusBarChild" id="howToPlayContainer"><button id="howToPlayModalBtn">?</button>
+            
+         </div>
          
       </div>
 
      <!--The HowToPlayModal-->
      <div class="modal">
-            <div class="modal-content">
-            <span class="howToPlayClose" tabindex="0">&times;</span>
-            <p>Game instructions will be placed here</p>
+      
+            <div class="modal-content" id="howToPlayModalContent">
+                  <div id = "howToPlayHeader">
+                     <div id = "closeContainer"><span class="howToPlayClose" tabindex="0">&times;</span></div>
+                     <h7>How to Play</h7>
+                  </div>
+                  <div id = "howToPlayModalBody">
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu sem ipsum. In in urna volutpat, dignissim ante id, semper orci. Nulla facilisi. Donec posuere dignissim magna quis egestas. Vivamus luctus ligula turpis, sit amet cursus diam sagittis sed. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed libero orci, porttitor in semper at, auctor id quam. Fusce ultricies dui sapien, id malesuada nisl vestibulum non. Nulla in libero nunc. Aenean sit amet vehicula diam. Cras eget tellus tortor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam et dolor quis lorem tempor dignissim.
+                     Pellentesque vulputate accumsan commodo. Fusce congue dui felis, ac suscipit ante pellentesque et. 
+                     </p>
+                  </div>
+                  <div id = "howToPlayModalFooter">
+                     <p>
+                        </p>
+                  </div>
             </div>
      </div>
 
@@ -190,7 +204,7 @@
          </div>
       </div>
    </div>
-   <div id="snackbarPlayAgain">Play again?</div>
+   
    <div class="foundTreasuresBar">
       <div class="foundTreasuresParent">
          <div class="treasuresBarChild" id="smallTreasureContainer">

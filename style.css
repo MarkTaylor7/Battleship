@@ -6,9 +6,7 @@ body {
 
 #mainContainer  {
     min-height: calc(100vh - 1000px);
-    
     width: 100%;
-    
     text-align: center;
     align-content: center;
     margin-top: 0.5rem
@@ -331,21 +329,7 @@ h4 {
     padding-right: 5%;
     text-align: center;
     }  
-/*The HTP Modal Close Button*/
-.howToPlayClose {
-    color: #ff0000;
-    float: right;
-    font-size: 60px;
-    font-weight: bold;
-    cursor: pointer;
-}
 
-
-.howToPlayClose:focus {
-    color: black;
-    text-decoration: none;
-    cursor:pointer;
-}
 
 
 .modal {
@@ -371,6 +355,83 @@ h4 {
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0,0,0,.3);
 }
+
+#howToPlayModalContent {
+    background-color: bisque;
+    border-color: #a78456;
+    border-style: solid;
+    border-width: 0.2 rem;
+    align-self: center;
+    margin: 2% auto;
+    max-width: 40rem;
+    width: 80vw;
+    padding: 0px;
+}
+
+#howToPlayModalBody{
+    padding: 20px;
+}
+
+#howToPlayHeader {
+    background-color: #755c3e;
+    height: 4rem;
+    width: 100%;
+    align-content: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#howToPlayModalFooter {
+    background-color: #755c3e;
+    height: 4rem;
+    width: 100%;
+    align-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+h7 {
+    color: bisque;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2rem;
+    align-content: center;
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 2rem;
+    align-content: center;
+    
+    }
+    
+
+#closeContainer {
+    height: 2.0rem;
+}
+
+/*The HTP Modal Close Button*/
+.howToPlayClose {
+    cursor: pointer;
+    display: block;
+    background: #755c3e;
+    color: bisque;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1.8rem;
+    font-size: 1.8rem;
+    font-family: Verdana;
+    float: right;
+}
+
+
+/*
+.howToPlayClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor:pointer;
+}*/
+
 
 #welcomeModalContent {
     background-color: bisque;
@@ -523,7 +584,7 @@ p   {
     text-transform: uppercase;
     color: saddlebrown;
     text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /*The Mines Switch*/
@@ -690,10 +751,13 @@ input:checked + .slider:before {
     text-shadow: #ad8a53 0px 1px 0px;
 }
 
+
+
 p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
      font-size: 1rem;
      color: saddlebrown;
      text-align: center;
+     line-height: 1rem;
 
     }
 
@@ -792,28 +856,41 @@ p3  {
     animation: fadein 0.5s, fadeout 0.5s 2.0s;
     }
 
-#snackbarPlayAgain {
+#playAgainPopUp {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: large;
     visibility: hidden;
-    width: 20%;
-    background-color: #68e0cf;
-    color: #000000;
-    text-align: center; 
-    border-style: solid;
-    border-color: #209cff;
-    border-radius: 10px; 
-    padding: 10px;
-    position: fixed;
+    font-size: 1rem;
+    color:gold;
+    background-color: #755c3e;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: #ad8a53 0px 1px 0px;
     z-index: 1;
-    margin: auto;
-    transform: translateX(-15%);
     align-self: center;
-    }
+    display: inline-flex;
+    position: absolute;
+    height: 3rem;
+    margin: auto;
+    width: 250px
+    
+}
+
+#popupPlayAgainBtn {
+    font-size: 2rem;
+    color:gold;
+    width: 20rem;
+    background-color: #755c3e;
+    text-transform: uppercase;
+    text-shadow: #ad8a5e 0px 1px 0px;
+    cursor: pointer;
+    width: 250px;
+    border: none;
+}
+
         
-#snackbarPlayAgain.show {
+#playAgainPopUp.show {
     visibility: visible;
-    /* Add animation: Take 1.5 seconds to fade in and out the snackbar.*/
+    /* Add animation: Take 1 second to fade in and out the snackbar.*/
     -webkit-animation: slidein 1s;
     animation: slidein 1s;
     }

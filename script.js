@@ -84,7 +84,7 @@ window.onclick = function(event) {
 let timeout;
 
 function winGameTimeout() {
-    timeout = setTimeout(showWinGameModal, 2000);
+    timeout = setTimeout(showWinGameModal, 1000);
 }
 
 function showWinGameModal() {
@@ -168,7 +168,7 @@ function gameOverMineTimeout() {
 
 function showGameOverMineModal() {
     modals[4].style.display = "block";
-    revealTreasuresAndMines();
+    
 }
 
 function playAgainPromptTimeout() {
@@ -177,7 +177,7 @@ function playAgainPromptTimeout() {
 
 function playAgainPrompt() {
     // Get the snackbar DIV
-    var x = document.getElementById("snackbarPlayAgain");
+    var x = document.getElementById("playAgainPopUp");
     // Add the "show" class to DIV
     x.className = "show";
 }
@@ -199,7 +199,8 @@ losePlayAgainMineBtn.onclick = function resetGame() {
 const showSolutionBtnAfterWin = document.getElementById("revealObjectsAfterWin");
 showSolutionBtnAfterWin.onclick = function () {
     modals[2].style.display = "none";
-    winGameTimeout();
+    revealTreasuresAndMinesTimeout();
+    playAgainPromptTimeout();
     }
 
 const showSolutionBtn = document.getElementById("revealObjects");
@@ -212,8 +213,14 @@ showSolutionBtn.onclick = function () {
 const showSolutionBtnMine = document.getElementById("revealObjectsMine");
 showSolutionBtnMine.onclick = function () {
     modals[4].style.display = "none";
-    gameOverMineTimeout();
+    revealTreasuresAndMinesTimeout();
+    playAgainPromptTimeout();
     }
+
+const popupPlayAgainBtn = document.getElementById("popupPlayAgainBtn");
+popupPlayAgainBtn.onclick = function resetGame() {
+    location.replace(location.href);  
+}
 
 //Width of grid
 const gridWidth = 8;
@@ -1008,7 +1015,6 @@ function onClick(thisSquare) {
                 mineExploded = true;
                 console.log(mineLocations);
                 disableGridClick();
-                revealTreasuresAndMinesTimeout();
                 gameOverMineTimeout();      
                 }  
             }
