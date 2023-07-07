@@ -256,6 +256,8 @@ h3  {
     background-size: contain;
     margin-top: 0.5rem;
     visibility: hidden;
+    -webkit-filter: drop-shadow(3px 3px 3px #1f1003);
+    filter: drop-shadow(3px 3px 3px #1f1003);
 }
 
 #wetSandBar {
@@ -369,23 +371,39 @@ h4 {
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
-    margin: 2% auto;
     max-width: 40rem;
     width: 80vw;
     padding: 0px;
+    margin-left:  auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    height: fit-content;
+
+}
+
+.wrapper {
+    height: fit-content;
+    margin: 0 auto -4rem;
+    overflow: hidden;
 }
 
 #howToPlayModalBody{
-    padding: 20px;
+    padding: 10px;
+    
 }
 
-#howToPlayHeader {
+#howToPlayModalHeader {
     background-color: #755c3e;
-    height: 4rem;
+    height: 12%;
     width: 100%;
     align-content: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+}
+
+.push {
+    height: 4rem;
 }
 
 #howToPlayModalFooter {
@@ -580,14 +598,6 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     
 }
 
-p   {
-    font-size: 1.rem;
-    text-transform: uppercase;
-    color: saddlebrown;
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
 /*The Mines Switch*/
 .switch {
     position: relative;
@@ -755,11 +765,11 @@ input:checked + .slider:before {
 
 
 p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-     font-size: 1rem;
-     color: saddlebrown;
-     text-align: center;
-     line-height: 1rem;
-
+        font-size: calc(15px + 0.390625vw);
+        color: saddlebrown;
+        text-align: center;
+        line-height: 1.2;
+        text-align: left;
     }
 
 p2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -860,7 +870,7 @@ p3  {
 #playAgainPopUp {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     visibility: hidden;
-    background-color: gold;
+    background-color: yellow;
     display: block;
     position: absolute;
     height: 3rem;
@@ -877,7 +887,7 @@ p3  {
     text-transform: uppercase;
     font-size: 0.8rem;
     color:black;
-    background-color: gold;
+    background-color: yellow;
     cursor: pointer;
     width: 70px;
     margin: auto;
