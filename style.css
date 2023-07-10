@@ -124,6 +124,7 @@ h1  {
     border-top-color: #a78456;
     border-top-style: solid;
     border-top-width: 0.85px;
+    justify-content: space-between;
     }
 
 #RemainingTurnsCounter  {
@@ -166,7 +167,6 @@ h2  {
     height: 4rem;
     border-style: none;
     width: 100%;
-    padding-right: 2rem;
     }
 
 h3  {
@@ -216,7 +216,7 @@ h3  {
     border-top: 1px solid rgba(210, 180, 140, 0.3);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
-    min-height: 22vh;
+    height: 29vh;
     z-index: -1;
     justify-content: center;
     margin-top: -3rem;
@@ -263,56 +263,64 @@ h3  {
 #wetSandBar {
     width: 100%;
     background-color: #755c3e;
-    height: 25vh;
+    height: 2vh;
     z-index: -1;
     margin-top: -0.1rem;
-    margin-bottom: -35vh;
+    margin-bottom: -10vh;
 }
 
 #svg-wave {
     z-index: 1;
     border-bottom: 1px solid #68e0cf(210, 180, 140, 0.3);
-    margin-top: -1.2%;
+    margin-top: -8.5vh;
     }
 
-#svg-github {
-    margin-right: 0.25rem;
-}
 
-#svg-linkedin {
-    margin-left: 0.25rem;
-}
 
 
 footer {
-    background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
+    background-image: linear-gradient(to top, #20b8ff 0%, #68e0cf 100%);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: -1rem;
-    height: 30vh;
+    height: 28vh;
     z-index: 1;
     }
 
-#socials {
-    text-align: center;
-    margin: auto;
-    padding-top: 2rem;
-    
 
+
+.socialsParent {
+    display: flex;
+    align-content: flex-end;
+    justify-content: space-between;
+    bottom: 1vh;
+}
+
+.right-align {
+    margin-left: auto;
+}
+
+#socials {
+    margin: auto;
     }
+
 
 
 #credit {
     background-color:#00065a;
-    max-width: 18rem;
+    max-width: 11rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
     text-align: center; 
-    margin: auto;
+    height: 24px;
     font-weight: bold;
     font-size: 0.75rem;
     text-transform: uppercase;
     align-content: center;
-    border-style:hidden;
-    border-radius: 10px;
-    
+    border-style: hidden;
+    border-radius: 5px;
+    line-height: 24px;
+    margin-left: 0.25rem;
+    margin-right: 0.5rem;
     }
 
 #credit a {
@@ -783,7 +791,7 @@ p2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
     }
 
 p3  {
-    color: #59e6ff;
+    color: #68e0cf;
     }   
 
 #snackbarChest {
