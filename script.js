@@ -108,7 +108,7 @@ window.onclick = function(event) {
 let timeout;
 
 function winGameTimeout() {
-    timeout = setTimeout(showWinGameModal, 1000);
+    timeout = setTimeout(showWinGameModal, 2500);
 }
 
 function showWinGameModal() {
@@ -187,7 +187,7 @@ function showGameOverModal() {
 }
 
 function gameOverMineTimeout() {
-    timeout = setTimeout(showGameOverMineModal, 1000);
+    timeout = setTimeout(showGameOverMineModal, 2000);
 }
 
 function showGameOverMineModal() {
