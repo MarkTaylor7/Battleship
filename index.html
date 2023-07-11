@@ -19,7 +19,7 @@
          <div class = "difficultyButtons" id = "easyModeContainer"><button id = "easyModeBtn">Easy</button></div>
          <div class = "difficultyButtons" id = "normalModeContainer"><button id = "normalModeBtn">Normal</button></div>
          <div class = "difficultyButtons" id = "hardModeContainer"><button id = "hardModeBtn">Hard</button></div>
-         <div class = "difficultyButtons" id = "activateMinesContainer">Activate Mines:
+         <div class = "difficultyButtons" id = "activateMinesContainer">Mines Active:
             <label class="switch">
                <input type="checkbox" id="mineToggle">
                <span class="slider round" id="minesSwitch"></span>
@@ -35,11 +35,11 @@
       <div id="subContainer">
      
      <!--Title at top of page-->
-        <div id="title">
-         <div id="playAgainPopUp"><button id = "popupPlayAgainBtn">Play again?</button></div>
+        <div class="titleParent" id="title">
             <div id="headerContainer">
                <h1>Kaboom Beach</h1>
             </div>
+            <div class = "titleChild" id="playAgainPopUp"><button id = "popupPlayAgainBtn">Play again?</button></div>
          </div>
         <div id="content">
 
@@ -269,6 +269,27 @@
 </audio>
 <audio id="digHole4Sound"> 
    <source src="sounds/digHole4.wav"/> 
+</audio>
+<audio id="digHole5Sound"> 
+   <source src="sounds/digHole5.wav"/> 
+</audio>
+<audio id="digHole6Sound"> 
+   <source src="sounds/digHole6.wav"/> 
+</audio>
+<audio id="digHole7Sound"> 
+   <source src="sounds/digHole7.wav"/> 
+</audio>
+<audio id="digHole8Sound"> 
+   <source src="sounds/digHole8.wav"/> 
+</audio>
+<audio id="hitTreasure1Sound"> 
+   <source src="sounds/hitTreasure1.wav"/> 
+</audio>
+<audio id="hitTreasure2Sound"> 
+   <source src="sounds/hitTreasure2.wav"/> 
+</audio>
+<audio id="explosionSound"> 
+   <source src="sounds/explosion.wav"/> 
 </audio>
 
 <script src="script.js"></script>

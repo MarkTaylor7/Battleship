@@ -38,8 +38,16 @@ const digHole1Sound = document.getElementById("digHole1Sound");
 const digHole2Sound = document.getElementById("digHole2Sound");
 const digHole3Sound = document.getElementById("digHole3Sound");
 const digHole4Sound = document.getElementById("digHole4Sound");
-const digHoleSounds = [digHole1Sound, digHole2Sound, digHole3Sound, digHole4Sound];
-let randomDigSound = digHoleSounds[Math.floor(Math.random() * digHoleSounds.length)];
+const digHole5Sound = document.getElementById("digHole5Sound");
+const digHole6Sound = document.getElementById("digHole6Sound");
+const digHole7Sound = document.getElementById("digHole7Sound");
+const digHole8Sound = document.getElementById("digHole8Sound");
+const digHoleSounds = [digHole1Sound, digHole2Sound, digHole3Sound, digHole4Sound,
+     digHole5Sound, digHole6Sound, digHole7Sound, digHole8Sound];
+const hitTreasure1Sound = document.getElementById("hitTreasure1Sound");
+const hitTreasure2Sound = document.getElementById("hitTreasure2Sound");
+const hitTreasureSounds = [hitTreasure1Sound, hitTreasure2Sound];
+const explosionSound = document.getElementById("explosionSound");
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -750,6 +758,8 @@ function onClick(thisSquare) {
             }
 
         if(chest.location.includes(thisSquare))  {
+            let randomhitTreasureSound = hitTreasureSounds[Math.floor(Math.random() * hitTreasureSounds.length)];
+            randomhitTreasureSound.play();
             thisSquare.style.cursor = "auto";
             smallTreasureHits = smallTreasureHits+1;
             if(smallTreasureHits == 2)  {
@@ -766,6 +776,8 @@ function onClick(thisSquare) {
             }
         }
         if(golfClubs.location.includes(thisSquare))  {
+            let randomhitTreasureSound = hitTreasureSounds[Math.floor(Math.random() * hitTreasureSounds.length)];
+            randomhitTreasureSound.play();
             thisSquare.style.cursor = "auto";
             mediumTreasureHits = mediumTreasureHits+1;
             if(mediumTreasureHits == 3)  {
@@ -785,6 +797,8 @@ function onClick(thisSquare) {
             }
         }
         if(surfboard.location.includes(thisSquare))  {
+            let randomhitTreasureSound = hitTreasureSounds[Math.floor(Math.random() * hitTreasureSounds.length)];
+            randomhitTreasureSound.play();
             thisSquare.style.cursor = "auto";
             largeTreasureHits = largeTreasureHits+1;
             if(largeTreasureHits == 4)  {
@@ -1027,6 +1041,7 @@ function onClick(thisSquare) {
                 mineLocations.splice(endOfGameMineIndex, 1);
                 mineLocations.push(endOfGameMine);
                 mineLocations.pop(endOfGameMine);
+                explosionSound.play();
                 thisSquare.style.background = "url('images/explosion.png') no-repeat";
                 thisSquare.style.backgroundSize = "cover";
                 thisSquare.style.backgroundPosition = "center";
