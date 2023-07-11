@@ -23,9 +23,23 @@ let largeTreasurePic = document.getElementById("picitem3")
 const easyModeBtn = document.getElementById("easyModeBtn");
 const normalModeBtn = document.getElementById("normalModeBtn");
 const hardModeBtn = document.getElementById("hardModeBtn");
+const minesSwitch = document.getElementById("minesSwitch");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn");
 
 const modals = document.getElementsByClassName("modal");
+
+const activateMinesSound = document.getElementById("activateMinesSound");
+minesSwitch.addEventListener("click", function(){activateMinesSound.play();});
+
+const findTreasure1Sound = document.getElementById("findTreasure1Sound");
+const findTreasure2Sound = document.getElementById("findTreasure2Sound");
+const findTreasure3Sound = document.getElementById("findTreasure3Sound");
+const digHole1Sound = document.getElementById("digHole1Sound");
+const digHole2Sound = document.getElementById("digHole2Sound");
+const digHole3Sound = document.getElementById("digHole3Sound");
+const digHole4Sound = document.getElementById("digHole4Sound");
+const digHoleSounds = [digHole1Sound, digHole2Sound, digHole3Sound, digHole4Sound];
+let randomDigSound = digHoleSounds[Math.floor(Math.random() * digHoleSounds.length)];
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -58,6 +72,8 @@ hardModeBtn.onclick = function() {
     remainingTurnsCount = 20;
     turnCount = 5;
 }
+
+
 
 //howToPlayModal
 const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
@@ -724,6 +740,8 @@ function onClick(thisSquare) {
             hitCount = hitCount+1;
         }   else    {
                 thisSquare.style.cursor = "auto";
+                let randomDigSound = digHoleSounds[Math.floor(Math.random() * digHoleSounds.length)];
+                randomDigSound.play();
                 thisSquare.style.background = "url('images/dugHole.png') no-repeat";
                 thisSquare.style.backgroundSize = "cover";
                 thisSquare.style.backgroundPosition = "center";
@@ -741,6 +759,7 @@ function onClick(thisSquare) {
                 chest.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
                 chest.location[1].style.backgroundSize = "cover";
                 chest.location[1].style.backgroundPosition = "center";
+                findTreasure1Sound.play();
                 showTreasureImage(treasureChestImage); 
                 chestFoundAlert();
                 foundSmallTreasure();
@@ -759,6 +778,7 @@ function onClick(thisSquare) {
                 golfClubs.location[2].style.background = "url('images/foundTreasure.png') no-repeat";
                 golfClubs.location[2].style.backgroundSize = "cover";
                 golfClubs.location[2].style.backgroundPosition = "center";
+                findTreasure2Sound.play();
                 showTreasureImage(golfClubsImage);
                 golfClubsFoundAlert();
                 foundMediumTreasure();
@@ -780,6 +800,7 @@ function onClick(thisSquare) {
                 surfboard.location[3].style.background = "url('images/foundTreasure.png') no-repeat";
                 surfboard.location[3].style.backgroundSize = "cover";
                 surfboard.location[3].style.backgroundPosition = "center";
+                findTreasure3Sound.play();
                 showTreasureImage(surfboardImage);
                 surfboardFoundAlert();
                 foundLargeTreasure();
