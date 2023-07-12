@@ -6,6 +6,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Kaboom Beach</title>
      <link rel="stylesheet" type="text/css" href="style.css"/>
+     <link rel="shortcut icon" href="#">
 </head>
 
 <body onload="showWelcomeModal()">
@@ -167,7 +168,7 @@
                      <p>Object: Find all three treasures buried at Kaboom Beach! The treasures are randomly positioned in a 8x8 grid, and they may be arranged horizontally or vertically. You will have a limited number of turns to complete this task, and danger is lurking below...</p>
                         <p>Gameplay: Dig a hole in the sand by selecting a square. If part of a treasure is there, you will see a mysterious golden glow shining from the ground. Once you completely uncover a treasure, it is considered "found", and placed next to the dig site. Your progress and the number of remaining turns are indicated in the status bar below the grid. Find all three treasures to win the game.</p>
                           <p>Your chosen difficulty determines the number of turns you have to complete the game. Easy: 30 turns, Medium: 25,  Hard: 20</p>
-                           <p>Select the "Activate Mines" switch before starting the game, and 4 mines will be randomly placed within the dig site. Selecting a square will now reveal a number representing the number of mines buried in the 8 squares surrounding you. Should you be unlucky enough to hit a mine...then KABOOM! The game is over.</p>
+                           <p>Select the "Activate Mines" switch before starting the game, and 4 mines will be randomly placed within the dig site. Selecting a square will now reveal a number representing the number of mines buried in the adjacent squares. Should you be unlucky enough to hit a mine...KABOOM! The game is over.</p>
                         <div class="push"></div>
                   </div>
                   <div id = "howToPlayModalFooter">
@@ -180,32 +181,37 @@
      <!--The Win Game Modal-->
      <div class="modal">
          <div class="modal-content" id="winGameModalContent">
-          <h3>Congrats, you found all the treasures!</h3>
-          <p>Remaining Turns</p>
-          <p id="winningTurnCounter"></p>
-          <button id ="winPlayAgain">Play Again!</button>
-          <button id ="revealObjectsAfterWin">Show Solution</button>
+            <h4>Congrats!&#160You found all the treasure.</h4>
+            <h4>Remaining Turns</h4>
+            <div id="winningTurnCounter"></div>
+            <div class = "gameOverButtonsColumn">
+               <div class = "gameOverButtons" id = "winPlayAgainContainer"><button id ="winPlayAgain">Play Again!</button></div>
+               <div class = "gameOverButtons" id = "winShowSolutionContainer"><button id ="revealObjectsAfterWin">Show Solution</button></div>
+            </div>
          </div>
      </div>
 
      <!--The Game Over (Out of Turns) Modal-->
      <div class="modal">
-          <div class="modal-content" id="gameOverTurnsModalContent">
-          <h4>Sorry, you ran out of turns.</h4>
-          <p>Would you like to play again?</p>
-          <button id ="losePlayAgain">Play Again!</button>
-          <button id ="revealObjects">Show Solution</button>
-          </div>
+         <div class="modal-content" id="gameOverTurnsModalContent">
+            <h4>Sorry,&#160you ran out of turns.</h4>
+            <div class = "gameOverButtonsColumn">
+               <div class = "gameOverButtons" id = "losePlayAgainContainer"><button id ="losePlayAgain">Play Again!</button></div>
+               <div class = "gameOverButtons" id = "loseShowSolutionContainer"><button id ="revealObjects">Show Solution</button></div>
+            </div>
+         </div>
      </div>
 
      <!--The Game Over (Hit Mine) Modal-->
      <div class="modal">
-          <div class="modal-content" id="gameOverMinesModalContent">
-          <h4>Sorry, you hit a mine.</h4>
-          <p>Would you like to play again?</p>
-          <button id ="losePlayAgainMine">Play Again!</button>
-          <button id ="revealObjectsMine">Show Solution</button>
-          </div>
+         <div class="modal-content" id="gameOverMinesModalContent">
+            <h4>Oops,&#160you hit a mine!</h4>
+            <div class = "gameOverButtonsColumn">
+               <div class = "gameOverButtons" id = "minePlayAgainContainer"><button id ="losePlayAgainMine">Play Again!</button></div>
+               <div class = "gameOverButtons" id = "mineShowSolutionContainer"><button id ="revealObjectsMine">Show Solution</button></div>
+         
+               </div>
+            </div>
          </div>
       </div>
    </div>

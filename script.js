@@ -830,11 +830,6 @@ function onClick(thisSquare) {
                 foundLargeTreasure();
             }
         }
-
-        if(turnCount == 25 && hitCount < 9) {
-            disableGridClick()
-            gameOverTimeout();
-        }
         
         if(enableMines.checked == true) {
             if(takenSquares.includes(thisSquare)){
@@ -1064,6 +1059,13 @@ function onClick(thisSquare) {
                 gameOverMineTimeout();      
                 }  
             }
+        
+        if (mineExploded == false) {
+            if(turnCount == 25 && hitCount < 9) {
+                disableGridClick()
+                gameOverTimeout();
+            }
+        }
 
         if(hitCount === 9) {
             disableGridClick();
