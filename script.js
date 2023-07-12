@@ -48,6 +48,9 @@ const hitTreasure1Sound = document.getElementById("hitTreasure1Sound");
 const hitTreasure2Sound = document.getElementById("hitTreasure2Sound");
 const hitTreasureSounds = [hitTreasure1Sound, hitTreasure2Sound];
 const explosionSound = document.getElementById("explosionSound");
+const gameOverSound = document.getElementById("gameOverSound");
+const youWinSound = document.getElementById("youWinSound");
+const menuSelectSound = document.getElementById("menuSelectSound");
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -62,6 +65,7 @@ function hideWelcomeModal() {
 }
 
 easyModeBtn.onclick = function() {
+    menuSelectSound.play();
     hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "30";
     remainingTurnsCount = 30;
@@ -69,12 +73,14 @@ easyModeBtn.onclick = function() {
 }
 
 normalModeBtn.onclick = function() {
+    menuSelectSound.play();
     hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "25";
     remainingTurnsCount = 25;
 }
 
 hardModeBtn.onclick = function() {
+    menuSelectSound.play();
     hideWelcomeModal();
     document.getElementById("turnCounter").innerHTML = "20";
     remainingTurnsCount = 20;
@@ -113,6 +119,7 @@ function winGameTimeout() {
 
 function showWinGameModal() {
     modals[2].style.display = "block";
+    youWinSound.play();
 }
 
 function revealTreasuresAndMinesTimeout() {
@@ -120,39 +127,39 @@ function revealTreasuresAndMinesTimeout() {
 }
 
 function revealTreasuresAndMines() {
-    chest.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    chest.location[0].style.background = "url('images/closedTreasureChest1.png') no-repeat";
     chest.location[0].style.backgroundSize = "cover";
     chest.location[0].style.backgroundPosition = "center";
     chest.location[0].style.color="transparent";
-    chest.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    chest.location[1].style.background = "url('images/closedTreasureChest1.png') no-repeat";
     chest.location[1].style.backgroundSize = "cover";
     chest.location[1].style.backgroundPosition = "center";
     chest.location[1].style.color="transparent";
-    golfClubs.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[0].style.background = "url('images/closedTreasureChest2.png') no-repeat";
     golfClubs.location[0].style.backgroundSize = "cover";
     golfClubs.location[0].style.backgroundPosition = "center";
     golfClubs.location[0].style.color="transparent";
-    golfClubs.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[1].style.background = "url('images/closedTreasureChest2.png') no-repeat";
     golfClubs.location[1].style.backgroundSize = "cover";
     golfClubs.location[1].style.backgroundPosition = "center";
     golfClubs.location[1].style.color="transparent";
-    golfClubs.location[2].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    golfClubs.location[2].style.background = "url('images/closedTreasureChest2.png') no-repeat";
     golfClubs.location[2].style.backgroundSize = "cover";
     golfClubs.location[2].style.backgroundPosition = "center";
     golfClubs.location[2].style.color="transparent";
-    surfboard.location[0].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[0].style.background = "url('images/closedTreasureChest3.png') no-repeat";
     surfboard.location[0].style.backgroundSize = "cover";
     surfboard.location[0].style.backgroundPosition = "center";
     surfboard.location[0].style.color="transparent";
-    surfboard.location[1].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[1].style.background = "url('images/closedTreasureChest3.png') no-repeat";
     surfboard.location[1].style.backgroundSize = "cover";
     surfboard.location[1].style.backgroundPosition = "center";
     surfboard.location[1].style.color="transparent";
-    surfboard.location[2].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[2].style.background = "url('images/closedTreasureChest3.png') no-repeat";
     surfboard.location[2].style.backgroundSize = "cover";
     surfboard.location[2].style.backgroundPosition = "center";
     surfboard.location[2].style.color="transparent";
-    surfboard.location[3].style.background = "url('images/closedTreasureChest.png') no-repeat";
+    surfboard.location[3].style.background = "url('images/closedTreasureChest3.png') no-repeat";
     surfboard.location[3].style.backgroundSize = "cover";
     surfboard.location[3].style.backgroundPosition = "center";
     surfboard.location[3].style.color="transparent";
@@ -170,10 +177,13 @@ function revealTreasuresAndMines() {
             mineLocations[2].style.backgroundSize = "cover";
             mineLocations[2].style.backgroundPosition = "center";
             mineLocations[2].style.color = "transparent";
-            mineLocations[3].style.background = "url('images/mine2.png') no-repeat";
-            mineLocations[3].style.backgroundSize = "cover";
-            mineLocations[3].style.backgroundPosition = "center";
-            mineLocations[3].style.color = "transparent";
+
+                if (mineExploded == false) {
+                    mineLocations[3].style.background = "url('images/mine2.png') no-repeat";
+                    mineLocations[3].style.backgroundSize = "cover";
+                    mineLocations[3].style.backgroundPosition = "center";
+                    mineLocations[3].style.color = "transparent";
+                }
         }
 }
 
@@ -183,7 +193,7 @@ function gameOverTimeout() {
 
 function showGameOverModal() {
     modals[3].style.display = "block";
-    
+    gameOverSound.play();
 }
 
 function gameOverMineTimeout() {
@@ -1056,25 +1066,6 @@ function onClick(thisSquare) {
             }
 
         if(hitCount === 9) {
-            if (enableMines.checked == true) {
-                mineLocations[0].style.background = "url('images/mine2.png') no-repeat";
-                mineLocations[0].style.backgroundSize = "cover";
-                mineLocations[0].style.backgroundPosition = "center";
-                mineLocations[0].style.color = "transparent";
-                mineLocations[1].style.background = "url('images/mine2.png') no-repeat";
-                mineLocations[1].style.backgroundSize = "cover";
-                mineLocations[1].style.backgroundPosition = "center";
-                mineLocations[1].style.color = "transparent";
-                mineLocations[2].style.background = "url('images/mine2.png') no-repeat";
-                mineLocations[2].style.backgroundSize = "cover";
-                mineLocations[2].style.backgroundPosition = "center";
-                mineLocations[2].style.color = "transparent";
-                mineLocations[3].style.background = "url('images/mine2.png') no-repeat";
-                mineLocations[3].style.backgroundSize = "cover";
-                mineLocations[3].style.backgroundPosition = "center";
-                mineLocations[3].style.color = "transparent";
-            }
-
             disableGridClick();
             remainingTurnsCount --;
             allTreasuresFound = true;

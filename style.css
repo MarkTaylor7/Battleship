@@ -216,10 +216,11 @@ h3  {
     border-top: 1px solid rgba(210, 180, 140, 0.3);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
-    height: 29vh;
+    height: 30vh;
     z-index: -1;
     justify-content: center;
     margin-top: -3rem;
+    
     }
 
 .foundTreasuresParent {
@@ -272,7 +273,7 @@ h3  {
 #svg-wave {
     z-index: 1;
     border-bottom: 1px solid #68e0cf(210, 180, 140, 0.3);
-    margin-top: -8.5vh;
+    margin-top: -9.5vh;
     }
 
 
@@ -282,7 +283,7 @@ footer {
     background-image: linear-gradient(to top, #20b8ff 0%, #68e0cf 100%);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: -1rem;
-    min-height: 75px;
+    min-height: 80px;
     box-shadow: 0 50vh 0 50vh #20b8ff;
     
     z-index: 1;
