@@ -1,38 +1,4 @@
----Algorithm for Random Placement of Ships----
-
-
-
-
-
-
-
-
-
-
-
-
---game logic--
-check to see if selected square has already been selected
-if selected square has already been selected
-    display alert
-if selected square is a hit
-    remove square from play
-    determine which ship was hit
-    alert for hit
-    if item is dug up, 
-        remove itrm from play
-        indicate which of the listed items is dug up in buried items list
-        if player records 9 hits
-            alert user that they have won
-            prompt for user to share their score via social media (provide multiple platforms for selection)
-                score will include number of shots fired (lower the better) 
-            prompt for new game
-    if ship has not sunk
-        mark square as being played and hit
-    
-
-
-!!! Ignore everything below. May be used in future build of this project.
+<!---Notes below may be used in future build of this project--->
 
 Definitions:
 target grid: The upper grid where the user selects squares which are marked as hits or misses
