@@ -463,7 +463,7 @@ h7 {
     max-width: 40rem;
     width: 75vw;
     height: 89vh;
-    
+    max-height: 620px;
     padding: 2rem;
 }
 
@@ -863,13 +863,23 @@ h4 {
 
 
 
-p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+p   {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: calc(15px + 0.390625vw);
         color: saddlebrown;
         text-align: center;
         line-height: 1.2;
         text-align: left;
-    }
+}
+
+li  {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: calc(15px + 0.390625vw);
+        color: saddlebrown;
+        text-align: center;
+        line-height: 1.2;
+        text-align: left;
+}
 
 p2  {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 150%;
