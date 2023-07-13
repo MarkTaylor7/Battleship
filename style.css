@@ -128,13 +128,15 @@ h1  {
     }
 
 #RemainingTurnsCounter  {
+    display: flex;
+    flex-direction: column;
     background-color: bisque;
     text-align: center;
     margin: 0;
     height: 4rem;
     font-size: small;
     border-style: none;
-    
+    width: 30%;
     }
 
 h2  {
@@ -145,8 +147,6 @@ h2  {
     text-transform: uppercase;
     text-align: center;
     line-height: 0.5rem;
-    margin-left: 0.5rem;
-    width: 8.0rem; 
     margin-top: 0.5rem;
     }
 
@@ -155,18 +155,17 @@ h2  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
-    font-size: 1.5rem;
-    line-height: 0.5;
+    font-size: 1.8rem;
     text-align: center;
-    margin-top: 1rem;
     }
 
-#itemList   {background-color:bisque;
+#itemList   {
+    background-color:bisque;
     text-align: center;
     font-size: small;
     height: 4rem;
     border-style: none;
-    width: 100%;
+    width: 45%;
     }
 
 h3  {
@@ -181,6 +180,7 @@ h3  {
     }
 
 #howToPlayContainer {
+    display: flex;
     background-color:bisque;
     text-align: center;
     align-content: center;
@@ -190,6 +190,7 @@ h3  {
     border-right-color: #a78456;
     border-right-style: solid;
     border-right-width: 2.85px;
+    width: 25%;
     }
 
 #howToPlayModalBtn {
@@ -203,8 +204,24 @@ h3  {
     text-align: center;
     font-size: 1rem;
     font-family: Verdana;
-    margin-right: 3vw;
     margin-top: 1rem;
+    margin: auto;
+    margin-left: 1rem;
+    }
+
+#muteBtn {
+    display: block;
+    background: saddlebrown;
+    color: #fff;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: 1rem;
+    font-family: Verdana;
+    margin: auto;
+    margin-right: 1rem;
     }
 
 
@@ -863,14 +880,13 @@ h4 {
 
 
 
-p   {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: calc(15px + 0.390625vw);
         color: saddlebrown;
         text-align: center;
         line-height: 1.2;
         text-align: left;
-}
+    }
 
 li  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

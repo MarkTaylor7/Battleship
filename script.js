@@ -25,6 +25,7 @@ const normalModeBtn = document.getElementById("normalModeBtn");
 const hardModeBtn = document.getElementById("hardModeBtn");
 const minesSwitch = document.getElementById("minesSwitch");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn");
+const muteBtn = document.getElementById("muteBtn");
 
 const modals = document.getElementsByClassName("modal");
 
@@ -51,6 +52,8 @@ const explosionSound = document.getElementById("explosionSound");
 const gameOverSound = document.getElementById("gameOverSound");
 const youWinSound = document.getElementById("youWinSound");
 const menuSelectSound = document.getElementById("menuSelectSound");
+const sounds = document.getElementsByClassName("sounds");
+
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -110,6 +113,16 @@ window.onclick = function(event) {
         modals[1].style.display = "none";
     }
 }
+
+muteBtn.onclick = function() {
+    for (let i = 0; i < sounds.length; i++) {
+        if (sounds[i].muted === false) {
+            sounds[i].muted = true;
+        } else {
+                sounds[i].muted = false;
+            }
+      } 
+};
 
 let timeout;
 
