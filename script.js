@@ -11,7 +11,7 @@ let mediumTreasureHits = 0;
 let largeTreasureHits = 0;
 
 //Counter for remaining turns
-let remainingTurns = document.getElementById("turnCounter")
+let remainingTurns = document.getElementById("turnCounter");
 let remainingTurnsCount = 25;
 
 //Images of hidden treasures, hinting at lengths of treasures
@@ -1088,9 +1088,43 @@ function onClick(thisSquare) {
             document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount); 
         }
 
+        if (turnCount > 19) {
+            remainingTurns.style.color = "red";
+            remainingTurns.style.fontWeight = "bold";
+            };
+
+            if (turnCount > 20) {
+                remainingTurns.style.color = "red";
+                remainingTurns.style.fontWeight = "bold";
+                remainingTurns.style.fontSize = "2rem";
+                };
+
+                if (turnCount > 21) {
+                    remainingTurns.style.color = "red";
+                    remainingTurns.style.fontWeight = "bold";
+                    remainingTurns.style.fontSize = "2.2rem";
+                    };
+                    if (turnCount > 22) {
+                        remainingTurns.style.color = "red";
+                        remainingTurns.style.fontWeight = "bold";
+                        remainingTurns.style.fontSize = "2.4rem";
+                        };
+
+                        if (turnCount > 22) {
+                            remainingTurns.style.color = "red";
+                            remainingTurns.style.fontWeight = "bold";
+                            remainingTurns.style.fontSize = "2.6rem";
+                            };
+
         gameStart = true;
     }
+
+    
+        
 }
+
+
+
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
