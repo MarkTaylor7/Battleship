@@ -1,20 +1,21 @@
 body {
     background-color: #deb887;
+    height: 100%;
+    width: 100%;
     margin: 0;
     line-height: 30px;
     }
 
 #mainContainer  {
-    min-height: calc(100vh - 1000px);
     width: 100%;
     text-align: center;
-    align-content: center;
+    
     margin-top: 0.5rem
     }
 
 #subContainer {
     width: 97%;
-    max-width: 30rem;
+    max-width: 40rem;
     align-content: center;
     margin: auto;
     border-top-color: rgb(167, 132, 86);
@@ -25,7 +26,7 @@ body {
 #title  {
     background-color:bisque;
     text-align: center;
-    height: 3.0rem;
+    height: 7vh;
     border-left-color: rgb(167, 132, 86);
     border-left-style: solid;
     border-left-width: 3px;
@@ -44,7 +45,7 @@ body {
 
 h1  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 1.3rem;
+    font-size: 2.5vh;
     color:saddlebrown;
     font-weight: bold;
     text-transform: uppercase;
@@ -54,9 +55,49 @@ h1  {
     
     }
 
-#content {
+#playAgainPopUp {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    visibility: hidden;
+    background-color: yellow;
+    display: block;
     
+    height: 7vh;
+    width: 20%;
     align-content: center;
+    border-left-color: rgb(167, 132, 86);
+    border-left-style: solid;
+    border-left-width: 2px;
+}
+
+#popupPlayAgainBtn {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.8vh;
+    color:black;
+    background-color: yellow;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    height: 7vh;
+    z-index: 1;
+}
+
+#popupPlayAgainBtn:active {
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.24);
+}
+
+
+#playAgainPopUp.show {
+    visibility: visible;
+    /* Add animation: Take 1 second to fade in and out the snackbar.*/
+    -webkit-animation: slidein 1s;
+    animation: slidein 1s;
+    }
+
+#content {
     border-color: rgb(167, 132, 86);
     border-style: solid;
     border-top-width:  0.85px;
@@ -66,11 +107,8 @@ h1  {
     }
 
 .grid  {
-    width: 100%;
-    margin: 0 auto;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    
     }
     
     
@@ -78,7 +116,7 @@ h1  {
     display: flex;
     margin: auto;        
     width: 100%;
-    line-height: 0.75;
+    line-height: 1.2;
     border-top:  0.15px solid rgb(167, 132, 86);
     border-bottom:  0.15px solid rgb(167, 132, 86);
     }
@@ -86,17 +124,15 @@ h1  {
 .column {
     background-color: bisque;
     background-position: center;
-    padding: 1rem 0;
-    padding-top: 1.2rem;
-    padding-left: 0rem;
+    padding: 3% 0;
     gap: 2px;
     align-content: center;
     border-color:rgb(167, 132, 86);
     border-left-style: solid;
     border-left-width: 0.15px;
     border-right-style: solid;
-    border-right-width:0.15px;
-    font-size: 1.0rem;
+    border-right-width: 0.15px;
+    font-size: 3vh;
     justify-content: center;   
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #ffe4c4;
@@ -112,7 +148,7 @@ h1  {
 
 .statusBar {
     width: 100%;
-    height: 4rem;
+    height: 7vh;
     display: flex;
     margin: 0%;
     border-left-color: #a78456;
@@ -133,21 +169,21 @@ h1  {
     background-color: bisque;
     text-align: center;
     margin: 0;
-    height: 4rem;
-    font-size: small;
+    height: 7vh;
     border-style: none;
     width: 30%;
     }
 
 h2  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 0.75rem;
-    color:saddlebrown;
+    font-size: 1.4vh;
+    color: saddlebrown;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    line-height: 0.5rem;
-    margin-top: 0.5rem;
+    line-height: 0.5;
+    
+    height: 2vh;
     }
 
 #turnCounter    {
@@ -155,15 +191,17 @@ h2  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 4vh;
     text-align: center;
+    height: 4vh;
+    line-height: 1vh;
     }
 
 #itemList   {
     background-color:bisque;
     text-align: center;
     font-size: small;
-    height: 4rem;
+    height: 7vh;
     border-style: none;
     width: 45%;
     }
@@ -185,7 +223,7 @@ h3  {
     text-align: center;
     align-content: center;
     margin: 0;
-    height: 4rem;
+    height: 7vh;
     text-align: center;
     border-right-color: #a78456;
     border-right-style: solid;
@@ -233,7 +271,7 @@ h3  {
     border-top: 1px solid rgba(210, 180, 140, 0.3);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
-    height: 30vh;
+    height: 25vh;
     z-index: -1;
     justify-content: center;
     margin-top: -3rem;
@@ -289,7 +327,6 @@ h3  {
 
 #svg-wave {
     z-index: 1;
-    border-bottom: 1px solid #68e0cf(210, 180, 140, 0.3);
     margin-top: -9.5vh;
     }
 
@@ -992,47 +1029,7 @@ p3  {
     animation: fadein 0.5s, fadeout 0.5s 2.0s;
     }
 
-#playAgainPopUp {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    visibility: hidden;
-    background-color: yellow;
-    display: block;
-    
-    height: 3rem;
-    width: 20%;
-    align-content: center;
-    border-left-color: rgb(167, 132, 86);
-    border-left-style: solid;
-    border-left-width: 2px;
-}
 
-#popupPlayAgainBtn {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    color:black;
-    background-color: yellow;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    height: 3rem;
-    z-index: 1;
-}
-
-#popupPlayAgainBtn:active {
-    transform: scale(0.98);
-    /* Scaling button to 0.98 to its original size */
-    box-shadow: 2px 1px 3px 1px rgba(0, 0, 0, 0.24);
-}
-
-
-#playAgainPopUp.show {
-    visibility: visible;
-    /* Add animation: Take 1 second to fade in and out the snackbar.*/
-    -webkit-animation: slidein 1s;
-    animation: slidein 1s;
-    }
     
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
