@@ -142,8 +142,8 @@ h1  {
     }
 
 .column:hover {
-    background-color: rgb(167, 132, 86);
-    color: rgb(167, 132, 86);
+    background-color: #68e0cf;
+    color: #68e0cf;
     }
 
 .statusBar {
@@ -182,7 +182,6 @@ h2  {
     text-transform: uppercase;
     text-align: center;
     line-height: 0.5;
-    
     height: 2vh;
     }
 
@@ -199,22 +198,39 @@ h2  {
 
 #itemList   {
     background-color:bisque;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    font-size: small;
     height: 7vh;
     border-style: none;
     width: 45%;
+    margin: 0;
     }
 
 h3  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 0.75rem;
+    font-size: 1.4vh;
     color:saddlebrown;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    line-height: 0.5rem;
-    margin-top: 0.5rem;
+    line-height: 0.5;
+    height: 2vh;
+    }
+
+#buriedItemsContainer {
+    background-color:bisque;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    margin: 0;
+    margin-top: -1.5vh;
+    text-align: center;
+    height: 3vh;
+    }
+
+.responsive {
+    max-width: 100%;
+    height: 3.2vh;
     }
 
 #howToPlayContainer {
@@ -233,33 +249,37 @@ h3  {
 
 #howToPlayModalBtn {
     display: block;
-    background: saddlebrown;
-    color: #fff;
+    color:gold;
+    background-color: #4e3e29;
+    text-shadow: #856a49 0px 1px 0px;
     border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    line-height: 1rem;
+    width: 4.5vh;
+    height: 4.5vh;
     text-align: center;
-    font-size: 1rem;
+    font-size: 2.4vh;
     font-family: Verdana;
     margin-top: 1rem;
     margin: auto;
-    margin-left: 1rem;
+    margin-left: 4.5vw;
+    cursor: pointer;
     }
 
 #muteBtn {
     display: block;
-    background: saddlebrown;
-    color: #fff;
+    color: rgb(255, 136, 0);
+    justify-content: center;
+    background-color: #4e3e29;
+    text-shadow: #856a49 0px 1px 0px;
     border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
+    width: 4.5vh;
+    height: 4.5vh;
     line-height: 1rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 2.4vh;
     font-family: Verdana;
     margin: auto;
-    margin-right: 1rem;
+    margin-right: 1.5vw;
+    cursor: pointer;
     }
 
 
