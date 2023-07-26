@@ -1,5 +1,5 @@
 body {
-    background-color: #deb887;
+    background-color: bisque;
     height: 100%;
     width: 100%;
     margin: 0;
@@ -18,7 +18,7 @@ body {
     max-width: 40rem;
     align-content: center;
     margin: auto;
-    border-top-color: rgb(167, 132, 86);
+    border-top-color: #82653f;
     border-top-style: solid;
     border-top-width: 3px; 
 }
@@ -27,10 +27,10 @@ body {
     background-color:bisque;
     text-align: center;
     height: 7vh;
-    border-left-color: rgb(167, 132, 86);
+    border-left-color: #82653f;
     border-left-style: solid;
     border-left-width: 3px;
-    border-right-color: rgb(167, 132, 86);
+    border-right-color: #82653f;
     border-right-style: solid;
     border-right-width: 3px;
     margin: 0;
@@ -46,7 +46,7 @@ body {
 h1  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 2.5vh;
-    color: blue;
+    color: #00065a;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -60,11 +60,11 @@ h1  {
     visibility: hidden;
     background-color: yellow;
     display: block;
-    
+    color: #00065a;
     height: 7vh;
     width: 20%;
     align-content: center;
-    border-left-color: rgb(167, 132, 86);
+    border-left-color: #82653f;
     border-left-style: solid;
     border-left-width: 2px;
 }
@@ -74,8 +74,8 @@ h1  {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 1.8vh;
-    color:black;
-    background-color: yellow;
+    color: #00065a;
+    background-color: gold;
     cursor: pointer;
     width: 100%;
     border: none;
@@ -98,7 +98,7 @@ h1  {
     }
 
 #content {
-    border-color: rgb(167, 132, 86);
+    border-color: #82653f;
     border-style: solid;
     border-top-width:  0.85px;
     border-bottom-width: 3px; 
@@ -117,8 +117,8 @@ h1  {
     margin: auto;        
     width: 100%;
     line-height: 1.2;
-    border-top:  0.15px solid rgb(167, 132, 86);
-    border-bottom:  0.15px solid rgb(167, 132, 86);
+    border-top:  0.15px solid #82653f;
+    border-bottom:  0.15px solid #82653f;
     }
 
 .column {
@@ -127,7 +127,7 @@ h1  {
     padding: 3% 0;
     gap: 2px;
     align-content: center;
-    border-color:rgb(167, 132, 86);
+    border-color:#82653f;
     border-left-style: solid;
     border-left-width: 0.15px;
     border-right-style: solid;
@@ -151,13 +151,13 @@ h1  {
     height: 7vh;
     display: flex;
     margin: 0%;
-    border-left-color: #a78456;
+    border-left-color: #82653f;
     border-left-style: solid;
     border-left-width: 0.15px;
-    border-right-color: #a78456;
+    border-right-color: #82653f;
     border-right-style: solid;
     border-right-width: 0.15px;
-    border-top-color: #a78456;
+    border-top-color: #82653f;
     border-top-style: solid;
     border-top-width: 0.85px;
     justify-content: space-between;
@@ -166,7 +166,7 @@ h1  {
 #RemainingTurnsCounter  {
     display: flex;
     flex-direction: column;
-    background-color: bisque;
+    background-color: transparent;
     text-align: center;
     margin: 0;
     height: 7vh;
@@ -177,7 +177,7 @@ h1  {
 h2  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.4vh;
-    color: blue;
+    color: #00065a;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -186,7 +186,7 @@ h2  {
     }
 
 #turnCounter    {
-    background-color:bisque;
+    background-color:transparent;
     color: #00065a;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
@@ -198,7 +198,7 @@ h2  {
     }
 
 #itemList   {
-    background-color:bisque;
+    background-color:transparent;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -211,7 +211,7 @@ h2  {
 h3  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.4vh;
-    color:blue;
+    color:#00065a;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
@@ -220,13 +220,14 @@ h3  {
     }
 
 #buriedItemsContainer {
-    background-color:bisque;
+    background-color: transparent;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
     margin: 0;
     margin-top: -1.5vh;
     text-align: center;
-    height: 3vh;
+    height: 4vh;
+    line-height: 1vh;
     }
 
 .responsive {
@@ -236,13 +237,13 @@ h3  {
 
 #howToPlayContainer {
     display: flex;
-    background-color:bisque;
+    background-color:transparent;
     text-align: center;
     align-content: center;
     margin: 0;
     height: 7vh;
     text-align: center;
-    border-right-color: #a78456;
+    border-right-color: #82653f;
     border-right-style: solid;
     border-right-width: 2.85px;
     width: 25%;
@@ -250,8 +251,8 @@ h3  {
 
 #howToPlayModalBtn {
     display: block;
-    color: #00065a;
-    background-color: gold;
+    color: gold;
+    background-color: #00065a;
     border-style: none;
     width: 4.5vh;
     height: 4.5vh;
@@ -267,8 +268,8 @@ h3  {
 
 #muteBtn {
     display: block;
-    color: #00065a;
-    background-color: #ff8800;
+    color: #ff8800;
+    background-color: #00065a;
     justify-content: center;
     border-style: none;
     width: 4.5vh;
@@ -288,8 +289,7 @@ h3  {
     position: relative;
     display: flex;
     width: 100%;
-    background-image: linear-gradient(to top, #755c3e 0%, rgb(222, 184, 135) 100%);
-    border-top: 1px solid rgba(210, 180, 140, 0.3);
+    background-image: linear-gradient(to top, #755c3e 0%, bisque 100%);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
     height: 25vh;
@@ -443,7 +443,7 @@ a {
 
 #howToPlayModalContent {
     background-color: bisque;
-    border-color: #a78456;
+    border-color: #00065a;
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
@@ -527,7 +527,7 @@ h7 {
 
 #welcomeModalContent {
     background-color: bisque;
-    border-color: #a78456;
+    border-color: #00065a;
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
@@ -742,7 +742,7 @@ input:checked + .slider:before {
     
 #winGameModalContent {
     background-color: bisque;
-    border-color: #a78456;
+    border-color: #00065a;
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
@@ -820,7 +820,7 @@ h4 {
 
 #gameOverTurnsModalContent {
     background-color: bisque;
-    border-color: #a78456;
+    border-color: #00065a;
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
@@ -887,7 +887,7 @@ h4 {
 
 #gameOverMinesModalContent {
     background-color: bisque;
-    border-color: #a78456;
+    border-color: #00065a;
     border-style: solid;
     border-width: 0.2 rem;
     align-self: center;
