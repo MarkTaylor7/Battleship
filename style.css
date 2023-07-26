@@ -251,9 +251,10 @@ h3  {
 
 #howToPlayModalBtn {
     display: block;
-    color: gold;
-    background-color: #00065a;
-    border-style: none;
+    color: #00065a;
+    background-color: transparent;
+    border-style: solid;
+    border-color: #00065a;
     width: 4.5vh;
     height: 4.5vh;
     text-align: center;
@@ -268,10 +269,11 @@ h3  {
 
 #muteBtn {
     display: block;
-    color: #ff8800;
-    background-color: #00065a;
+    color: #00065a;
+    background-color: transparent;
     justify-content: center;
-    border-style: none;
+    border-style: solid;
+    border-color: #00065a;
     width: 4.5vh;
     height: 4.5vh;
     line-height: 1rem;

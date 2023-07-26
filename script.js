@@ -778,7 +778,7 @@ function onClick(thisSquare) {
     if(remainingTurnsCount > 0 && mineExploded == false && hitCount < 9) {
         if(takenSquares.includes(thisSquare))   {
             thisSquare.style.cursor = "auto";
-            thisSquare.style.background = "url('images/dugHoleTreasure.png') no-repeat";
+            thisSquare.style.background = "url('images/dugHoleTreasureX.png') no-repeat";
             thisSquare.style.backgroundSize = "cover";
             thisSquare.style.backgroundPosition = "center";
             thisSquare.style.color= "#fff661";
@@ -801,10 +801,10 @@ function onClick(thisSquare) {
             thisSquare.style.cursor = "auto";
             smallTreasureHits = smallTreasureHits+1;
             if(smallTreasureHits == 2)  {
-                chest.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                chest.location[0].style.background = "url('images/foundTreasureX.png') no-repeat";
                 chest.location[0].style.backgroundSize = "cover";
                 chest.location[0].style.backgroundPosition = "center";
-                chest.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                chest.location[1].style.background = "url('images/foundTreasureX.png') no-repeat";
                 chest.location[1].style.backgroundSize = "cover";
                 chest.location[1].style.backgroundPosition = "center";
                 findTreasure1Sound.play();
@@ -819,13 +819,13 @@ function onClick(thisSquare) {
             thisSquare.style.cursor = "auto";
             mediumTreasureHits = mediumTreasureHits+1;
             if(mediumTreasureHits == 3)  {
-                golfClubs.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[0].style.background = "url('images/foundTreasureX.png') no-repeat";
                 golfClubs.location[0].style.backgroundSize = "cover";
                 golfClubs.location[0].style.backgroundPosition = "center";
-                golfClubs.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[1].style.background = "url('images/foundTreasureX.png') no-repeat";
                 golfClubs.location[1].style.backgroundSize = "cover";
                 golfClubs.location[1].style.backgroundPosition = "center";
-                golfClubs.location[2].style.background = "url('images/foundTreasure.png') no-repeat";
+                golfClubs.location[2].style.background = "url('images/foundTreasureX.png') no-repeat";
                 golfClubs.location[2].style.backgroundSize = "cover";
                 golfClubs.location[2].style.backgroundPosition = "center";
                 findTreasure2Sound.play();
@@ -840,16 +840,16 @@ function onClick(thisSquare) {
             thisSquare.style.cursor = "auto";
             largeTreasureHits = largeTreasureHits+1;
             if(largeTreasureHits == 4)  {
-                surfboard.location[0].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[0].style.background = "url('images/foundTreasureX.png') no-repeat";
                 surfboard.location[0].style.backgroundSize = "cover";
                 surfboard.location[0].style.backgroundPosition = "center";
-                surfboard.location[1].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[1].style.background = "url('images/foundTreasureX.png') no-repeat";
                 surfboard.location[1].style.backgroundSize = "cover";
                 surfboard.location[1].style.backgroundPosition = "center";
-                surfboard.location[2].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[2].style.background = "url('images/foundTreasureX.png') no-repeat";
                 surfboard.location[2].style.backgroundSize = "cover";
                 surfboard.location[2].style.backgroundPosition = "center";
-                surfboard.location[3].style.background = "url('images/foundTreasure.png') no-repeat";
+                surfboard.location[3].style.background = "url('images/foundTreasureX.png') no-repeat";
                 surfboard.location[3].style.backgroundSize = "cover";
                 surfboard.location[3].style.backgroundPosition = "center";
                 findTreasure3Sound.play();
