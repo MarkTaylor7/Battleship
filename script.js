@@ -722,15 +722,15 @@ console.log(mineLocations)
 //Functions which change hidden treasure images to images of actual treasure 
 //(currently using green squares as placeholder)
 function foundSmallTreasure()   {
-    smallTreasurePic.src = "images/greenSquares2.png";
+    smallTreasurePic.src = "images/greenSquares2Y.png";
 }
 
 function foundMediumTreasure()   {
-    mediumTreasurePic.src = "images/greenSquares3.png";
+    mediumTreasurePic.src = "images/greenSquares3Y.png";
 }
 
 function foundLargeTreasure()   {
-    largeTreasurePic.src = "images/greenSquares4.png";
+    largeTreasurePic.src = "images/greenSquares4Y.png";
 }
 
 function disableGridClick() {
