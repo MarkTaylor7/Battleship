@@ -30,11 +30,11 @@ const muteBtn = document.getElementById("muteBtn");
 const modals = document.getElementsByClassName("modal");
 
 
-function myFunction(x) {
+function adaptSubContainer(x) {
     if (x.matches) { // If media query matches
         document.getElementById("subContainer").style.maxWidth = "35rem";
         document.getElementsByClassName("foundTreasuresParent")[0].style.maxWidth = "35rem";
-        
+       
     } else {
         document.getElementById("subContainer").style.maxWidth = "50rem";
         document.getElementsByClassName("foundTreasuresParent")[0].style.maxWidth = "50rem";
@@ -42,8 +42,24 @@ function myFunction(x) {
 }
   
 var x = window.matchMedia("(max-width: 1400px)")
-myFunction(x) // Call listener function at run time
-x.addListener(myFunction) // Attach listener function on state changes
+adaptSubContainer(x) // Call listener function at run time
+x.addListener(adaptSubContainer) // Attach listener function on state changes
+
+function adaptFoundTreasuresBar(x) {
+    if (x.matches) { // If media query matches
+        document.getElementsByClassName("foundTreasuresBar")[0].style.height = "20vh";
+       
+    } else {
+        document.getElementsByClassName("foundTreasuresBar")[0].style.height = "28vh";
+        document.getElementById("svg-wave").style.marginTop = "0vh";
+        document.getElementById("wetSandBar").style.height = "12vh";
+        document.getElementById("wetSandBar").style.marginBottom = "-20vh";
+    }
+}
+  
+var x = window.matchMedia("(width: 480px)")
+adaptFoundTreasuresBar(x) // Call listener function at run time
+x.addListener(adaptFoundTreasuresBar) // Attach listener function on state changes
 
 
 const activateMinesSound = document.getElementById("activateMinesSound");
