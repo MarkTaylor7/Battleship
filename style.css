@@ -9,8 +9,7 @@ body {
 #mainContainer  {
     width: 100%;
     text-align: center;
-    
-    margin-top: 0.5rem
+    margin-top: 0.5rem;
     }
 
 #subContainer {
@@ -295,18 +294,18 @@ h3  {
     background-image: linear-gradient(to top, #755c3e 0%, bisque 100%);
     -webkit-background-clip: padding-box;
         background-clip: padding-box; 
-    height: 25vh;
+    height: 20vh;
     z-index: -1;
     justify-content: center;
     margin-top: -3rem;
-    
     }
 
 .foundTreasuresParent {
     display: flex;
-    align-content: center;
     justify-content: center;
-    max-width: 900px;
+    width: 100%;
+    align-items: baseline;
+    margin-top: 1vh;
 }
 
 .treasuresBarChild {
@@ -322,7 +321,7 @@ h3  {
 
 #mediumTreasureContainer {
     width: 28%;
-    margin-right: 4vw;
+    margin-right: 3.5vw;
 }
 
 #largeTreasureContainer {
@@ -342,27 +341,25 @@ h3  {
 #wetSandBar {
     width: 100%;
     background-color: #755c3e;
-    height: 2vh;
+    height: 8vh;
     z-index: -1;
     margin-top: -0.1rem;
-    margin-bottom: -10vh;
+    margin-bottom: -15vh;
+    
 }
 
 #svg-wave {
     z-index: 1;
-    margin-top: -9.5vh;
+    margin-top: 7.5vh;
     }
-
-
-
 
 footer {
     background-image: linear-gradient(to top, #20b8ff 0%, #68e0cf 100%);
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-top: -1rem;
     min-height: 80px;
-    box-shadow: 0 50vh 0 50vh #20b8ff;
-    
+    box-shadow: 0 50vh 0 50vh #20b8ff,
+        0 0 0 2px #20b8ff inset;
     z-index: 1;
     }
 

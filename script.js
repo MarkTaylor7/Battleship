@@ -29,19 +29,22 @@ const muteBtn = document.getElementById("muteBtn");
 
 const modals = document.getElementsByClassName("modal");
 
-const subContainer = document.getElementsByClassName("subContainer");
 
 function myFunction(x) {
     if (x.matches) { // If media query matches
         document.getElementById("subContainer").style.maxWidth = "35rem";
+        document.getElementsByClassName("foundTreasuresParent")[0].style.maxWidth = "35rem";
+        
     } else {
         document.getElementById("subContainer").style.maxWidth = "50rem";
+        document.getElementsByClassName("foundTreasuresParent")[0].style.maxWidth = "50rem";
     }
-  }
+}
   
 var x = window.matchMedia("(max-width: 1400px)")
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction) // Attach listener function on state changes
+
 
 const activateMinesSound = document.getElementById("activateMinesSound");
 minesSwitch.addEventListener("click", function(){activateMinesSound.play();});
