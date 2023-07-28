@@ -11,7 +11,7 @@ As a new student with Get Coding, I wanted to challenge myself with a project th
 Finally, video games have been a hobby of mine since I was very young, so I had a strong personal interest in creating my own game from scratch. I believe my experiences with playing games, and thinking about their design and structure, influenced many of my choices when developing this project.
 
 # Features
-<li>Two game modes - the default setting is a relaxed experience where the user seeks hidden "treasures" in a grid (Think <i>Battleship</i> with no opponent). Adding mines to the playing area introduces an element of peril, where the user can lose at any moment. Logical thinking and luck are required to "survive" </li>
+<li>Two game modes - the default setting is a relaxed experience where the user seeks hidden "treasures" in a grid (think <i>Battleship</i> with no opponent). Adding mines to the playing area introduces an element of peril, where the user can lose at any moment. Logical thinking and luck are required to "survive" </li>
 <li>Three difficulty settings</li>
 <li>Treasure locations are completely randomized each time, ensuring no two gameplay runs are the same</li>
 <li>Various sound effects and animations enhance the user experience</li>
@@ -23,5 +23,5 @@ Finally, video games have been a hobby of mine since I was very young, so I had 
 <li>Various image and sound editors, including Inkscape, PhotoPad, and Audacity</li>
 
 # Credits
-My coach, Leon Chisholm, has been a source of guidance, knowledge, and encouragement throughout the entire development timeline. I can't thank him enough for his support.
+My coach, Leon Chisholm, has been a source of guidance, knowledge, and encouragement throughout the entire development timeline. I can't thank him enough for his support. Matthew Kennedy was a wealth of knowledge as UI/UX coach, and his feedback was very useful in optimizing the game's look and feel. 
 
