@@ -57,13 +57,15 @@ function adaptFoundTreasuresBar(x) {
     }
 }
   
-var x = window.matchMedia("(width: 480px)")
+var x = window.matchMedia("(max-width: 480px)")
 adaptFoundTreasuresBar(x) // Call listener function at run time
 x.addListener(adaptFoundTreasuresBar) // Attach listener function on state changes
 
 
 const activateMinesSound = document.getElementById("activateMinesSound");
-minesSwitch.addEventListener("click", function(){activateMinesSound.play();});
+const deactivateMinesSound = document.getElementById("deactivateMinesSound");
+
+
 
 const findTreasure1Sound = document.getElementById("findTreasure1Sound");
 const findTreasure2Sound = document.getElementById("findTreasure2Sound");
@@ -1151,14 +1153,17 @@ function onClick(thisSquare) {
                             };
 
         gameStart = true;
-    }
-
-    
-        
+    }      
 }
 
 
-
+minesSwitch.addEventListener("click", function(){
+    if (enableMines.checked==true) {
+        deactivateMinesSound.play();}
+        else {
+            activateMinesSound.play();
+        }
+});
 
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
