@@ -5,6 +5,10 @@ Kaboom Beach is a puzzle game that combines elements of <i>Battleship</i> and <i
 
 Play it here--> https://marktaylor7.github.io/KaboomBeach/
 
+![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileScreenshot.png)
+![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileScreenshot2.png)
+![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileWelcomeScreenshot.png)
+
 # Motivation
 As a new student with Get Coding, I wanted to challenge myself with a project that would require me to work in-depth with Javascript, and test my problem-solving abilities. Setting up the logic for this game pushed me to gain a deeper understanding of the programming language, and required extensive use of functions, arrays, "if" statements, nesting, loops, and DOM manipulation. I also have an interest in UI/UX, and wanted to create an engaging user experience that would encourage me to dive into CSS.
 
