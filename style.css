@@ -472,9 +472,11 @@ a {
 
 #howToPlayModalHeader {
     background-color: #0613d0;
-    height: 12%;
+    height: 4rem;
     width: 100%;
     align-content: center;
+    position: relative;
+    
     
 }
 
@@ -490,22 +492,41 @@ a {
 }
 
 h7 {
-    color: bisque;
+    color: #0613d0;
+    background-color: gold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     align-content: center;
-    margin-top: 20px;
+    width: 12rem;
+    margin: auto;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
-    padding-bottom: 2rem;
+    text-shadow: rgb(206, 175, 0) 0px 2px 0px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     align-content: center;
+    border-color: gold;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2rem;
+    
+    
     
     }
     
 
 #closeContainer {
-    height: 2.0rem;
+    height: 2rem;
+    width: 2rem;
+    float: right;
+    display: flex;
+    flex-direction: row;
 }
 
 /*The HTP Modal Close Button*/
@@ -513,7 +534,7 @@ h7 {
     cursor: pointer;
     display: block;
     background: #0613d0;
-    color: bisque;
+    color: gold;
     border-radius: 0%;
     width: 2rem;
     height: 2rem;
@@ -947,6 +968,11 @@ p   {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-seri
         padding-left: 1rem;
         padding-right: 1rem;
     }
+
+ul  {
+    padding-left: 1rem;
+    margin-left: 1rem;
+}
 
 li  {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

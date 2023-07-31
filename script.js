@@ -64,9 +64,6 @@ x.addListener(adaptFoundTreasuresBar) // Attach listener function on state chang
 
 const activateMinesSound = document.getElementById("activateMinesSound");
 const deactivateMinesSound = document.getElementById("deactivateMinesSound");
-
-
-
 const findTreasure1Sound = document.getElementById("findTreasure1Sound");
 const findTreasure2Sound = document.getElementById("findTreasure2Sound");
 const findTreasure3Sound = document.getElementById("findTreasure3Sound");
@@ -154,13 +151,29 @@ muteBtn.onclick = function() {
     for (let i = 0; i < sounds.length; i++) {
         if (sounds[i].muted === false) {
             sounds[i].muted = true;
+            document.getElementById("volumeIcon").src="images/muteIcon.svg";
         } else {
                 sounds[i].muted = false;
+                document.getElementById("volumeIcon").src="images/volumeIcon.svg";
+                menuSelectSound.play();
             }
       } 
 };
 
 let timeout;
+
+muteBtn.onclick = function() {
+    for (let i = 0; i < sounds.length; i++) {
+        if (sounds[i].muted === false) {
+            sounds[i].muted = true;
+            document.getElementById("volumeIcon").src="images/muteIcon2.svg";
+        } else {
+                sounds[i].muted = false;
+                document.getElementById("volumeIcon").src="images/volumeIcon.svg";
+                menuSelectSound.play();
+            }
+      } 
+};
 
 function winGameTimeout() {
     timeout = setTimeout(showWinGameModal, 2500);
