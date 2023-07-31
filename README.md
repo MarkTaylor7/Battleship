@@ -4,6 +4,7 @@ Kaboom Beach is a puzzle game that combines elements of <i>Battleship</i> and <i
 <b>---Please play with sound ON for the best experience, but check your volume first---</b>
 
 Play it here--> https://marktaylor7.github.io/KaboomBeach/
+
 ![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileWelcomeScreenshot.png)
 ![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileScreenshot.png)
 ![Screenshot of Kaboom Beach gameplay](images/screenshots/mobileScreenshot2.png)
