@@ -1,5 +1,7 @@
 //When the user clicks the first square, this turns to true. Used to prevent user from clicking on a mine at start of game.
 let gameStart = false;
+
+//When the user clicks on a mine, this turns to true. Used to prevent "exploded" mine icon from turning into a an "unexploded" icon after game ends.
 let mineExploded = false;
 
 //Counters for turns, total hits, and specific treasure hits
@@ -20,15 +22,12 @@ let mediumTreasurePic = document.getElementById("picitem2")
 let largeTreasurePic = document.getElementById("picitem3")
 
 //welcomeModal
+const modals = document.getElementsByClassName("modal");
 const easyModeBtn = document.getElementById("easyModeBtn");
 const normalModeBtn = document.getElementById("normalModeBtn");
 const hardModeBtn = document.getElementById("hardModeBtn");
 const minesSwitch = document.getElementById("minesSwitch");
 const howToPlayBtn = document.getElementById("welcomeHowToPlayBtn");
-const muteBtn = document.getElementById("muteBtn");
-
-const modals = document.getElementsByClassName("modal");
-
 
 function adaptSubContainer(x) {
     if (x.matches) { // If media query matches
@@ -61,7 +60,7 @@ var x = window.matchMedia("(max-width: 480px)")
 adaptFoundTreasuresBar(x) // Call listener function at run time
 x.addListener(adaptFoundTreasuresBar) // Attach listener function on state changes
 
-
+//Sound Effects
 const activateMinesSound = document.getElementById("activateMinesSound");
 const deactivateMinesSound = document.getElementById("deactivateMinesSound");
 const findTreasure1Sound = document.getElementById("findTreasure1Sound");
@@ -85,8 +84,6 @@ const gameOverSound = document.getElementById("gameOverSound");
 const youWinSound = document.getElementById("youWinSound");
 const menuSelectSound = document.getElementById("menuSelectSound");
 const sounds = document.getElementsByClassName("sounds");
-
-
 
 function showWelcomeModal() {
     modals[0].style.display = "block";
@@ -123,8 +120,6 @@ hardModeBtn.onclick = function() {
     turnCount = 5;
 }
 
-
-
 //howToPlayModal
 const howToPlayModalBtn = document.getElementById("howToPlayModalBtn");
 const howToPlayModalSpan = document.getElementsByClassName("howToPlayClose")[0];
@@ -147,6 +142,7 @@ window.onclick = function(event) {
     }
 }
 
+const muteBtn = document.getElementById("muteBtn");
 muteBtn.onclick = function() {
     for (let i = 0; i < sounds.length; i++) {
         if (sounds[i].muted === false) {
@@ -495,7 +491,7 @@ function getRandomSquare(allSquares) {
     return randomSquare
 }
 
-//Selects the starting square, and subsequent square(s) of each treasure
+//This function selects the starting square, and subsequent square(s) of each treasure, ensuring that there is no overlap between treasures or conflict with grid borders.
 function addTreasurePiece(Treasure) {
     allSquares
     //Sets a 50% chance of the treasure being horizontally arranged
@@ -516,7 +512,6 @@ function addTreasurePiece(Treasure) {
         randomStartIndex <= gridWidth * gridWidth - gridWidth * Treasure.length ? randomStartIndex :
             randomStartIndex - Treasure.length * gridWidth + gridWidth
     
-    
     let treasureSquares = []
 
     //If the treasure is horizontal, push it to the treasureSquares array, and repeat this function for the next square on the grid, until the length of the treasure is complete.
@@ -529,7 +524,6 @@ function addTreasurePiece(Treasure) {
         }
     }
 
-    
     //Valid means that the selected starting square of a horizontally-oriented treasure fulfills the following requirements:
         //the modulus of the square ID and the grid width cannot be 0 (an object cannot start at the end of a row),
         //AND the modulus of the square ID and the grid width must be less than OR equal to the grid width minus (the length of the treasure minus (the square's index + 1))
@@ -563,7 +557,6 @@ function addTreasurePiece(Treasure) {
 
 //For each treasure in the Treasure class, call the addTreasurePiece function
 treasures.forEach(Treasure => addTreasurePiece(Treasure));
-
 
 //Mines
 //If a square is near a mine, it will appear in a closeToMine array:
@@ -753,8 +746,7 @@ console.log(golfClubs.location)
 console.log(surfboard.location)
 console.log(mineLocations)
 
-//Functions which change hidden treasure images to images of actual treasure 
-//(currently using green squares as placeholder)
+//Functions which change the red squares in the status bar from red to green when the corresponding treasure is found.
 function foundSmallTreasure()   {
     smallTreasurePic.src = "images/greenSquares2Y.png";
 }
@@ -767,6 +759,7 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4Y.png";
 }
 
+//Prevents user from slecting squares after the game has ended, but before the end-game modal has appeared.
 function disableGridClick() {
     const collection = document.getElementsByClassName("column");
     for (let i = 0; i < collection.length; i++) {
@@ -800,6 +793,7 @@ const treasureChestImage = document.getElementById("chestImage");
 const golfClubsImage = document.getElementById("golfClubsImage");
 const surfboardImage = document.getElementById("surfboardImage");
 
+//Adds an image of the treasure below grid after user finds it
 function showTreasureImage(treasurePic) {
     let img = treasurePic;
     img.style.visibility = "visible";
@@ -901,6 +895,7 @@ function onClick(thisSquare) {
             }
         }
 
+        //This function prevents the game from ending if the user clicks on a mine on their first turn. The mine is removed from the square and re-assigned to another available square. 
         if(gameStart == false) {
             if(enableMines.checked == true && mineLocations.includes(thisSquare)) {
                 thisSquare.style.cursor = "auto";
@@ -1181,7 +1176,6 @@ minesSwitch.addEventListener("click", function(){
 //First EL activates main function for confirming if treasure is present
 //Second EL reduces the remaining turns counter by increment of 1
 //Each EL can only fire one time
-
 
 a1.addEventListener("click", () => onClick(a1), {once : true});
 a1.addEventListener("click", () => {
@@ -1638,4 +1632,3 @@ h8.addEventListener("click", () => {
     remainingTurns.innerHTML = remainingTurnsCount;
     h8.mineCount;
     if(enableMines.checked == true) h8.innerHTML = h8.mineCount}, {once : true});
-
