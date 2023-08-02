@@ -759,7 +759,7 @@ function foundLargeTreasure()   {
     largeTreasurePic.src = "images/greenSquares4Y.png";
 }
 
-//Prevents user from slecting squares after the game has ended, but before the end-game modal has appeared.
+//Prevents user from selecting squares after the game has ended, but before the end-game modal has appeared.
 function disableGridClick() {
     const collection = document.getElementsByClassName("column");
     for (let i = 0; i < collection.length; i++) {
