@@ -1,4 +1,4 @@
-# 🌴Kaboom Beach🌴
+# 🌴Kaboom Beach
 Kaboom Beach is a puzzle game that combines elements of <i>Battleship</i> and <i>Minesweeper</i>, creating a unique gameplay experience where both logic and luck are needed for success. A distinctive beach theme and various sound effects enhance the user experience, and the short gameplay loop of less than a minute encourages replayability. This project was developed as part of my training in the first module of the Get Coding program. 
 
 <b>---Please play with sound ON for the best experience, but check your volume first---</b>
