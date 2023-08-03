@@ -605,12 +605,13 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     display: flex;
     flex-direction: column;
     gap: 1;
+    width: 11rem;
 }
 
 .difficultyButtons {
     padding: 1rem 0;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    width: 11rem;
+    width: 100%;
 }
 
 #easyModeContainer {
@@ -618,12 +619,13 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     justify-content: center;
     align-items: center;
     margin: auto;
+    width: 100%;
 }
 
 #easyModeBtn {
     font-size: 2rem;
     color:gold;
-    width: 11rem;
+    width: 100%;
     background-color: #0613d0;
     text-transform: uppercase;
     text-shadow: #3033ff 0px 1px 0px;
@@ -637,12 +639,13 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     justify-content: center;
     align-items: center;
     margin: auto;
+    width: 100%;
 }
 
 #normalModeBtn {
     font-size: 2rem;
     color:rgb(255, 136, 0);
-    width: 11rem;
+    width: 100%;
     background-color: #0613d0;
     text-transform: uppercase;
     text-shadow: #3033ff 0px 1px 0px;
@@ -656,12 +659,13 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     justify-content: center;
     align-items: center;
     margin: auto;
+    width: 100%;
 }
 
 #hardModeBtn {
     font-size: 2rem;
     color:rgb(255, 71, 25);
-    width: 11rem;
+    width: 100%;
     background-color: #0613d0;
     text-transform: uppercase;
     text-shadow: #3033ff 0px 1px 0px;
@@ -675,18 +679,19 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     background-color: transparent;
     text-shadow: #3033ff 0px 1px 0px;
     border-color: #dfc09b;
-    border-style:outset;
+    border-style: outset;
     border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
     margin-top: 1rem;
-    width: 11rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 97%;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: rem;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 
 /*The Mines Switch*/
@@ -696,6 +701,7 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     width: 45px;
     height: 26px;
     margin-left: 0.5rem;
+
 }
 
 .switch input {

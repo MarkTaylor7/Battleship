@@ -14,7 +14,7 @@ let largeTreasureHits = 0;
 
 //Counter for remaining turns
 let remainingTurns = document.getElementById("turnCounter");
-let remainingTurnsCount = 25;
+let remainingTurnsCount = 30;
 
 //Function that prevents user from interacting with the playing grid if there is a delay in loading of welcome modal.
 function noTurns() {
@@ -111,8 +111,8 @@ easyModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
     enableGridClick();
-    document.getElementById("turnCounter").innerHTML = "30";
-    remainingTurnsCount = 30;
+    document.getElementById("turnCounter").innerHTML = "35";
+    remainingTurnsCount = 35;
     remainingTurns = document.getElementById("turnCounter");
     turnCount = -5;
 }
@@ -121,8 +121,8 @@ normalModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
     enableGridClick();
-    document.getElementById("turnCounter").innerHTML = "25";
-    remainingTurnsCount = 25;
+    document.getElementById("turnCounter").innerHTML = "30";
+    remainingTurnsCount = 30;
     remainingTurns = document.getElementById("turnCounter");
 }
 
@@ -130,8 +130,8 @@ hardModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
     enableGridClick();
-    document.getElementById("turnCounter").innerHTML = "20";
-    remainingTurnsCount = 20;
+    document.getElementById("turnCounter").innerHTML = "25";
+    remainingTurnsCount = 25;
     remainingTurns = document.getElementById("turnCounter");
     turnCount = 5;
 }
@@ -1149,7 +1149,7 @@ function onClick(thisSquare) {
             }
         
         if (mineExploded == false) {
-            if(turnCount == 25 && hitCount < 9) {
+            if(turnCount == 30 && hitCount < 9) {
                 disableGridClick()
                 gameOverTimeout();
             }
@@ -1163,29 +1163,29 @@ function onClick(thisSquare) {
             document.getElementById("winningTurnCounter").innerHTML = (remainingTurnsCount); 
         }
 
-        if (turnCount > 19) {
+        if (turnCount > 24) {
             remainingTurns.style.color = "red";
             remainingTurns.style.fontWeight = "bold";
             };
 
-            if (turnCount > 20) {
+            if (turnCount > 25) {
                 remainingTurns.style.color = "red";
                 remainingTurns.style.fontWeight = "bold";
                 remainingTurns.style.fontSize = "4.2vh";
                 };
 
-                if (turnCount > 21) {
+                if (turnCount > 26) {
                     remainingTurns.style.color = "red";
                     remainingTurns.style.fontWeight = "bold";
                     remainingTurns.style.fontSize = "4.4vh";
                     };
-                    if (turnCount > 22) {
+                    if (turnCount > 27) {
                         remainingTurns.style.color = "red";
                         remainingTurns.style.fontWeight = "bold";
                         remainingTurns.style.fontSize = "4.6vh";
                         };
 
-                        if (turnCount > 23) {
+                        if (turnCount > 28) {
                             remainingTurns.style.color = "red";
                             remainingTurns.style.fontWeight = "bold";
                             remainingTurns.style.fontSize = "4.8vh";
