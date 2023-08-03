@@ -16,6 +16,16 @@ let largeTreasureHits = 0;
 let remainingTurns = document.getElementById("turnCounter");
 let remainingTurnsCount = 25;
 
+//Function that prevents user from interacting with the playing grid if there is a delay in loading of welcome modal.
+function noTurns() {
+    remainingTurnsCount = 0;
+    remainingTurns = "?";
+};
+
+function noTurnsTimeout() {
+    timeout = setTimeout(noTurns, 0);
+};
+
 //Images of hidden treasures, hinting at lengths of treasures
 let smallTreasurePic = document.getElementById("picitem1")
 let mediumTreasurePic = document.getElementById("picitem2")
@@ -100,23 +110,29 @@ function hideWelcomeModal() {
 easyModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
+    enableGridClick();
     document.getElementById("turnCounter").innerHTML = "30";
     remainingTurnsCount = 30;
+    remainingTurns = document.getElementById("turnCounter");
     turnCount = -5;
 }
 
 normalModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
+    enableGridClick();
     document.getElementById("turnCounter").innerHTML = "25";
     remainingTurnsCount = 25;
+    remainingTurns = document.getElementById("turnCounter");
 }
 
 hardModeBtn.onclick = function() {
     menuSelectSound.play();
     hideWelcomeModal();
+    enableGridClick();
     document.getElementById("turnCounter").innerHTML = "20";
     remainingTurnsCount = 20;
+    remainingTurns = document.getElementById("turnCounter");
     turnCount = 5;
 }
 
@@ -157,6 +173,10 @@ muteBtn.onclick = function() {
 };
 
 let timeout;
+
+function welcomeModalTimeout() {
+    timeout = setTimeout(showWelcomeModal, 4000);
+};
 
 muteBtn.onclick = function() {
     for (let i = 0; i < sounds.length; i++) {
@@ -764,6 +784,17 @@ function disableGridClick() {
     const collection = document.getElementsByClassName("column");
     for (let i = 0; i < collection.length; i++) {
         collection[i].style.cursor = "not-allowed";
+    }
+}
+
+function disableGridClickTimeout() {
+    timeout = setTimeout(disableGridClick, 0);
+};
+
+function enableGridClick() {
+    const collection = document.getElementsByClassName("column");
+    for (let i = 0; i < collection.length; i++) {
+        collection[i].style.cursor = "pointer";
     }
 }
 

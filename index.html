@@ -19,7 +19,8 @@
    <link rel="shortcut icon" href="#"/>
 </head>
 
-<body onload="showWelcomeModal()">
+
+<body onload="disableGridClickTimeout(), noTurnsTimeout(), welcomeModalTimeout()";>
    <div class="modal">
       <div class="modal-content" id="welcomeModalContent">
          <h5>Kaboom Beach</h5>
@@ -27,15 +28,15 @@
          <div id = "welcomeHowToPlayBtnContainer"><button id="welcomeHowToPlayBtn">How to Play</button></div>
       
          <div class = "difficultyButtonsColumn">
-            <div class = "difficultyButtons" id = "easyModeContainer"><button id = "easyModeBtn">Easy</button></div>
-            <div class = "difficultyButtons" id = "normalModeContainer"><button id = "normalModeBtn">Normal</button></div>
-            <div class = "difficultyButtons" id = "hardModeContainer"><button id = "hardModeBtn">Hard</button></div>
             <div class = "difficultyButtons" id = "activateMinesContainer">Mines Active:
                <label class="switch">
                   <input type="checkbox" id="mineToggle">
                   <span class="slider round" id="minesSwitch"></span>
                </label>
             </div>
+            <div class = "difficultyButtons" id = "easyModeContainer"><button id = "easyModeBtn">Easy</button></div>
+            <div class = "difficultyButtons" id = "normalModeContainer"><button id = "normalModeBtn">Normal</button></div>
+            <div class = "difficultyButtons" id = "hardModeContainer"><button id = "hardModeBtn">Hard</button></div>
          </div>
       </div>
    </div> 
@@ -326,5 +327,5 @@
 <script src="script.js"></script>
      
 </body>
-   
+
 </html>
