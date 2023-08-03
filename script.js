@@ -175,7 +175,7 @@ muteBtn.onclick = function() {
 let timeout;
 
 function welcomeModalTimeout() {
-    timeout = setTimeout(showWelcomeModal, 4000);
+    timeout = setTimeout(showWelcomeModal, 0);
 };
 
 muteBtn.onclick = function() {
