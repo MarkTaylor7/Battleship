@@ -614,6 +614,26 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     width: 100%;
 }
 
+#activateMinesContainer {
+    color: #0613d0;
+    background-color: transparent;
+    text-shadow: #3033ff 0px 1px 0px;
+    border-color: #dfc09b;
+    border-style: outset;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 97%;
+    text-transform: uppercase;
+    font-size: rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 #easyModeContainer {
     display: flex;
     justify-content: center;
@@ -674,25 +694,7 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     cursor: pointer;
 }
 
-#activateMinesContainer {
-    color: #0613d0;
-    background-color: transparent;
-    text-shadow: #3033ff 0px 1px 0px;
-    border-color: #dfc09b;
-    border-style: outset;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    width: 97%;
-    text-transform: uppercase;
-    font-size: rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+
 
 /*The Mines Switch*/
 .switch {
