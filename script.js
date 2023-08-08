@@ -1150,7 +1150,7 @@ function onClick(thisSquare) {
         
         if (mineExploded == false) {
             if(turnCount == 30 && hitCount < 9) {
-                disableGridClick()
+                disableGridClick();
                 gameOverTimeout();
             }
         }
