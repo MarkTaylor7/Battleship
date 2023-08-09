@@ -703,7 +703,6 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
     width: 45px;
     height: 26px;
     margin-left: 0.5rem;
-
 }
 
 .switch input {
@@ -741,8 +740,6 @@ h5 {font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 input:checked + .slider {
     background-color: #ff0000;
 }
-
-
 
 input:checked + .slider:before {
     -webkit-transform: translateX(19px);
@@ -835,8 +832,8 @@ h4 {
     align-self: center;
     justify-self: center;
     margin: 2% auto;
-    max-width: 40rem;
     width: 80vw;
+    max-width: 40rem;
 }
 
 .gameOverButtonsColumn {
