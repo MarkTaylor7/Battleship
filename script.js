@@ -27,9 +27,9 @@ function noTurnsTimeout() {
 };
 
 //Images of hidden treasures, hinting at lengths of treasures
-let smallTreasurePic = document.getElementById("picitem1")
-let mediumTreasurePic = document.getElementById("picitem2")
-let largeTreasurePic = document.getElementById("picitem3")
+let smallTreasurePic = document.getElementById("picitem1");
+let mediumTreasurePic = document.getElementById("picitem2");
+let largeTreasurePic = document.getElementById("picitem3");
 
 //welcomeModal
 const modals = document.getElementsByClassName("modal");
